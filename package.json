@@ -7,7 +7,7 @@
     "start": "gulp default server"
   },
   "dependencies": {
-    "angular": "^1.6.2",
+    "angular": "^1.8.0",
     "angular-acl": "^0.1.7",
     "angular-bootstrap-show-errors": "^2.3.0",
     "angular-file-saver": "^1.1.3",

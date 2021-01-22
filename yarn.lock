@@ -95,9 +95,9 @@ angular1-async-filter@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/angular1-async-filter/-/angular1-async-filter-1.0.2.tgz#3af9c71aac29a12d3427a112e022acc49d8ca5c8"
 
-angular@^1.6.2:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.3.tgz#5d34b799234e8fa17c6a3a14e0258733935f43e7"
+angular@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.8.0.tgz#b1ec179887869215cab6dfd0df2e42caa65b1b51"
 
 ansi-regex@^2.0.0:
   version "2.1.1"
