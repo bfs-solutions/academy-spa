@@ -1,49 +1,46 @@
 
 "use strict";
 
-const gulp = require('gulp'),
-      tap = require('gulp-tap'),
-      browserify = require('browserify'),
-      babelify = require('babelify'),
-      stringify = require('stringify'),
-      buffer = require('gulp-buffer'),
-      sourcemaps = require('gulp-sourcemaps'),
-      uglify = require('gulp-uglify'),
-      ngAnnotate = require('gulp-ng-annotate');
+const gulp = require('gulp')
+const tap = require('gulp-tap');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const stringify = require('stringify');
+const buffer = require('gulp-buffer');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const ngAnnotate = require('gulp-ng-annotate');
 
-module.exports = (config)=> [()=> {
-    return gulp.src(config.src, { read: false })
-        .pipe(tap(function (file) {
+module.exports = ({ base, src, dest })=> ()=> gulp.src(src, { read: false, base })
+    .pipe(tap(function (file) {
+        
+        // replace file contents with browserify's bundle stream
+        file.contents = browserify(file.path, { debug: true,  })
+            .transform(babelify.configure({
+                presets: ['@babel/env'],
+                plugins: ['@babel/transform-runtime']
+            }))
+            .transform(stringify, {
+                appliesTo: { includeExtensions: ['.html', '.txt'] }
+            })
+            .bundle();
 
-            // replace file contents with browserify's bundle stream
-            file.contents = browserify(file.path, { debug: true,  })
-                .transform(babelify.configure({
-                    // You can configure babel here!
-                    // https://babeljs.io/docs/usage/options/
-                    presets: ["es2015"]
-                }))
-                .transform(stringify, {
-                    appliesTo: { includeExtensions: ['.html', '.txt'] }
-                })
-                .bundle();
+        file.path = file.path.replace(".js", ".min.js");
 
-            file.path = file.path.replace(".js", ".min.js");
+    }))
 
-        }))
+    .pipe(buffer())
 
-        .pipe(buffer())
+    .pipe(sourcemaps.init({
+        loadMaps: true // Load the sourcemaps browserify already generated
+    }))
 
-        .pipe(sourcemaps.init({
-            loadMaps: true // Load the sourcemaps browserify already generated
-        }))
+    .pipe(ngAnnotate())
 
-        .pipe(ngAnnotate())
+    .pipe(uglify())
 
-        // .pipe(uglify())
+    .pipe(sourcemaps.write('./', {
+        includeContent: true
+    }))
 
-        .pipe(sourcemaps.write('./', {
-            includeContent: true
-        }))
-
-        .pipe(gulp.dest(config.dest));
-}];
+    .pipe(gulp.dest(dest));

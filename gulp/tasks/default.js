@@ -1,8 +1,5 @@
-/* Default task for Gulp
- *
- * It just use its settings as an array of tasks names to run
- */
+/* default Gulp task  */
 
 "use strict";
 
-module.exports = (tasks=[]) => [tasks];
+module.exports = (subTasks) => subTasks;

@@ -3,6 +3,6 @@
 
 const gulp = require('gulp');
 
-module.exports = (targets)=> [()=> {
+module.exports = (targets)=> ()=> {
     targets.forEach((target)=> gulp.watch.apply(gulp, target));
-}];
+};
