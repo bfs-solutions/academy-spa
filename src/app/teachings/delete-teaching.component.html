@@ -1,0 +1,21 @@
+<div>
+    <div class="modal-header">
+        <h2>Atenci&oacute;n</h2>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <p>
+            Est&aacute; a punto de eliminar la relaci&oacute;n Profesor & Asignatura
+            entre <b>{{$ctrl.resolve.teaching.userObj.name}}</b> y
+            <b>{{$ctrl.resolve.teaching.subjectObj.label}}</b>. ¿Est&aacute; seguro que
+            es eso lo que desea hacer?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="$ctrl.proceed()">
+            Eliminar
+        </button>
+        <button class="btn btn-default" type="button"
+                ng-click="$ctrl.dismiss({$value: 'cancel'})">Cancelar
+        </button>
+    </div>
+</div>

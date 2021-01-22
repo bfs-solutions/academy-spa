@@ -1,0 +1,95 @@
+{
+  "_embedded": {
+    "securityRules": [
+      {
+        "role": "user",
+        "allowed": [
+          "select($event)",
+          "selectPage(1, $event)",
+          "selectPage(page - 1, $event)",
+          "selectPage(page.number, $event)",
+          "selectPage(page + 1, $event)",
+          "selectPage(totalPages, $event)",
+
+          "dashboard",
+
+          "institutions",
+
+          "courses",
+          "courses/:course/editions",
+          "courses/:course/subjects",
+          "courses/:course/editions/:edition/groups",
+          "courses/:course/editions/:edition/groups/:group/enrollments",
+          "courses/:course/editions/:edition/groups/:group/teachings",
+          "courses/:course/editions/:edition/groups/:group/enrollment-report",
+          "courses/:course/editions/:edition/groups/:group/reporte-resumen",
+          "courses/:course/editions/:edition/groups/:group/control-de-asistencia",
+
+          "students",
+
+          "enrollments",
+
+          "reports",
+          "reports/promotion-certificate",
+
+          "partial-reports/student-partial-report",
+          "partial-reports/group-partial-report",
+          "partial-reports/subject-partial-report",
+
+          "half-reports/student-half-report",
+          "half-reports/group-half-report",
+          "half-reports/subject-half-report",
+
+          "ge-half-reports/student-half-report",
+
+          "reports-enrollments/enrollment-records",
+          "reports-enrollments/enrollment-certificates",
+
+          "grades-templates/subject-half-template",
+
+          "se-reports/se-report",
+          "se-reports/final-grades"
+        ]
+      },
+      {
+        "role": "administrator",
+        "allowed": [
+          "users",
+          "users/_new",
+          "users/:user/_edit",
+          "$ctrl.openDeleteModal(user)",
+          "$ctrl.toggleDisabled(user)",
+
+          "institutions/_new",
+          "institutions/:institution/_edit",
+          "$ctrl.openDeleteModal(institution)",
+
+          "courses/_new",
+          "courses/:course/editions/_new",
+          "courses/:course/subjects/_new",
+          "$ctrl.openDeleteModal(edition)",
+          "$ctrl.openDeleteModal(group)",
+
+          "!adding ? $ctrl.add() : null",
+          "courses/:course/editions/:edition/groups/:group/teachings/_new",
+          "$ctrl.openDeleteModal(teaching)",
+
+          "courses/:course/editions/:edition/groups/:group/enrollments/_new",
+          "courses/:course/editions/:edition/groups/:group/enrollments/_existing",
+          "$ctrl.openDeleteModal(enrollment)",
+          "$ctrl.openEditModal(enrollment)",
+
+          "students/:student/_edit",
+
+          "grades",
+          "grades/:group/:subject",
+          "grades-qualitative/:group/:subject",
+          "$ctrl.activateGradeEdition()",
+
+          "tools/add-half-exams",
+          "tools/add-special-exams"
+        ]
+      }
+    ]
+  }
+}

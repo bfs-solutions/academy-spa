@@ -1,0 +1,76 @@
+<div class="row">
+    <h1>{{course.label}}</h1>
+    <h2>Nueva Asignatura</h2>
+    <form name="newSubjectForm" class="form-horizontal" novalidate
+          ng-submit="$ctrl.submit(form)">
+        <div class="row" ng-if="error != null">
+            <div class="col-md-12">
+                <div class="alert alert-danger">{{error}}</div>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="labelInput" class="col-sm-3 control-label">Nombre
+                *</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="labelInput"
+                       placeholder="Nombre de la Asignatura"
+                       required aria-describedby="labelHelpBlock"
+                       ng-model="form.label" name="label"/>
+                <span id="labelHelpBlock" class="help-block">
+                    Nombre de la Asignatura (requerido).
+                </span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="qualitativeInput" class="col-sm-3 control-label">Cualitativa</label>
+            <div class="col-sm-9">
+                <input type="checkbox" class="form-control"
+                       id="qualitativeInput"
+                       aria-describedby="qualitativeHelpBlock"
+                       ng-model="form.qualitative" name="label"/>
+                <span id="qualitativeHelpBlock" class="help-block">
+                    Forma de Evaluaci&oacute;n
+                </span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="structureSelect" class="col-sm-3 control-label">Estructura de Evaluaci&oacute;n</label>
+            <div class="col-sm-9">
+                <select class="form-control" id="structureSelect"
+                        aria-describedby="structureHelpBlock"
+                        ng-model="form.structure" name="structure"
+                        ng-options="structure.name for structure in subjectStructures | async:this"
+                        required>
+                </select>
+                <span id="structureHelpBlock" class="help-block">
+                    Forma de Evaluaci&oacute;n
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <uib-progressbar ng-show="saving"
+                                 animate="true"
+                                 value="progress"
+                                 type="info">
+                    <b>{{progress | number: 2}}%</b>
+                </uib-progressbar>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button ng-disabled="saving" type="submit"
+                        class="btn btn-primary">
+                    <i ng-class="{'fa fa-plus': !saving, 'fa fa-spinner fa-pulse': saving}"
+                       aria-hidden="true"></i>
+                    Crear Asignatura
+                </button>
+                <a ng-disabled="saving"
+                   ng-href="{{!saving ? '#!/courses/' + course.id + '/subjects' : ''}}"
+                   class="btn btn-default">Cancelar
+                </a>
+
+            </div>
+        </div>
+    </form>
+</div>

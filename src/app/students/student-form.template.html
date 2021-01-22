@@ -1,0 +1,295 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <i class="fa fa-graduation-cap"></i>
+      {{$ctrl.modeEdit ? 'Modificar Estudiante' : 'Nuevo Estudiante'}}
+    </h1>
+    <form name="studentForm" novalidate class="form-horizontal"
+          ng-submit="$ctrl.submit(form)">
+      <div class="row" ng-if="error != null">
+        <div class="col-md-12">
+          <div class="alert alert-danger">{{error}}</div>
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="nameInput" class="col-sm-3 control-label">
+          Nombres y Apellidos *
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="nameInput"
+                 placeholder="APELLIDOS NOMBRES" required
+                 ng-model="form.name" name="name" />
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="nationalityInput" class="col-sm-3 control-label">
+          Nacionalidad
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="nationality"
+                 ng-init="form.nationality='ECUATORIANA'"
+                 id="nationalityInput"
+                 ng-model="form.nationality">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="nidInput" class="col-sm-3 control-label">Cedula</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="nid"
+                 placeholder="Numero de Cedula"
+                 id="nidInput"
+                 ng-model="form.nid">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="sexSelect" class="col-sm-3 control-label">Sexo</label>
+        <div class="col-sm-9">
+          <select class="form-control" ng-model="form.sex" name="sex"
+                  id="sexSelect">
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="birthDateInput" class="col-sm-3 control-label">
+          Fecha de Nacimiento
+        </label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" name="birthDate"
+                 id="birthDateInput"
+                 ng-model="form.birth_date">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="birthPlaceInput" class="col-sm-3 control-label">
+          Lugar de Nacimiento
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="birthPlace"
+                 id="birthPlaceInput"
+                 ng-model="form.birth_place">
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group" show-errors>
+        <label for="fatherNameInput" class="col-sm-3 control-label">
+          Nombre del Padre
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="fatherName"
+                 placeholder="Nombre del Padre, se omiten los apellidos."
+                 id="fatherNameInput"
+                 ng-model="form.father_name">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="fatherPhoneInput" class="col-sm-3 control-label">
+          Tel&eacute;fono
+        </label>
+        <div class="col-sm-9">
+          <input type="tel" class="form-control" name="fatherPhone"
+                 id="fatherPhoneInput"
+                 ng-model="form.father_phone">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="fatherAddressInput" class="col-sm-3 control-label">
+          Direcci&oacute;n
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="fatherAddress"
+                 placeholder="Direcci&oacute;n de residencia."
+                 id="fatherAddressInput"
+                 ng-model="form.father_address">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="fatherProfessionInput" class="col-sm-3 control-label">
+          Profesi&oacute;n
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="fatherProfession"
+                 placeholder="Profesion."
+                 id="fatherProfessionInput"
+                 ng-model="form.father_profession">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="fatherEmailInput" class="col-sm-3 control-label">
+          Correo Electr&oacute;nico
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="fatherEmail"
+                 id="fatherEmailInput"
+                 ng-model="form.father_email">
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group" show-errors>
+        <label for="motherNameInput" class="col-sm-3 control-label">
+          Nombre de la Madre
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="motherName"
+                 placeholder="Nombre de la Madre, se omiten los apellidos."
+                 id="motherNameInput"
+                 ng-model="form.mother_name">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="motherPhoneInput" class="col-sm-3 control-label">
+          Tel&eacute;fono
+        </label>
+        <div class="col-sm-9">
+          <input type="tel" class="form-control" name="motherPhone"
+                 id="motherPhoneInput"
+                 ng-model="form.mother_phone">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="motherAddressInput" class="col-sm-3 control-label">
+          Direcci&oacute;n
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="motherAddress"
+                 placeholder="Direcci&oacute;n de residencia."
+                 id="motherAddressInput"
+                 ng-model="form.mother_address">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="motherProfessionInput" class="col-sm-3 control-label">
+          Profesi&oacute;n
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="motherProfession"
+                 placeholder="Profesion."
+                 id="motherProfessionInput"
+                 ng-model="form.mother_profession">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="motherEmailInput" class="col-sm-3 control-label">
+          Correo Electr&oacute;nico
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="motherEmail"
+                 id="motherEmailInput"
+                 ng-model="form.mother_email">
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group" show-errors>
+        <label for="legalGuardianNameInput" class="col-sm-3 control-label">
+          Nombre del Representante
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="legalGuardianName"
+                 placeholder="Nombre del Representante, se omiten los apellidos."
+                 id="legalGuardianNameInput"
+                 ng-model="form.legal_guardian_name">
+        </div>
+      </div>
+
+      <!--<div class="form-group" show-errors>-->
+        <!--<label for="legalGuardianSexSelect" class="col-sm-3 control-label">-->
+          <!--Sexo *-->
+        <!--</label>-->
+        <!--<div class="col-sm-9">-->
+          <!--<select class="form-control" ng-model="form.legal_guardian_sex"-->
+                  <!--name="legalGuardianSex"-->
+                  <!--id="legalGuardianSexSelect" required>-->
+            <!--<option value="M">Masculino</option>-->
+            <!--<option value="F">Femenino</option>-->
+          <!--</select>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="form-group" show-errors>
+        <label for="legalGuardianPhoneInput" class="col-sm-3 control-label">
+          Tel&eacute;fono
+        </label>
+        <div class="col-sm-9">
+          <input type="tel" class="form-control" name="legalGuardianPhone"
+                 id="legalGuardianPhoneInput"
+                 ng-model="form.legal_guardian_phone">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="legalGuardianAddressInput" class="col-sm-3 control-label">
+          Direcci&oacute;n
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="legalGuardianAddress"
+                 placeholder="Direcci&oacute;n de residencia."
+                 id="legalGuardianAddressInput"
+                 ng-model="form.legal_guardian_address">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="legalGuardianProfessionInput" class="col-sm-3 control-label">
+          Profesi&oacute;n
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="legalGuardianProfession"
+                 placeholder="Profesion."
+                 id="legalGuardianProfessionInput"
+                 ng-model="form.legal_guardian_profession">
+        </div>
+      </div>
+
+      <div class="form-group" show-errors>
+        <label for="legalGuardianEmailInput" class="col-sm-3 control-label">
+          Correo Electr&oacute;nico
+        </label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="legalGuardianEmail"
+                 id="legalGuardianEmailInput"
+                 ng-model="form.legal_guardian_email">
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn"
+                  ng-class="{'btn-primary': !$ctrl.modeEdit, 'btn-warning': $ctrl.modeEdit}"
+                  ng-disabled="$ctrl.processing">
+            <i ng-if="$ctrl.processing" class="fa fa-spinner fa-spin"
+               aria-hidden="true"></i>
+            <i ng-if="!$ctrl.processing && !$ctrl.modeEdit" class="fa fa-plus"
+               aria-hidden="true"></i>
+            <i ng-if="!$ctrl.processing && $ctrl.modeEdit" class="fa fa-edit"
+               aria-hidden="true"></i>
+            {{$ctrl.modeEdit ? 'Modificar Estudiante' : 'Nuevo Estudiante'}}
+          </button>
+          <a href="#!/students" class="btn btn-default">Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

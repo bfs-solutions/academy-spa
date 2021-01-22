@@ -1,0 +1,57 @@
+<div class="row">
+    <h1><i class="fa fa-magic"></i> Matr&iacute;culas</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="courseSelect">Curso</label>
+            <select class="form-control" id="courseSelect" required
+                    ng-model="form.course" name="course"
+                    ng-options="course.label for course in courses | async">
+
+            </select>
+        </div>
+        <div class="col-md-4" ng-if="form.course">
+            <label for="editionSelect">Período Lectivo</label>
+            <select class="form-control" id="editionSelect" required
+                    ng-model="form.edition" name="edition"
+                    ng-options="(edition.date_start | date) + ' - ' + (edition.date_end | date) for edition in form.course.editions | async">
+
+            </select>
+        </div>
+        <div class="col-md-4" ng-if="form.edition">
+            <label for="groupSelect">Paralelo</label>
+            <select class="form-control" id="groupSelect" required
+                    ng-model="form.group" name="course"
+                    ng-options="group.label for group in form.edition.groups | async">
+
+            </select>
+        </div>
+    </div>
+    <p>
+        <a ng-if="form.group" class="btn btn-link"
+           href="#!/courses/{{form.course.id}}/editions/{{form.edition.id}}/groups/{{form.group.id}}/enrollment-report">
+            Nomina de Matriculados
+        </a>
+
+        <a ng-if="form.group" class="btn btn-link"
+           href="#!/courses/{{form.course.id}}/editions/{{form.edition.id}}/groups/{{form.group.id}}/reporte-resumen">
+            Resumen Reporte por Curso
+        </a>
+
+        <a ng-if="form.group" class="btn btn-link"
+           href="#!/courses/{{form.course.id}}/editions/{{form.edition.id}}/groups/{{form.group.id}}/control-de-asistencia">
+            Control de Asistencia
+        </a>
+
+        <a ng-if="form.group" class="btn btn-link"
+           href="#!/courses/{{form.course.id}}/editions/{{form.edition.id}}/groups/{{form.group.id}}/enrollments/_new">
+            Matricular Estudiante sin Registro Previo
+        </a>
+
+        <a ng-if="form.group" class="btn btn-link"
+           href="#!/courses/{{form.course.id}}/editions/{{form.edition.id}}/groups/{{form.group.id}}/enrollments/_existing">
+            Matricular Estudiante con Registro Previo
+        </a>
+    </p>
+    <sa-enrollment-list ng-if="form.group"
+                        enrollments="form.group.enrollments"></sa-enrollment-list>
+</div>

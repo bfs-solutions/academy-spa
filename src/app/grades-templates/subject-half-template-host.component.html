@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Generar Plantillas de Notas de las Asignaturas</h1>
+    </div>
+    <div class="col-md-12">
+        <app-group-selector on-observable="$ctrl.onGroupObservable(observable)">
+        </app-group-selector>
+    </div>
+    <div class="col-md-4">
+        <app-half-selector halves="halves | async:this"
+                           on-observable="$ctrl.onHalfObservable(observable)">
+        </app-half-selector>
+    </div>
+    <div class="col-md-4">
+        <app-subject-selector subjects="course.subjects | async:this"
+                              on-observable="$ctrl.onSubjectObservable(observable)">
+        </app-subject-selector>
+    </div>
+    <div class="col-md-12" ng-if="half && subject">
+        <div class="app-page-break"></div>
+        <app-grades-templates-subject-half-template
+                course="course"
+                edition="edition"
+                group="group"
+                half-idx="halfIdx"
+                subject="subject">
+        </app-grades-templates-subject-half-template>
+    </div>
+</div>

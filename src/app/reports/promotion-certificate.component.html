@@ -1,0 +1,117 @@
+<div>
+    <i ng-show="$ctrl.loading" class="fa fa-spinner fa-pulse fa-5x"
+       aria-hidden="true"></i>
+    <div ng-show="!$ctrl.loading && !isNaN($ctrl.grades.grade)">
+        <div class="center">
+            <img src="images/mined.png" class="promotion-cert-logo"/>
+        </div>
+        <div class="center">
+            <span class="bigtext">UNIDAD EDUCATIVA "Dario Figueroa Larco"</span>
+        </div>
+        <div class="center blob">{{"Certificado de Promoción" | uppercase}}
+        </div>
+        <div class="center blob">AÑO LECTIVO {{$ctrl.edition.date_start | date :
+            'yyyy'}} - {{$ctrl.edition.date_end | date : 'yyyy'}}
+        </div>
+        <div class="center blob">JORNADA MATUTINA</div>
+        <hr class="report"/>
+        <div class="report-content">
+            <div class="head-text">
+                De conformidad con lo prescrito en el art. 197 del Reglamento
+                General a la
+                Ley Orgánica de Educación Intercultural y demás normativas
+                vigentes,
+                certifica que el/la estudiante
+            </div>
+            <div class="student-name blob">
+                {{$ctrl.enrollment.studentObj.name}}
+            </div>
+            <div class="student-course blob">{{$ctrl.course.label}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PARALELO
+                {{$ctrl.group.label}}
+            </div>
+            <div>obtuvo las siguientes calificaciones durante el presente año
+                lectivo.
+            </div>
+            <div class="note-table">
+                <table border="1" width="100%">
+                    <tbody>
+                    <tr class="blob">
+                        <td rowspan="2" class="center" width="40%">ASIGNATURA
+                        </td>
+                        <td colspan="2" class="center">CALIFICACIONES</td>
+                    </tr>
+                    <tr class="blob">
+                        <td class="center" width="20%">NUMEROS</td>
+                        <td class="center" width="40%">LETRAS</td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr ng-repeat="subject in ($ctrl.course.selectedSubjects | async:this | filter:{qualitative: false}) track by $index">
+                        <td style="text-transform: uppercase;"><span
+                                class="sangria">{{$index+1}}</span>{{subject.label}}
+                        </td>
+                        <td class="center">{{$ctrl.grades.subjects[subject.id].grade | numberPad | number:2}}</td>
+                        <td>
+                            <div class="sangria">{{$ctrl.grades.subjects[subject.id].grade | numberToWords}}</div>
+                        </td>
+                    </tr>
+                    <!--</tbody>-->
+                    <!--</table>-->
+                    <!--<table border="1" width="100%">-->
+                    <!--<tbody>-->
+                    <tr>
+                        <td class="center blob">PROMEDIO GENERAL</td>
+                        <td class="center blob">{{$ctrl.grades.grade | numberPad | number:2}}</td>
+                        <td>
+                            <div class="sangria">{{$ctrl.grades.grade | numberToWords}}</div>
+                        </td>
+                    </tr>
+
+                    <tr ng-repeat="subject in ($ctrl.course.selectedSubjects | async:this | filter:{qualitative: true}) track by $index">
+                        <td class="blob center">{{subject.label}}</td>
+                        <td class="blob center" ng-if="subject.label === 'PROYECTOS ESCOLARES'">
+                            {{$ctrl.grades.subjects[subject.id].grade | numberToProject}}
+                        </td>
+                        <td class="blob" ng-if="subject.label === 'PROYECTOS ESCOLARES'">
+                            <div class="sangria">{{$ctrl.grades.subjects[subject.id].grade | numberToProject | behaviourToWords}}
+                            </div>
+                        <td class="blob center" ng-if="subject.label !== 'PROYECTOS ESCOLARES'">
+                            {{$ctrl.grades.subjects[subject.id].grade | numberToBehaviour}}
+                        </td>
+                        <td class="blob" ng-if="subject.label !== 'PROYECTOS ESCOLARES'">
+                            <div class="sangria">{{$ctrl.grades.subjects[subject.id].grade | numberToBehaviour | behaviourToWords}}
+                            </div>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div>
+            </div>
+            <div style="margin-top: 10px;">
+                Por lo tanto es promovido/a al <span class="blob middletext">{{$ctrl.course.promoteTo.label}}</span>
+            </div>
+            <div style="margin-top: 10px;">
+                Para certificar suscriben en unidad de acto el/a Director/a -
+                Rector/a con
+                el/a Secretario/a General de Plantel - Profesor/a de grado.
+            </div>
+            <div class="row" style="margin-top: 100px;">
+                <div class="col-xs-6">
+                    <div class="sign">Lic. Marco Cevallos Espindola</div>
+                    <div class="center" style="width:90%;"><b>RECTOR/A</b></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>
+                    <div class="center" style="width:90%;"><b>SECRETARIO/A</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="!$ctrl.loading && isNaN($ctrl.grades.grade)">
+        {{"Certificado de Promoción" | uppercase}} no puede ser generado para
+        el estudiante {{$ctrl.enrollment.studentObj.name}}.
+        Asegurese de que existe una nota para cada evaluaci&oacute;n del curso.
+    </div>
+</div>

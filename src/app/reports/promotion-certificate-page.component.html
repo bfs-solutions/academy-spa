@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Generar Certificados de Promoci&oacute;n</h1>
+        <form class="form-inline">
+            <div class="form-group">
+                <button class="btn btn-default" onclick="window.print()">
+                    <i class="fa fa-print" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <app-group-selector on-observable="$ctrl.onGroupObservable(observable)">
+        </app-group-selector>
+    </div>
+    <div class="col-md-12" style="padding-top: 10px;">
+        <uib-tabset active="active">
+            <uib-tab index="0" heading="Estudiantes ({{(enrollments | async:this | filter: {selected: true}).length || 0}} / {{(enrollments | async:this).length || 0}})">
+                <app-enrollment-selector enrollments="enrollments | async:this">
+                </app-enrollment-selector>
+            </uib-tab>
+            <uib-tab index="1" heading="Asignaturas ({{(course.selectedSubjects | async:this).length || 0}} / {{(course.subjects | async:this).length || 0}})">
+                <app-subject-multi-selector subjects="subjects"
+                                            on-observable="$ctrl.onSubjectObservable(observable)">
+                </app-subject-multi-selector>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    <div class="col-md-12" ng-if="group">
+        <div ng-repeat="enrollment in enrollments | async:this | filter: {selected: true}">
+            <div class="app-page-break"></div>
+            <sa-promotion-certificate
+                    course="course"
+                    edition="edition"
+                    group="group"
+                    enrollment="enrollment"></sa-promotion-certificate>
+        </div>
+    </div>
+</div>

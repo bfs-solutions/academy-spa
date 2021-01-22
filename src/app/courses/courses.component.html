@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="row">
+        <div class="col-sm-8 vcenter">
+            <h1><i class="fa fa-briefcase"></i> Cursos</h1>
+        </div><!--
+        -->
+        <div class="col-sm-4 vcenter">
+            <a href="#!/courses/_new" class="btn btn-primary"
+               style="float: right">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Enlaces</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="course in courses | async:this | orderBy:'id' ">
+            <td>
+                {{course.label}}
+
+                <small>{{course.createdAt | date : "yyyy/mm/dd"}}</small>
+
+                <small ng-if="course.promote_to">PROMUEVE A
+                    {{course.promoteTo.label}}
+                </small>
+            </td>
+            <td>
+                <a href="#!/courses/{{course.id}}/editions"
+                   class="btn btn-link">
+                    Períodos Lectivos
+                </a>
+                <a href="#!/courses/{{course.id}}/subjects"
+                   class="btn btn-link">
+                    Asignaturas
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

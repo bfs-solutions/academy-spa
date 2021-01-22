@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-sm-12" ng-show="users.loading">
+    <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>  Cargando...
+  </div>
+  <div class="col-sm-12" ng-show="!users.loading">
+    <h1><i class="fa fa-users"></i> Usuarios</h1>
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-search"></i>
+          </span>
+          <input type="text" class="form-control" id="searchInput"
+                 ng-model="search" placeholder="Buscar">
+        </div>
+      </div>
+      <div class="form-group">
+        <a class="btn btn-primary" href="#!/users/_new">
+          <i class="fa fa-plus" aria-hidden="true"></i> <!--Nuevo Centro Educativo-->
+        </a>
+      </div>
+    </form>
+    <div class="row" ng-if="error != null">
+      <div class="col-md-12">
+        <div class="alert alert-danger">{{error}}</div>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Login</th>
+        <th>Nombre</th>
+        <th>Roles</th>
+        <th>Estado</th>
+        <th style="text-align: right">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="user in users | async:this | orderBy:'login' | filter:search | limitTo:usersPerPage:(currentUsersPage - 1) * usersPerPage">
+        <td>{{user.login}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.roles.join(", ")}}</td>
+        <td>
+          <i ng-show="user.disabled" class="fa fa-lock" aria-hidden="true"></i>
+          <i ng-show="!user.disabled" class="fa fa-unlock" aria-hidden="true"></i>
+        </td>
+        <td align="right">
+          <a ng-href="#!/users/{{user.login}}/_edit"
+             class="btn btn-warning">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+          </a>
+          <a ng-show="user.login !== authentication.login"
+             ng-click="$ctrl.toggleDisabled(user)"
+             ng-disabled="user.togglingDisabled"
+             class="btn btn-warning">
+            <i ng-show="!user.disabled" class="fa fa-lock" aria-hidden="true">
+            </i>
+            <i ng-show="user.disabled" class="fa fa-unlock" aria-hidden="true">
+            </i>
+          </a>
+
+          <a ng-show="user.login !== authentication.login"
+             ng-click="$ctrl.openDeleteModal(user)"
+             class="btn btn-danger">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ul uib-pagination
+        ng-disabled="(users | async:this | filter:search).length <= usersPerPage"
+        total-items="(users | async:this | filter:search).length"
+        ng-model="currentUsersPage"
+        items-per-page="usersPerPage" boundary-link-numbers="true"
+        max-size="7" force-ellipses="true" boundary-links="true"></ul>
+  </div>
+</div>

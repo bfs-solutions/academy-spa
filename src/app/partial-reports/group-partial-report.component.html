@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-md-12" ng-show="$ctrl.loading">
+        <i class="fa fa-spinner fa-pulse fa-5x" aria-hidden="true"></i>
+    </div>
+    <div class="col-md-12" ng-show="!$ctrl.loading">
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="images/institution-logo.jpg" style="width: 75px"/>
+            </div>
+            <div class="col-xs-10">
+                <div class="center bigtext">UNIDAD EDUCATIVA "Dario Figueroa
+                    Larco"
+                </div>
+                <!--<div class="center blob">REPORTE PARCIAL DEL ESTUDIANTE</div>-->
+                <div class="center blob">AÑO LECTIVO {{$ctrl.edition.date_start
+                    | date : 'yyyy'}} - {{$ctrl.edition.date_end | date :
+                    'yyyy'}} JORNADA MATUTINA
+                </div>
+                <!--<div class="center blob">JORNADA MATUTINA</div>-->
+                <!--<div class="student-name blob">-->
+                <!--{{$ctrl.enrollment.studentObj.name}}-->
+                <!--</div>-->
+                <div class="blob"
+                     style="padding: 0 5px; text-transform: uppercase; margin: 10px auto 0; width: 90%">
+                    {{$ctrl.course.label}} PARALELO {{$ctrl.group.label}}
+                    {{$ctrl.course.selectedSubjects.getValue()[0].halves.getValue()[$ctrl.halfIdx].label}}
+                    {{$ctrl.course.selectedSubjects.getValue()[0].halves.getValue()[$ctrl.halfIdx].partials.getValue()[$ctrl.partialIdx].label}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="!$ctrl.loading">
+        <table class="table table-bordered table-condensed" width="100%"
+               cellpadding="1px">
+            <tbody>
+            <tr class="blob" style="text-align: center">
+                <td colspan="2" style="font-size: 12px">APELLIDOS
+                    Y NOMBRES</td>
+                <td ng-repeat="subject in $ctrl.course.selectedSubjects.getValue()"
+                    style="font-size: 6px; width: 30px;">
+                    {{subject.label | wordsShorter}}
+                </td>
+                <td style="font-size: 10px" ng-if="$ctrl.includeMeans">PROM.</td>
+                <!--<td style="font-size: 12px">Observaciones</td>-->
+            </tr>
+            </tbody>
+            <tbody>
+            <tr
+                    ng-repeat="enrollment in $ctrl.group.enrollments.getValue() | orderBy:'studentObj.name' track by $index"
+                    style="font-size: 8px">
+                <td>{{$index + 1}}</td>
+                <td>{{enrollment.studentObj.name}}</td>
+                <td ng-repeat="subject in $ctrl.course.selectedSubjects.getValue()"
+                    style="text-align: center">
+                    <span
+                            ng-style="enrollment.grades.subjects[subject.id][$ctrl.halfIdx].partials[$ctrl.partialIdx].grade < 7 ? {'text-decoration': 'underline'} : null">
+                        <span ng-if="subject.qualitative === false">
+                            {{enrollment.grades.subjects[subject.id][$ctrl.halfIdx].partials[$ctrl.partialIdx].grade | numberPad | number:2}}
+                        </span>
+                        <span
+                                ng-if="subject.qualitative === true && subject.label == 'DESARROLLO COMPORTAMENTAL'">
+                            {{enrollment.grades.subjects[subject.id][$ctrl.halfIdx].partials[$ctrl.partialIdx].grade | numberPad | number:2 | numberToBehaviour}}
+                        </span>
+                        <span
+                                ng-if="subject.qualitative === true && subject.label == 'PROYECTOS ESCOLARES'">
+                            {{enrollment.grades.subjects[subject.id][$ctrl.halfIdx].partials[$ctrl.partialIdx].grade | numberPad | number:2 | numberToProject}}
+                        </span>
+                    </span>
+                </td>
+                <td style="text-align: center" ng-if="$ctrl.includeMeans">
+                    {{enrollment.grades.halves[$ctrl.halfIdx].partials[$ctrl.partialIdx].grade | numberPad | number: 2}}
+                </td>
+            </tr>
+            </tbody>
+            <tbody ng-if="$ctrl.includeMeans">
+            <tr style="font-size: 8px; text-align: center">
+                <td colspan="2" style="text-align: end">PROMEDIO</td>
+                <td ng-repeat="subject in $ctrl.course.selectedSubjects.getValue()">
+                    <span
+                            ng-style="$ctrl.getSubjectGrade($ctrl.group.enrollments.getValue(), subject.id, $ctrl.halfIdx, $ctrl.partialIdx) < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.getSubjectGrade($ctrl.group.enrollments.getValue(), subject.id, $ctrl.halfIdx, $ctrl.partialIdx) | numberPad | number: 2}}
+                    </span>
+                </td>
+
+                <!--<td></td>-->
+            </tr>
+            </tbody>
+            <tfoot ng-if="$ctrl.includeTeachers">
+            <tr style="font-size: 6px; text-align: center">
+                <td colspan="2"></td>
+                <td ng-repeat="subject in $ctrl.course.selectedSubjects.getValue()">
+                    {{subject.user.name || subject.user.login | wordsShorter}}
+                </td>
+                <!--<td></td>-->
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div ng-show="!$ctrl.loading" class="col-xs-12" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="sign">Lic. Marco Cevallos Espindola</div>
+                <div class="center" style="width:90%;"><b>RECTOR/A</b></div>
+            </div>
+            <div class="col-xs-6">
+                <div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>
+                <div class="center" style="width:90%;"><b>SECRETARIO/A</b></div>
+            </div>
+        </div>
+    </div>
+</div>

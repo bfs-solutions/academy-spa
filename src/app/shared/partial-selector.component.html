@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-4 col-sm-6">
+        <label for="halfSelect">Quimestre</label>
+        <select class="form-control" id="halfSelect" required
+                ng-model="form.half" name="half"
+                ng-options="half.label for half in $ctrl.halves"
+                ng-disabled="!$ctrl.halves">
+        </select>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <label for="partialSelect">Parcial</label>
+        <select class="form-control" id="partialSelect" required
+                ng-model="form.partial" name="partial"
+                ng-options="partial.label for partial in form.half.partials | async:this"
+                ng-disabled="!form.half"
+                ng-change="$ctrl.onNext()">
+
+        </select>
+    </div>
+</div>

@@ -1,0 +1,316 @@
+{
+  "_embedded": {
+    "subject-structures": [
+      {
+        "name": "STANDARD",
+        "halves": [
+          {
+            "label": "PRIMER QUIMESTRE",
+            "partials": [
+              {
+                "label": "PRIMER PARCIAL",
+                "components": [
+                  {
+                    "label": "Trabajo Individual"
+                  },
+                  {
+                    "label": "Trabajo Grupal"
+                  },
+                  {
+                    "label": "Deber"
+                  },
+                  {
+                    "label": "Lección"
+                  },
+                  {
+                    "label": "Sumativa"
+                  }
+                ]
+              },
+              {
+                "label": "SEGUNDO PARCIAL",
+                "components": [
+                  {
+                    "label": "Trabajo Individual"
+                  },
+                  {
+                    "label": "Trabajo Grupal"
+                  },
+                  {
+                    "label": "Deber"
+                  },
+                  {
+                    "label": "Lección"
+                  },
+                  {
+                    "label": "Sumativa"
+                  }
+                ]
+              },
+              {
+                "label": "TERCER PARCIAL",
+                "components": [
+                  {
+                    "label": "Trabajo Individual"
+                  },
+                  {
+                    "label": "Trabajo Grupal"
+                  },
+                  {
+                    "label": "Deber"
+                  },
+                  {
+                    "label": "Lección"
+                  },
+                  {
+                    "label": "Sumativa"
+                  }
+                ]
+              },
+              {
+                "label": "EXAMEN QUIMESTRAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "SEGUNDO QUIMESTRE",
+            "partials": [
+              {
+                "label": "PRIMER PARCIAL",
+                "components": [
+                  {
+                    "label": "Trabajo Individual"
+                  },
+                  {
+                    "label": "Trabajo Grupal"
+                  },
+                  {
+                    "label": "Deber"
+                  },
+                  {
+                    "label": "Lección"
+                  },
+                  {
+                    "label": "Sumativa"
+                  }
+                ]
+              },
+              {
+                "label": "SEGUNDO PARCIAL",
+                "components": [
+                  {
+                    "label": "Trabajo Individual"
+                  },
+                  {
+                    "label": "Trabajo Grupal"
+                  },
+                  {
+                    "label": "Deber"
+                  },
+                  {
+                    "label": "Lección"
+                  },
+                  {
+                    "label": "Sumativa"
+                  }
+                ]
+              },
+              {
+                "label": "TERCER PARCIAL",
+                "components": [
+                  {
+                    "label": "Trabajo Individual"
+                  },
+                  {
+                    "label": "Trabajo Grupal"
+                  },
+                  {
+                    "label": "Deber"
+                  },
+                  {
+                    "label": "Lección"
+                  },
+                  {
+                    "label": "Sumativa"
+                  }
+                ]
+              },
+              {
+                "label": "EXAMEN QUIMESTRAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "EXAMENES ESPECIALES",
+            "partials": [
+              {
+                "label": "EXAMENES ESPECIALES",
+                "components": [
+                  {
+                    "label": "Supletorio"
+                  },
+                  {
+                    "label": "Mejora"
+                  },
+                  {
+                    "label": "Remedial"
+                  },
+                  {
+                    "label": "Gracia"
+                  },
+                  {
+                    "label": "Grado"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "STANDARD CUALITATIVA",
+        "halves": [
+          {
+            "label": "PRIMER QUIMESTRE",
+            "partials": [
+              {
+                "label": "PRIMER PARCIAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "SEGUNDO PARCIAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "TERCER PARCIAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "SEGUNDO QUIMESTRE",
+            "partials": [
+              {
+                "label": "PRIMER PARCIAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "SEGUNDO PARCIAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "TERCER PARCIAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "EG CUALITATIVA",
+        "halves": [
+          {
+            "label": "PRIMER QUIMESTRE",
+            "partials": [
+              {
+                "label": "I",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "II",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "EXAMEN QUIMESTRAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "SEGUNDO QUIMESTRE",
+            "partials": [
+              {
+                "label": "III",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "IV",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "V",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              },
+              {
+                "label": "EXAMEN QUIMESTRAL",
+                "components": [
+                  {
+                    "label": "Nota"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

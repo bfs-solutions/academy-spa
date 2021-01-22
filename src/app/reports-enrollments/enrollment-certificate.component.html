@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-12" style="margin-bottom: 50px;">
+    <img src="images/mined.png"
+         style="width: 200px; display: inline-block; margin-top: -104px;"/>
+    <div style="display: inline-block; margin-left: 38px; text-align: center;">
+      <span class="center bigtext">UNIDAD EDUCATIVA</span><br/>
+      <span class="center bigtext">Dario Figueroa Larco</span><br/>
+      <span class="center bigtext">CERTIFICADO DE MATRICULA</span><br/>
+      <span>AÑO LECTIVO {{$ctrl.edition.date_start | date: 'yyyy'}} - {{$ctrl.edition.date_end | date: 'yyyy'}}</span>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <p style="text-align: end">
+      MATRICULA No: {{$ctrl.enrollment.id}}<br />
+      FOLIO No: {{$ctrl.enrollment.id}}
+    </p>
+    <p>
+      El Rector(a) y Secretario(a) del Plantel, de conformidad con las
+      respectivas disposiciones de la ley y Reglamento de Educaci&oacute;n
+      y Cultura en vigencia, CERTIFICAN: que ha sido inscrita en la
+      Secretar&iacute;a del Colegio la siguiente.
+    </p>
+    <p style="text-align: center">
+      <span>MATRICULA:</span><br />
+      <span>{{$ctrl.enrollment.studentObj.name}}</span><br />
+      <span>{{$ctrl.course.label}}</span>
+    </p>
+    <table width="100%" style="margin-top: 40px; margin-bottom: 40px;">
+      <tr>
+        <td width="30%" style="text-align: end;">Paralelo</td>
+        <td style="padding-left: 40px;">{{$ctrl.group.label}}</td>
+      </tr>
+      <tr>
+        <td style="text-align: end;">Jornada</td>
+        <td style="padding-left: 40px;">MATUTINA</td>
+      </tr>
+      <tr>
+        <td style="text-align: end;">Fecha matr&iacute;cula</td>
+        <td style="padding-left: 40px;">{{$ctrl.enrollment.createdAt | date:'dd/MM/yyyy'}}</td>
+      </tr>
+      <tr>
+        <td style="text-align: end;">Tipo matr&iacute;cula</td>
+        <td style="padding-left: 40px;">Ordinaria</td>
+      </tr>
+    </table>
+    <p>
+      Para constancia y fines legales correspondientes, se expide esta
+      certificaci&oacute;n de acuerdo con los registros respectivos.
+    </p>
+    <!--<p style="text-align: end">Sangolqui,</p>-->
+  </div>
+  <div class="col-xs-12" style="margin-top: 100px;">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="sign">Lic. Marco Cevallos Espindola</div>
+        <div class="center" style="width:90%;"><b>RECTOR/A</b></div>
+      </div>
+      <div class="col-xs-6">
+        <div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>
+        <div class="center" style="width:90%;"><b>SECRETARIO/A</b></div>
+      </div>
+    </div>
+  </div>
+</div>

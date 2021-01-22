@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-12" style="margin-bottom: 25px;">
+    <!--<div class="row">-->
+      <!--<div class="col-xs-2">-->
+        <img src="images/institution-logo.jpg"
+             style="width: 120px; display: inline-block; margin-top: -64px;" />
+      <!--</div>-->
+      <div style="display: inline-block; margin-left: 38px; text-align: center;">
+        <div class="center bigtext" style="line-height: 1.1">UNIDAD EDUCATIVA "Dario Figueroa Larco"</div>
+        <div class="center bigtext">ACTA DE MATRICULA</div>
+        <div class="center blob">AÑO LECTIVO {{$ctrl.edition.date_start | date : 'yyyy'}} - {{$ctrl.edition.date_end | date : 'yyyy'}} JORNADA MATUTINA</div>
+        <div class="center">MATRICULA: {{$ctrl.enrollment.id}}</div>
+        <div class="center">FOLIO: {{$ctrl.enrollment.id}}</div>
+      </div>
+    <!--</div>-->
+  </div>
+  <div class="col-md-12">
+    <div>Nombre Alumno: {{$ctrl.enrollment.studentObj.name}}</div>
+    <div>Cedula: {{$ctrl.enrollment.studentObj.nid}}</div>
+    <div>Fecha de Nacimiento: {{$ctrl.enrollment.studentObj.birth_date | date : "shortDate"}}</div>
+    <div>Nacionalidad: {{$ctrl.enrollment.studentObj.nationality}}</div>
+    <hr />
+    <div>Instituci&oacute;n de Donde Procede: {{$ctrl.enrollment.institutionObj.name}}</div>
+    <div>Provincia: {{$ctrl.enrollment.institutionObj.province}}</div>
+    <div>Cant&oacute;n: {{$ctrl.enrollment.institutionObj.canton}}</div>
+    <div>Parroquia: {{$ctrl.enrollment.institutionObj.parish}}</div>
+    <div>Tipo: {{$ctrl.enrollment.institutionObj.type}}</div>
+    <hr />
+    <div>Repite A&ntilde;o: {{$ctrl.enrollment.is_repeat ? 'Si' : 'No'}}</div>
+    <div>Tiene Requisitos: {{$ctrl.enrollment.meet_requirements ? 'Si' : 'No'}}</div>
+    <div>Ocupación del Estudiante: {{$ctrl.enrollment.studentObj.occupation}}</div>
+    <div>Lugar de Trabajo: {{$ctrl.enrollment.studentObj.work_place}}</div>
+    <hr />
+    <div>Nombre del Padre: {{$ctrl.enrollment.studentObj.father_name}}</div>
+    <div>Dirección del Padre: {{$ctrl.enrollment.studentObj.father_address}}</div>
+    <div>Ocupación del Padre: {{$ctrl.enrollment.studentObj.father_profession}}</div>
+    <div>Teléfono del Padre: {{$ctrl.enrollment.studentObj.father_phone}}</div>
+    <hr />
+    <div>Nombre de la Madre: {{$ctrl.enrollment.studentObj.mother_name}}</div>
+    <div>Dirección de la Madre: {{$ctrl.enrollment.studentObj.mother_address}}</div>
+    <div>Ocupación de la Madre: {{$ctrl.enrollment.studentObj.mother_profession}}</div>
+    <div>Teléfono de la Madre: {{$ctrl.enrollment.studentObj.mother_phone}}</div>
+    <hr />
+    <div>Nombre del Representante Legal: {{$ctrl.enrollment.studentObj.legal_guardian_name}}</div>
+    <div>Dirección del Representante Legal: {{$ctrl.enrollment.studentObj.legal_guardian_address}}</div>
+    <div>Ocupación del Representante Legal: {{$ctrl.enrollment.studentObj.legal_guardian_profession}}</div>
+    <div>Teléfono del Representante Legal: {{$ctrl.enrollment.studentObj.legal_guardian_phone}}</div>
+    <hr />
+    <div>Fecha: {{$ctrl.enrollment.createdAt | date}}</div>
+  </div>
+  <div class="col-xs-12" style="margin-top: 30px;">
+    <div class="row">
+      <!--<div class="col-xs-6">-->
+        <!--<div class="sign">Lic. Marco Cevallos Espindola</div>-->
+        <!--<div class="center" style="width:90%;"><b>RECTOR/A</b></div>-->
+      <!--</div>-->
+      <div class="col-xs-6">
+        <div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>
+        <div class="center" style="width:90%;"><b>SECRETARIO/A</b></div>
+      </div>
+      <div class="col-xs-6">
+        <div class="sign">{{$ctrl.enrollment.studentObj.legal_guardian_name}}</div>
+        <div class="center" style="width:90%;"><b>REPRESENTANTE</b></div>
+      </div>
+    </div>
+  </div>
+</div>

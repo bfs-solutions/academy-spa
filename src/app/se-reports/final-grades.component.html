@@ -1,0 +1,147 @@
+<div class="row">
+    <div class="col-md-12" ng-show="$ctrl.loading">
+        <i class="fa fa-spinner fa-pulse fa-5x" aria-hidden="true"></i>
+    </div>
+    <div class="col-md-12" ng-show="!$ctrl.loading">
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="images/institution-logo.jpg" style="width: 75px"/>
+            </div>
+            <div class="col-xs-10">
+                <div class="center bigtext">UNIDAD EDUCATIVA "Dario Figueroa
+                    Larco"
+                </div>
+                <!--<div class="center blob">REPORTE PARCIAL DEL ESTUDIANTE</div>-->
+                <div class="center blob">AÑO LECTIVO {{$ctrl.edition.date_start
+                    | date : 'yyyy'}} - {{$ctrl.edition.date_end | date :
+                    'yyyy'}} JORNADA MATUTINA
+                </div>
+                <!--<div class="center blob">JORNADA MATUTINA</div>-->
+                <!--<div class="student-name blob">-->
+                <!--{{$ctrl.enrollment.studentObj.name}}-->
+                <!--</div>-->
+                <div class="blob"
+                     style="padding: 0 5px; text-transform: uppercase; margin: 10px auto 0; width: 90%">
+                    {{$ctrl.course.label}} PARALELO {{$ctrl.group.label}}
+                    <!--{{$ctrl.half.label}}-->
+                    <!--{{$ctrl.partial.label}}-->
+                    {{$ctrl.component.label}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="!$ctrl.loading">
+        <table class="table table-bordered table-condensed" width="100%"
+               cellpadding="1px">
+            <tbody>
+            <tr class="blob" style="text-align: center">
+                <td colspan="2" rowspan="2" style="font-size: 12px">APELLIDOS Y NOMBRES</td>
+                <td colspan="3" ng-repeat="subject in $ctrl.course.selectedSubjects | async:this" style="font-size: 6px;">
+                    {{subject.label | wordsShorter}}
+                </td>
+                <td rowspan="2" style="font-size: 6px; width: 15px;">PROM.</td>
+                <td rowspan="2" style="font-size: 6px;">OBS.</td>
+            </tr>
+            <tr class="blob" style="text-align: center">
+                <td ng-repeat-start="subject in $ctrl.course.selectedSubjects | async:this" style="font-size: 6px; width: 15px;">
+                    PQ
+                </td>
+                <td style="font-size: 6px; width: 15px;">MSRG</td>
+                <td style="font-size: 6px; width: 15px;" ng-repeat-end>PF</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr
+                    ng-repeat="enrollment in $ctrl.enrollments | orderBy:'studentObj.name' track by $index"
+                    style="font-size: 8px">
+                <td>{{$index + 1}}</td>
+                <td>{{enrollment.studentObj.name}}</td>
+                <td ng-repeat-start="subject in $ctrl.course.selectedSubjects | async:this"
+                    style="text-align: center">
+                    <span
+                            ng-style="enrollment.gradesObj.subjects[subject.id].qGrade < 7 ? {'text-decoration': 'underline'} : null">
+                        <span ng-if="subject.qualitative === false">
+                            {{enrollment.gradesObj.subjects[subject.id].qGrade | numberPad | number:2}}
+                        </span>
+                        <span
+                                ng-if="subject.qualitative === true && subject.label == 'DESARROLLO COMPORTAMENTAL'">
+                            {{enrollment.gradesObj.subjects[subject.id].qGrade | numberToBehaviour}}
+                        </span>
+                        <span
+                                ng-if="subject.qualitative === true && subject.label == 'PROYECTOS ESCOLARES'">
+                            {{enrollment.gradesObj.subjects[subject.id].qGrade | numberToProject}}
+                        </span>
+                   </span>
+                </td>
+                <td style="text-align: center">
+                    <span
+                            ng-style="enrollment.gradesObj.subjects[subject.id].sGrade < 7 ? {'text-decoration': 'underline'} : null">
+                        <span ng-if="subject.qualitative === false">
+                            {{enrollment.gradesObj.subjects[subject.id].sGrade | numberPad | number:2}}
+                        </span>
+                        <span
+                                ng-if="subject.qualitative === true && subject.label == 'DESARROLLO COMPORTAMENTAL'">
+                            {{enrollment.gradesObj.subjects[subject.id].sGrade | numberToBehaviour}}
+                        </span>
+                        <span
+                                ng-if="subject.qualitative === true && subject.label == 'PROYECTOS ESCOLARES'">
+                            {{enrollment.gradesObj.subjects[subject.id].sGrade | numberToProject}}
+                        </span>
+                    </span>
+                </td>
+                <td ng-repeat-end style="text-align: center">
+                    <span
+                            ng-style="enrollment.gradesObj.subjects[subject.id].grade < 7 ? {'text-decoration': 'underline'} : null">
+                        <span ng-if="subject.qualitative === false">
+                            {{enrollment.gradesObj.subjects[subject.id].grade | numberPad | number:2}}
+                        </span>
+                        <span
+                                ng-if="subject.qualitative === true && subject.label == 'DESARROLLO COMPORTAMENTAL'">
+                            {{enrollment.gradesObj.subjects[subject.id].grade | numberToBehaviour}}
+                        </span>
+                        <span
+                                ng-if="subject.qualitative === true && subject.label == 'PROYECTOS ESCOLARES'">
+                            {{enrollment.gradesObj.subjects[subject.id].grade | numberToProject}}
+                        </span>
+                    </span>
+                </td>
+                <td style="text-align: center">
+                    <span
+                            ng-style="enrollment.gradesObj.grade < 7 ? {'text-decoration': 'underline'} : null">
+                        {{enrollment.gradesObj.grade | numberPad | number:2}}
+                    </span>
+                </td>
+                <td>
+                    <span ng-if="enrollment.gradesObj.grade >= 7">
+                        Aprobado
+                    </span>
+                    <span ng-if="enrollment.gradesObj.grade === '#'">
+                        Retirado
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot ng-if="$ctrl.includeTeachers">
+            <tr style="font-size: 6px; text-align: center">
+                <td colspan="2"></td>
+                <td colspan="3" ng-repeat="subject in $ctrl.course.selectedSubjects | async:this">
+                    {{(subject.user.name || subject.user.login) | wordsShorter}}
+                </td>
+                <td colspan="2"></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div ng-show="!$ctrl.loading" class="col-xs-12" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="sign">Lic. Marco Cevallos Espindola</div>
+                <div class="center" style="width:90%;"><b>RECTOR/A</b></div>
+            </div>
+            <div class="col-xs-6">
+                <div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>
+                <div class="center" style="width:90%;"><b>SECRETARIO/A</b></div>
+            </div>
+        </div>
+    </div>
+</div>

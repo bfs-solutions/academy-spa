@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="row">
+        <div class="col-sm-8 vcenter">
+            <h1>{{course.label}}</h1>
+            <h2>Período Lectivo {{edition.date_start | date}} -
+                {{edition.date_end | date}}</h2>
+            <h3>Paralelos</h3>
+        </div><!--
+        -->
+        <div class="col-sm-4 vcenter">
+            <a ng-click="!adding ? $ctrl.add() : null"
+               ng-disabled="adding" class="btn btn-primary"
+               style="float: right">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+            <a href="#!/courses/{{course.id}}/editions"
+               class="btn btn-default"
+               style="float: right">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Paralelo</th>
+            <th>Enlaces</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="group in edition.groups | async:this">
+            <td>{{group.label}}</td>
+            <td>
+                <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/enrollments"
+                   class="btn btn-link">
+                    Matr&iacute;culas
+                </a>
+                <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/teachings"
+                   class="btn btn-link">
+                    Profesores & Asignaturas
+                </a>
+            </td>
+            <td>
+                <button class="btn btn-danger"
+                        ng-if="group.enrollments | async:this"
+                        ng-disabled="(group.enrollments | async:this).length > 0"
+                        ng-click="$ctrl.openDeleteModal(group)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

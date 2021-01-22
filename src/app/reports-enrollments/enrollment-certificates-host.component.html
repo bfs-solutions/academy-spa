@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Generar Certificados de Matrícula</h1>
+    <form class="form-inline">
+      <div class="form-group">
+        <button class="btn btn-default" onclick="window.print()">
+          <i class="fa fa-print" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+    <app-group-selector on-observable="$ctrl.onGroupObservable(observable)">
+    </app-group-selector>
+    <app-enrollment-selector enrollments="enrollments | async:this">
+    </app-enrollment-selector>
+    <div ng-repeat="enrollment in enrollments | async:this | filter:{selected: true}">
+      <div class="app-page-break"></div>
+      <app-reports-enrollments-enrollment-certificate
+        course="course"
+        edition="edition"
+        group="group"
+        enrollment="enrollment">
+      </app-reports-enrollments-enrollment-certificate>
+    </div>
+  </div>
+</div>

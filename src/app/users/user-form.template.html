@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <i class="fa fa-user"></i>
+      {{$ctrl.modeEdit ? 'Modificar Usuario' : 'Nuevo Usuario'}}
+    </h1>
+    <form name="userForm" class="form-horizontal" novalidate
+          ng-submit="$ctrl.submit(form)">
+      <div class="row" ng-if="error != null">
+        <div class="col-md-12">
+          <div class="alert alert-danger">{{error}}</div>
+        </div>
+      </div>
+      <div class="form-group" show-errors>
+        <label for="loginInput" class="col-sm-3 control-label">Login</label>
+        <div class="col-sm-9">
+          <p ng-show="$ctrl.modeEdit" class="form-control-static">
+            {{form.login}}</p>
+          <input ng-show="!$ctrl.modeEdit" type="text" class="form-control"
+                 id="loginInput" placeholder="Login del nuevo usuario"
+                 required aria-describedby="loginHelpBlock"
+                 ng-model="form.login" name="login"
+                 minlength="5"/>
+          <span ng-show="!$ctrl.modeEdit" id="loginHelpBlock"
+                class="help-block">
+                    Credencial que identifica un&iacute;vocamente al usuario.
+                    Al menos 5 caracteres son necesarios.
+                </span>
+        </div>
+      </div>
+      <div class="form-group" show-errors>
+        <label for="nameInput" class="col-sm-3 control-label">Nombre</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control"
+                 id="nameInput" placeholder="APELLIDOS NOMBRES"
+                 required aria-describedby="nameHelpBlock"
+                 ng-model="form.name" name="name"
+                 minlength="5"/>
+          <span id="nameHelpBlock" class="help-block">
+                    Nombre completo en formato APELLIDOS NOMBRES
+                </span>
+        </div>
+      </div>
+      <div class="form-group" show-errors>
+        <label for="passwordInput" class="col-sm-3 control-label">
+          Contrase&ntilde;a
+        </label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" id="passwordInput"
+                 ng-required="!$ctrl.modeEdit"
+                 aria-describedby="passwordHelpBlock"
+                 ng-model="form.password" name="password"
+                 minlength="7"/>
+          <span id="passwordHelpBlock" class="help-block">
+                    Clave secreta para conocimiento exclusivo del usuario.
+                    Al menos 7 caracteres son necesarios.
+                </span>
+        </div>
+      </div>
+      <div class="form-group" show-errors>
+        <label for="reTypePasswordInput" class="col-sm-3 control-label">
+          Contrase&ntilde;a de nuevo
+        </label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control"
+                 id="reTypePasswordInput" name="reTypePassword"
+                 ng-required="!$ctrl.modeEdit"
+                 aria-describedby="reTypePasswordHelpBlock"
+                 ng-model="form.reTypePassword"
+                 minlength="7"/>
+          <span id="reTypePasswordHelpBlock" class="help-block">
+                    Clave secreta nuevamente para verificar que no se cometa un
+                    error al teclear a ciegas.
+                    Al menos 7 caracteres son necesarios.
+                </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-3 control-label">
+          <b>Rol</b>
+        </div>
+        <div class="col-sm-9">
+          <label class="radio-inline">
+            <input type="radio" name="role" id="roleRadio1"
+                   ng-model="form.roles" value="1"> Usuario
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="role" id="roleRadio3"
+                   ng-model="form.roles" value="2"> Administrador
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn"
+                  ng-class="{'btn-primary': !$ctrl.modeEdit, 'btn-warning': $ctrl.modeEdit}"
+                  ng-disabled="$ctrl.processing">
+            <i ng-if="$ctrl.processing" class="fa fa-spinner fa-spin"
+               aria-hidden="true"></i>
+            <i ng-if="!$ctrl.processing && !$ctrl.modeEdit" class="fa fa-plus"
+               aria-hidden="true"></i>
+            <i ng-if="!$ctrl.processing && $ctrl.modeEdit" class="fa fa-edit"
+               aria-hidden="true"></i>
+            {{$ctrl.modeEdit ? 'Modificar Usuario' : 'Nuevo Usuario'}}
+          </button>
+          <a href="#!/users" class="btn btn-default">Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

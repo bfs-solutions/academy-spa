@@ -1,0 +1,178 @@
+<div class="row">
+    <div class="col-md-12" ng-show="$ctrl.loading">
+        <i class="fa fa-spinner fa-pulse fa-5x" aria-hidden="true"></i>
+    </div>
+    <div class="col-md-12" ng-show="!$ctrl.loading">
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="images/institution-logo.jpg" style="width: 75px" />
+            </div>
+            <div class="col-xs-10">
+                <div class="center bigtext" style="line-height: 1.1">UNIDAD EDUCATIVA "Dario Figueroa Larco"</div>
+                <!--<div class="center blob">REPORTE PARCIAL DEL ESTUDIANTE</div>-->
+                <div class="center blob">AÑO LECTIVO {{$ctrl.edition.date_start | date : 'yyyy'}} - {{$ctrl.edition.date_end | date : 'yyyy'}} JORNADA MATUTINA</div>
+                <!--<div class="center blob" style="margin: 0 auto 0">JORNADA MATUTINA</div>-->
+                <div class="student-name blob" style="margin: 0 auto 0">{{$ctrl.subject.label}}</div>
+                <div class="blob" style="padding: 0 5px; text-transform: uppercase; margin: 0 auto 0; width: 90%; font-size: 12px">{{$ctrl.course.label}} PARALELO {{$ctrl.group.label}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="!$ctrl.loading">
+        <!--{{$ctrl.grades.subjects[$ctrl.subject.id]}}-->
+        <table class="table table-bordered table-condensed" width="100%"
+               cellpadding="1px" style="margin-bottom: 5px">
+            <tbody>
+            <tr class="blob" style="text-align: center">
+                <td rowspan="3" colspan="2">Estudiante</td>
+                <td
+                        ng-repeat="half in $ctrl.subject.halves.getValue() | limitTo:($ctrl.halfIdx) track by $index"
+                    rowspan="3" width="40px" style="font-size: 12px">
+                    {{half.label}}
+                </td>
+                <td
+                        ng-repeat="half in $ctrl.subject.halves.getValue() | limitTo:1:$ctrl.halfIdx track by $index"
+                        colspan="{{half.partials.getValue().length + 4}}"
+                        style="font-size: 12px">
+                    {{half.label}}
+                </td>
+                <td rowspan="3">Observaciones</td>
+            </tr>
+            <tr class="blob" style="text-align: center">
+                <td
+                        ng-repeat="partial in $ctrl.subject.halves.getValue()[$ctrl.halfIdx].partials.getValue().slice(0, -1) track by $index"
+                        rowspan="2" width="40px" style="font-size: 10px">
+                    {{partial.label}}
+                </td>
+                <td width="40px" rowspan="2" style="font-size: 10px">Promedio
+                </td>
+                <td width="40px" rowspan="2" style="font-size: 10px">80%</td>
+                <td
+                        ng-repeat="partial in $ctrl.subject.halves.getValue()[$ctrl.halfIdx].partials.getValue().slice(-1) track by $index"
+                        colspan="{{partial.components.getValue().length + 1}}"
+                        style="font-size: 10px">
+                    {{partial.label}}
+                </td>
+                <td rowspan="2" width="40px" style="font-size: 10px">
+                    NOTA QUIM.
+                </td>
+            </tr>
+            <tr class="blob" style="text-align: center; font-size: 8px">
+                <td width="40px"
+                    ng-repeat="component in ($ctrl.subject.halves.getValue())[$ctrl.halfIdx].partials.getValue().slice(-1)[0].components.getValue()">
+                    {{component.label}}
+                </td>
+                <td width="40px">20%</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr
+                    ng-repeat="enrollment in $ctrl.group.enrollments.getValue() | orderBy:'studentObj.name' track by $index"
+                style="font-size: 10px; text-transform: uppercase; line-height: 1.1">
+                <td><span class="sangria">{{$index+1}}</span></td>
+                <td>
+                    <span>{{enrollment.studentObj.name}}</span><br/>
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="half in subject.halves.getValue() | limitTo:$ctrl.halfIdx track by $index">
+                    <span
+                            ng-style="enrollment.grades.subjects[$ctrl.subject.id][$index].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{enrollment.grades.subjects[$ctrl.subject.id][$index].grade | numberPad | number: 2}}
+                    </span>
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="partial in ($ctrl.subject.halves.getValue())[$ctrl.halfIdx].partials.getValue() | limitTo:($ctrl.subject.halves.getValue())[$ctrl.halfIdx].partials.getValue().length - 1 track by $index">
+                    <span
+                            ng-style="enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].partials[$index].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].partials[$index].grade | numberPad | number: 2}}
+                    </span>
+                </td>
+                <td class="center" style="font-size: 10px">
+                    {{enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].grade80 | numberPad |
+                    number: 2}}
+                </td>
+                <td class="center" style="font-size: 10px">
+                    {{enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].grade80 *
+                    0.8 | numberPad | number: 2}}
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="component in ($ctrl.subject.halves.getValue())[$ctrl.halfIdx].partials.getValue().slice(-1)[0].components.getValue()">
+                    <span
+                            ng-style="enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].partials.slice(-1)[0].components[$index].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].partials.slice(-1)[0].components[$index].grade | numberPad
+                    | number: 2}}
+                    </span>
+                </td>
+                <td class="center"
+                    style="font-size: 10px">
+                    {{enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].grade20 *
+                    0.2 | numberPad | number: 2}}
+                </td>
+                <td class="center"
+                    style="font-size: 10px">
+                    <span
+                            ng-style="enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{enrollment.grades.subjects[$ctrl.subject.id][$ctrl.halfIdx].grade | numberPad |
+                    number: 2}}
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: end; font-size: 10px">
+                    PROMEDIO
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="half in $ctrl.subject.halves.getValue() | limitTo:$ctrl.halfIdx track by $index">
+                    <span
+                            ng-style="$ctrl.getSubjectGrade($ctrl.group.enrollments.getValue(), $ctrl.subject.id, $index) < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.getSubjectGrade($ctrl.group.enrollments.getValue(), $ctrl.subject.id, $index) | numberPad | number: 2}}
+                    </span>
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="partial in $ctrl.subject.halves.getValue()[$ctrl.halfIdx].partials.getValue().slice(0, -1) track by $index">
+                    <span
+                            ng-style="$ctrl.getSubjectGradePartial($ctrl.group.enrollments.getValue(), $ctrl.subject.id, $ctrl.halfIdx, $index) < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.getSubjectGradePartial($ctrl.group.enrollments.getValue(), $ctrl.subject.id, $ctrl.halfIdx, $index) | numberPad | number: 2}}
+                    </span>
+                </td>
+                <td colspan="2"></td>
+                <td class="center"
+                    style="font-size: 10px">
+                    <span
+                            ng-style="$ctrl.getSubjectGradePartial($ctrl.group.enrollments.getValue(), $ctrl.subject.id, $ctrl.halfIdx, 3) < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.getSubjectGradePartial($ctrl.group.enrollments.getValue(), $ctrl.subject.id, $ctrl.halfIdx, 3) | numberPad | number: 2}}
+                    </span>
+                </td>
+                <td></td>
+                <td class="center"
+                    style="font-size: 10px">
+                    <span
+                            ng-style="$ctrl.getSubjectGrade($ctrl.group.enrollments.getValue(), $ctrl.subject.id, $ctrl.halfIdx) < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.getSubjectGrade($ctrl.group.enrollments.getValue(), $ctrl.subject.id, $ctrl.halfIdx) | numberPad | number: 2}}
+                    </span>
+                </td>
+                <td></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div ng-show="!$ctrl.loading" class="col-xs-12" style="margin-top: 30px;">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="sign">Lic. Marco Cevallos Espindola</div>
+                <div class="center" style="width:90%;"><b>RECTOR/A</b></div>
+            </div>
+            <div class="col-xs-6">
+                <div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>
+                <div class="center" style="width:90%;"><b>SECRETARIO/A</b></div>
+            </div>
+        </div>
+    </div>
+</div>

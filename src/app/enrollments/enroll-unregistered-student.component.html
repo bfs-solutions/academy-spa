@@ -1,0 +1,331 @@
+<div class="row">
+
+    <div class="col-sm-8 vcenter">
+        <h1>{{course.label}}</h1>
+        <h2>Período Lectivo {{edition.date_start | date}} - {{edition.date_end |
+            date}}</h2>
+        <h3>Paralelo {{group.label}}</h3>
+        <h4>Matricular Estudiante sin Registro Previo</h4>
+    </div><!--
+        -->
+    <div class="col-sm-4 vcenter">
+        <a ng-href="{{'#!/courses/'+ course.id + '/editions/' + edition.id + '/groups/' + group.id + '/enrollments'}}"
+           class="btn btn-default"
+           style="float: right">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+<div class="row" ng-if="error != null">
+    <div class="col-md-12">
+        <div class="alert alert-danger">{{error}}</div>
+    </div>
+</div>
+
+<wizard>
+    <wz-step wz-title="General" canexit="$ctrl.validateFirstStep">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="name">Nombres y Apellidos *</label>
+                <input type="text" class="form-control" name="name"
+                       placeholder="Nombres" id="name"
+                       ng-model="student.name" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="nationality">Nacionalidad</label>
+                <input type="text" class="form-control" name="nationality"
+                       ng-init="student.nationality='ECUATORIANA'"
+                       id="nationality"
+                       ng-model="student.nationality">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="nid">Cedula</label>
+                <input type="text" class="form-control" name="nid"
+                       placeholder="Numero de Cedula" id="nid"
+                       ng-model="student.nid"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="sex">Sexo</label>
+                <select class="form-control" ng-model="student.sex" name="sex"
+                        id="sex">
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="birth_date">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" name="birth_date"
+                       placeholder="Event Stream Description" id="birth_date"
+                       ng-model="student.birth_date"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="birth_place">Lugar de Nacimiento</label>
+                <input type="text" class="form-control" name="birth_place"
+                       placeholder="Ciudad, Provincia, Pais" id="birth_place"
+                       ng-model="student.birth_place"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="submit" class="btn btn-primary" wz-next
+                       value="Continue"/>
+            </div>
+        </div>
+    </wz-step>
+    <wz-step wz-title="Padre" canexit="$ctrl.validateSecondStep">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="father_name">Nombre del Padre</label>
+                <input type="text" class="form-control" name="father_name"
+                       placeholder="Nombre del Padre, se omiten los apellidos."
+                       id="father_name"
+                       ng-model="student.father_name"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="father_phone">Telefono</label>
+                <input type="tel" class="form-control" name="father_phone"
+                       placeholder="Numero de Telefono, preferentemente movil."
+                       id="father_phone"
+                       ng-model="student.father_phone"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="father_name">Direccion</label>
+                <input type="text" class="form-control"
+                       name="father_address"
+                       placeholder="Direccion de residencia."
+                       id="father_address"
+                       ng-model="student.father_address"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="father_profession">Profesion</label>
+                <input type="text" class="form-control"
+                       name="father_profession"
+                       placeholder="Profesion." id="father_profession"
+                       ng-model="student.father_profession"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="father_email">Correo Electr&oacute;nico</label>
+                <input type="text" class="form-control"
+                       name="father_email"
+                       id="father_email"
+                       ng-model="student.father_email"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="submit" class="btn btn-secondary" wz-previous
+                       value="Back"/>
+                <input type="submit" class="btn btn-primary" wz-next
+                       value="Continue"/>
+            </div>
+        </div>
+    </wz-step>
+    <wz-step wz-title="Madre" canexit="$ctrl.validateThirdStep">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="mother_name">Nombre de la Madre</label>
+                <input type="text" class="form-control" name="mother_name"
+                       placeholder="Nombre de la Madre, se omiten los apellidos."
+                       id="mother_name"
+                       ng-model="student.mother_name"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="mother_phone">Telefono</label>
+                <input type="tel" class="form-control" name="mother_phone"
+                       placeholder="Numero de Telefono, preferentemente movil."
+                       id="mother_phone"
+                       ng-model="student.mother_phone"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="mother_address">Direccion</label>
+                <input type="text" class="form-control"
+                       name="mother_address"
+                       placeholder="Direccion de residencia."
+                       id="mother_address"
+                       ng-model="student.mother_address"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="mother_profession">Profesion</label>
+                <input type="text" class="form-control"
+                       name="mother_profession"
+                       placeholder="Profesion." id="mother_profession"
+                       ng-model="student.mother_profession"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="mother_email">Correo Electr&oacute;nico</label>
+                <input type="text" class="form-control"
+                       name="mother_email"
+                       id="mother_email"
+                       ng-model="student.mother_email"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="submit" class="btn btn-secondary" wz-previous
+                       value="Back"/>
+                <input type="submit" class="btn btn-primary" wz-next
+                       value="Continue"/>
+            </div>
+        </div>
+    </wz-step>
+    <wz-step wz-title="Representante" canexit="$ctrl.validateForthStep">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="legal_guardian_name">Nombre del Representante</label>
+                <input type="text" class="form-control"
+                       name="legal_guardian_name"
+                       placeholder="Nombre del Tutor, se omiten los apellidos."
+                       id="legal_guardian_name"
+                       ng-model="student.legal_guardian_name"/>
+            </div>
+        </div>
+        <!--<div class="row">-->
+            <!--<div class="col-md-12 form-group">-->
+                <!--<label for="legal_guardian_sex">Sexo</label>-->
+                <!--<select class="form-control"-->
+                        <!--ng-model="student.legal_guardian_sex"-->
+                        <!--name="legal_guardian_sex"-->
+                        <!--id="legal_guardian_sex" required>-->
+                    <!--<option>Masculino</option>-->
+                    <!--<option>Femenino</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="legal_guardian_phone">Telefono</label>
+                <input type="tel" class="form-control"
+                       name="legal_guardian_phone"
+                       placeholder="Numero de Telefono, preferentemente movil."
+                       id="legal_guardian_phone"
+                       ng-model="student.legal_guardian_phone"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="legal_guardian_address">Direccion</label>
+                <input type="text" class="form-control"
+                       name="legal_guardian_address"
+                       placeholder="Direccion de residencia."
+                       id="legal_guardian_address"
+                       ng-model="student.legal_guardian_address"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="legal_guardian_profession">Profesion</label>
+                <input type="text" class="form-control"
+                       name="legal_guardian_profession"
+                       placeholder="Profesion." id="legal_guardian_profession"
+                       ng-model="student.legal_guardian_profession"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="legal_guardian_email">Correo Electr&oacute;nico</label>
+                <input type="text" class="form-control"
+                       name="legal_guardian_email"
+                       id="legal_guardian_email"
+                       ng-model="student.legal_guardian_email"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="submit" class="btn btn-secondary"
+                       wz-previous value="Back"/>
+                <input type="submit" class="btn btn-primary"
+                       wz-next value="Continue"/>
+            </div>
+        </div>
+    </wz-step>
+
+    <wz-step wz-title="Detalles" canexit="$ctrl.finishedWizard">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label class="form-control">
+                    <input ng-model="enrollment.meet_requirements"
+                           type="checkbox" class="form-control-input">
+                    <span class="form-control-indicator"></span>
+                    <span class="form-control-description">
+                            Cumple Requisitos
+                        </span>
+                </label>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label class="form-control">
+                    <input ng-model="enrollment.is_repeat" type="checkbox"
+                           class="form-control-input">
+                    <span class="form-control-indicator"></span>
+                    <span class="form-control-description">
+                            Repite A&ntilde;o
+                        </span>
+                </label>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="institution">Instituci&oacute;n de
+                    Procedencia</label>
+                <select id="institution" ng-model="enrollment.comming_from"
+                        class="form-control"
+                        ng-options="i.id as i.name + '[' + i.province + ', '  + i.canton + ', ' + i.parish + ']' for i in institutions | async:this">
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="observations">Observaciones</label>
+                <textarea id="observations" ng-model="enrollment.observations"
+                          class="form-control"
+                >
+                </textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="submit" class="btn btn-secondary" wz-previous
+                       value="Back"/>
+                <input type="submit" class="btn btn-primary" wz-next
+                       value="Continue"/>
+            </div>
+        </div>
+    </wz-step>
+    <wz-step>
+        <h1>Matr&iacute;cula Completada</h1>
+        <a class="btn btn-link"
+           ng-href="{{'#!/courses/'+ course.id + '/editions/' + edition.id + '/groups/' + group.id + '/enrollments'}}">
+            Regresar
+        </a>
+    </wz-step>
+</wizard>
+</div>

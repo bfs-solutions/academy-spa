@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>
+            <i class="fa fa-magic"></i>
+            {{$ctrl.modeEdit ? 'Modificar Matr&iacute;cula' : 'Nueva Matr&iacute;cula'}}
+        </h1>
+        <form name="enrollmentForm" novalidate class="form-horizontal"
+              ng-submit="$ctrl.submit($ctrl.resolve.enrollment)">
+            <div class="row" ng-if="error != null">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">{{error}}</div>
+                </div>
+            </div>
+
+            <!--<div class="form-group" show-errors>-->
+                <!--<label class="form-control">-->
+                    <!--<input ng-model="enrollment.meet_requirements"-->
+                           <!--type="checkbox" class="form-control-input">-->
+                    <!--<span class="form-control-indicator"></span>-->
+                    <!--<span class="form-control-description">-->
+                            <!--Cumple Requisitos-->
+                        <!--</span>-->
+                <!--</label>-->
+            <!--</div>-->
+
+            <div class="form-group" show-errors>
+                <label class="col-sm-3 control-label">Cumple Requisitos</label>
+                <div class="col-sm-9">
+                    <input ng-model="$ctrl.resolve.enrollment.meet_requirements"
+                           type="checkbox" class="form-control-input">
+                </div>
+            </div>
+
+            <!--<div class="form-group" show-errors>-->
+                <!--<label class="form-control">-->
+                    <!--<input ng-model="enrollment.is_repeat"-->
+                           <!--type="checkbox" class="form-control-input">-->
+                    <!--<span class="form-control-indicator"></span>-->
+                    <!--<span class="form-control-description">-->
+                            <!--Repite A&ntilde;o-->
+                        <!--</span>-->
+                <!--</label>-->
+            <!--</div>-->
+
+            <div class="form-group" show-errors>
+                <label class="col-sm-3 control-label">Repite A&ntilde;o</label>
+                <div class="col-sm-9">
+                    <input ng-model="$ctrl.resolve.enrollment.is_repeat"
+                           type="checkbox" class="form-control-input">
+                </div>
+            </div>
+
+            <div class="form-group" show-errors>
+                <label for="institution" class="col-sm-3 control-label">Instituci&oacute;n de
+                    Procedencia</label>
+                <div class="col-sm-9">
+                    <select id="institution" ng-model="$ctrl.resolve.enrollment.comming_from"
+                            class="form-control"
+                            ng-options="i.id as i.name + '[' + i.province + ', '  + i.canton + ', ' + i.parish + ']' for i in institutions | async:this">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" show-errors>
+                <label for="observations" class="col-sm-3 control-label">
+                    Observaciones
+                </label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" id="observations"
+                              name="observations"
+                              ng-model="$ctrl.resolve.enrollment.observations">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn"
+                            ng-class="{'btn-primary': !$ctrl.modeEdit, 'btn-warning': $ctrl.modeEdit}"
+                            ng-disabled="$ctrl.processing">
+                        <i ng-if="$ctrl.processing" class="fa fa-spinner fa-spin"
+                           aria-hidden="true"></i>
+                        <i ng-if="!$ctrl.processing && !$ctrl.modeEdit" class="fa fa-plus"
+                           aria-hidden="true"></i>
+                        <i ng-if="!$ctrl.processing && $ctrl.modeEdit" class="fa fa-edit"
+                           aria-hidden="true"></i>
+                        {{$ctrl.modeEdit ? 'Modificar Matr&iacute;cula' : 'Nueva Matr&iacute;cula'}}
+                    </button>
+                    <button class="btn btn-default" type="button"
+                            ng-click="$ctrl.dismiss({$value: 'cancel'})">Cancelar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

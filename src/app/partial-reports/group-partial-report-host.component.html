@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Generar Reporte Parcial del Paralelo</h1>
+        <form class="form-inline">
+            <div class="form-group">
+                <button class="btn btn-default" onclick="window.print()">
+                    <i class="fa fa-print" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <app-group-selector on-observable="$ctrl.onGroupObservable(observable)">
+        </app-group-selector>
+    </div>
+    <div class="col-md-12" style="padding-top: 10px;">
+        <uib-tabset active="active">
+            <uib-tab index="0" heading="Asignaturas ({{(course.selectedSubjects | async:this).length || 0}} / {{(course.subjects | async:this).length || 0}})">
+                <app-subject-multi-selector subjects="subjects"
+                                            on-observable="$ctrl.onSubjectObservable(observable)">
+                </app-subject-multi-selector>
+            </uib-tab>
+            <uib-tab index="1" heading="Avanzado">
+                <h2>Avanzado</h2>
+                <div class="checkbox">
+                    <label>
+                        <input ng-model="options.includeMeans" type="checkbox"
+                               class="checkbox">
+                        Incluir Promedios
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input ng-model="options.includeTeachers" type="checkbox"
+                               class="checkbox">
+                        Incluir Profesores
+                    </label>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    <div class="col-md-12">
+        <app-partial-selector halves="halves | async:this"
+                              on-observable="$ctrl.onPartialObservable(observable)">
+        </app-partial-selector>
+    </div>
+    <div class="col-md-12" ng-if="half">
+        <div class="app-page-break"></div>
+        <app-partial-reports-group-partial-report
+                course="course"
+                edition="edition"
+                group="group"
+                half-idx="halfIdx"
+                partial-idx="partialIdx"
+                include-means="options.includeMeans"
+                include-teachers="options.includeTeachers">
+        </app-partial-reports-group-partial-report>
+    </div>
+</div>

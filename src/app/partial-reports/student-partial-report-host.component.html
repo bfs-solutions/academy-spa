@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Generar Reportes Parciales de los Estudiantes</h1>
+    <form class="form-inline">
+      <div class="form-group">
+        <button class="btn btn-default" onclick="window.print()">
+          <i class="fa fa-print" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-12">
+    <app-group-selector on-observable="$ctrl.onGroupObservable(observable)">
+    </app-group-selector>
+  </div>
+  <div class="col-md-12">
+    <app-partial-selector halves="halves | async:this"
+                          on-observable="$ctrl.onPartialObservable(observable)">
+    </app-partial-selector>
+  </div>
+  <div class="col-md-12">
+    <app-enrollment-selector enrollments="enrollments | async:this">
+    </app-enrollment-selector>
+  </div>
+  <div class="col-md-12" ng-if="partial">
+    <div ng-repeat="enrollment in enrollments | async:this | filter: {selected: true}">
+      <div class="app-page-break"></div>
+      <app-partial-reports-student-partial-report
+        course="course"
+        edition="edition"
+        group="group"
+        half-idx="halfIdx"
+        partial-idx="partialIdx"
+        enrollment="enrollment">
+      </app-partial-reports-student-partial-report>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row">
+    <div style="margin-bottom: 50px;">
+        <img src="images/mined.png"
+             style="width: 200px; display: inline-block; margin-top: -104px;"/>
+        <div style="display: inline-block; margin-left: 50px; text-align: center;">
+            <span class="center bigtext">UNIDAD EDUCATIVA</span><br/>
+            <span class="center bigtext">Dario Figueroa Larco</span><br/>
+            <span class="center bigtext">NOMINA DE MATRICULADOS</span><br/>
+            <span>AÑO LECTIVO {{edition.date_start | date: 'yyyy'}} - {{edition.date_end | date: 'yyyy'}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <b>{{course.label}} PARALELO {{group.label}}</b>
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <b>JORNADA</b> MATUTINA
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>APELLIDOS Y NOMBRES</th>
+            <th>MATR&Iacute;CULA</th>
+            <th>FOLIO</th>
+            <th>OBSERVACIONES</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="enrollment in group.enrollments | async:this | orderBy:'studentObj.name'">
+            <td>{{$index + 1}}</td>
+            <td>{{enrollment.studentObj.name}}</td>
+            <td>{{enrollment.id}}</td>
+            <td>{{enrollment.id}}</td>
+            <td>{{enrollment.observations}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- TODO: make the next element appear at the bottom of the page
+
+        Setting margin-top is not the correct way of doing this because the
+        content of the enrollment table has variable length.
+     -->
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-xs-6">
+            <div class="sign">Lic. Marco Cevallos Espindola</div>
+            <div class="center" style="width:90%;"><b>RECTOR/A</b></div>
+        </div>
+        <div class="col-xs-6">
+            <div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>
+            <div class="center" style="width:90%;"><b>SECRETARIO/A</b></div>
+        </div>
+    </div>
+</div>

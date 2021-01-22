@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-4">
+        <label for="courseSelect">Curso</label>
+        <select class="form-control" id="courseSelect" required
+                ng-model="form.course" name="course"
+                ng-options="course.label for course in courses | async:this">
+        </select>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <label for="editionSelect">Período Lectivo</label>
+        <select class="form-control" id="editionSelect" required
+                ng-model="form.edition" name="edition"
+                ng-options="edition.label for edition in form.course.editions | async:this"
+                ng-disabled="!form.course">
+
+        </select>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <label for="groupSelect">Paralelo</label>
+        <select class="form-control" id="groupSelect" required
+                ng-model="form.group" name="course"
+                ng-options="group.label for group in form.edition.groups | async"
+                ng-disabled="!form.edition"
+                ng-change="$ctrl.observable.onNext([form.course, form.edition, form.group])">
+
+        </select>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div>
+    <button class="btn btn-default" ng-click="$ctrl.download()">Descargar</button>
+    <div id="enrollment-list-component-exportable">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Folio</th>
+                <th>Nombre</th>
+                <th>Repite</th>
+                <th>Cumple Requisitos</th>
+                <th>Observaciones</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="enrollment in $ctrl.enrollments | async:this | orderBy:'studentObj.name'">
+                <td>{{enrollment.id}}</td>
+                <td>{{enrollment.studentObj.name}}</td>
+                <td>{{enrollment.is_repeat ? 'Si' : 'No'}}</td>
+                <td>{{enrollment.meet_requirements ? 'Si' : 'No'}}</td>
+                <td>{{enrollment.observations}}</td>
+                <td>
+                    <button class="btn btn-warning"
+                            ng-click="$ctrl.openEditModal(enrollment)">
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-danger"
+                            ng-if="enrollment.grades | async:this"
+                            ng-disabled="(enrollment.grades | async:this).length > 0"
+                            ng-click="$ctrl.openDeleteModal(enrollment)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-sm-12" ng-show="students.loading">
+    <i class="fa fa-refresh fa-spin" aria-hidden="true"></i>  Cargando...
+  </div>
+  <div class="col-sm-12" ng-show="!students.loading">
+    <h1><i class="fa fa-graduation-cap"></i> Estudiantes</h1>
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <i class="fa fa-search"></i>
+          </span>
+          <input type="text" class="form-control" id="searchInput"
+                 ng-model="search" placeholder="Buscar">
+        </div>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>C&eacute;dula</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Sexo</th>
+        <th>Nombre del Padre</th>
+        <th>Nombre de la Madre</th>
+        <th>Nombre del Representante</th>
+        <th style="text-align: right">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="student in students | async:this | orderBy:'id' | filter : search | limitTo : studentsPerPage : (currentStudentsPage - 1) * studentsPerPage">
+        <td>{{student.name}}</td>
+        <td>{{student.nid}}</td>
+        <td>{{student.birth_date | date}}</td>
+        <td>{{student.sex}}</td>
+        <td>{{student.father_name}}</td>
+        <td>{{student.mother_name}}</td>
+        <td>{{student.legal_guardian_name}}</td>
+        <td align="right">
+          <a class="btn btn-warning" href="#!/students/{{student.id}}/_edit">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ul uib-pagination
+        ng-disabled="(students | async:this | filter : search).length <= studentsPerPage"
+        total-items="(students | async:this | filter : search).length"
+        ng-model="currentStudentsPage"
+        items-per-page="studentsPerPage" boundary-link-numbers="true"
+        max-size="7" force-ellipses="true" boundary-links="true"></ul>
+  </div>
+</div>

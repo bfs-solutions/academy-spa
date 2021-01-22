@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="row">
+        <div class="col-sm-8 vcenter">
+            <h1>{{course.label}}</h1>
+            <h2>Período Lectivo {{edition.date_start | date}} -
+                {{edition.date_end | date}}</h2>
+            <h3>Paralelo {{group.label}}</h3>
+            <h4>Profesores & Asignaturas</h4>
+        </div><!--
+        -->
+        <div class="col-sm-4 vcenter">
+            <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/teachings/_new"
+               class="btn btn-primary"
+               style="float: right">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+            <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups"
+               class="btn btn-default"
+               style="float: right">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th colspan="2">Asignatura</th>
+            <th>Tipo</th>
+            <th>Profesor</th>
+            <th>Enlaces</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="teaching in group.teachings | async:this  track by $index">
+            <td>{{$index+1}}</td>
+            <td>{{teaching.subjectObj.label}}</td>
+            <td>{{teaching.subjectObj.qualitative ? 'Cualitativa' :
+                'Cuantitativa'}}
+            </td>
+            <td>{{teaching.userObj.name}}</td>
+            <td>
+                <a
+                        ng-href="#!/grades{{teaching.subjectObj.qualitative ? '-qualitative' : ''}}/{{group.id}}/{{teaching.subjectObj.id}}"
+                   class="btn btn-link"
+                   style="float: right">
+                    <!--<i class="fa fa-arrow-left" aria-hidden="true"></i>-->
+                    Notas
+                </a>
+            </td>
+            <td>
+                <button class="btn btn-danger"
+                        ng-click="$ctrl.openDeleteModal(teaching)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

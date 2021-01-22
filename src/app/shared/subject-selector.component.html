@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-md-12 col-sm-6">
+        <label for="subjectfSelect">Asignatura</label>
+        <select class="form-control" id="subjectfSelect" required
+                ng-model="form.subject" name="subject"
+                ng-options="subject.label for subject in $ctrl.subjects"
+                ng-disabled="!$ctrl.subjects"
+                ng-change="$ctrl.onNext()">
+        </select>
+    </div>
+</div>

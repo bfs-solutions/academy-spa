@@ -1,0 +1,110 @@
+
+// Import Twitter Bootstrap stylesheets as base
+@import "bootstrap"
+
+@import "font-awesome"
+
+@import "angular-wizard/dist/angular-wizard.min.css"
+
+// Layout styles
+body
+  padding-top: 70px
+
+body > footer
+  position: fixed
+  bottom: 0
+  width: 100%
+  color: #fff
+  height: 30px
+  line-height: 30px
+  background-color: #9BBE3B
+
+.navbar-fixed-top
+  background-color: #438EB9
+  height: 60px
+  padding: 5px 0
+
+  .navbar-brand
+    color: white
+    padding: 0 15px
+
+// Dashboard component styles
+.dashboard > .col-md-4
+  height: 200px
+
+// Grades component styles
+#gradesTable input[type="number"]
+  width: 50px
+
+// Reports modules styles
+.promotion-cert-logo
+  width: 200px
+  margin-bottom: -15px
+
+.student-partial-report-logo
+  width: 100px
+
+.break
+  page-break-after: always
+
+.center
+  text-align: center
+
+.bigtext
+  font-size: 24px
+
+.middletext
+  font-size: 16px
+  text-transform: uppercase
+
+.blob
+  font-weight: bold
+
+hr.report
+  border: solid 2px #000000
+  margin-top: 0
+
+.report-content
+  width: 90%
+  margin: -10px auto
+
+.student-name
+  text-transform: uppercase
+  width: 90%
+  background-color: #bbb
+  padding: 0 5px
+  margin: 10px auto 0
+
+.student-course
+  width: 94%
+  text-transform: uppercase
+  margin-top: 8px
+
+.note-table
+  margin-top: 10px
+  font-size: 12px
+
+.sangria
+  margin: 0 10px
+
+.sign
+  width: 90%
+  border-top: solid 1px #000
+  text-align: center
+
+// general class used for aligning vertically the content
+.vcenter
+  display: inline-block
+  vertical-align: middle
+  float: none
+
+
+.app-page-break
+  page-break-after: always
+
+.table-condensed>thead>tr>th, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>tbody>tr>td, .table-condensed>tfoot>tr>td
+  padding: 1px
+
+
+// Import styles for the Print media
+@import "./_print"

@@ -1,0 +1,45 @@
+<div class="row">
+    <h1>Nuevo Curso</h1>
+    <form name="newCourseForm" class="form-horizontal" novalidate
+          ng-submit="$ctrl.submit(form)">
+        <div class="row" ng-if="error != null">
+            <div class="col-md-12">
+                <div class="alert alert-danger">{{error}}</div>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="labelInput" class="col-sm-3 control-label">Nombre
+                *</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="labelInput"
+                       placeholder="Nombre del Curso"
+                       required aria-describedby="labelHelpBlock"
+                       ng-model="form.label" name="label"/>
+                <span id="labelHelpBlock" class="help-block">
+                    Nombre del Curso (requerido).
+                </span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="promoteToSelect" class="col-sm-3 control-label">
+                Promueve al Curso
+            </label>
+            <div class="col-sm-9">
+                <select class="form-control" id="promoteToSelect"
+                        ng-model="form.promote_to" name="promote_to"
+                        ng-options="course.label for course in courses | async:this">
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Crear Curso
+                </button>
+                <a href="#!/courses" class="btn btn-default">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>

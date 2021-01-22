@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-sm-12">
+
+        <h1>Autentificaci&oacute;n</h1>
+
+        <form name="loginForm" class="form-horizontal" novalidate
+              ng-submit="$ctrl.submit()">
+            <div class="row" ng-if="error != null">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">{{error}}</div>
+                </div>
+            </div>
+            <div class="form-group" show-errors>
+                <label for="loginInput"
+                       class="col-sm-3 control-label">Login</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control"
+                           id="loginInput" placeholder="Login del usuario"
+                           required aria-describedby="loginHelpBlock"
+                           ng-model="user.login" name="login"/>
+                </div>
+            </div>
+            <div class="form-group" show-errors>
+                <label for="passwordInput" class="col-sm-3 control-label">
+                    Contrase&ntilde;a
+                </label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control"
+                           id="passwordInput"
+                           required aria-describedby="passwordHelpBlock"
+                           ng-model="user.password" name="password"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn btn-primary">
+                        <i ng-if="processing" class="fa fa-spinner fa-spin"></i>
+                        Login
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

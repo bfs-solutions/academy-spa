@@ -1,0 +1,107 @@
+<div class="row">
+
+    <div class="col-sm-8 vcenter">
+        <h1>{{course.label}}</h1>
+        <h2>Período Lectivo {{edition.date_start | date}} - {{edition.date_end |
+            date}}</h2>
+        <h3>Paralelo {{group.label}}</h3>
+        <h4>Matricular Estudiante con Registro Previo</h4>
+    </div><!--
+        -->
+    <div class="col-sm-4 vcenter">
+        <a ng-href="{{'#!/courses/'+ course.id + '/editions/' + edition.id + '/groups/' + group.id + '/enrollments'}}"
+           class="btn btn-default"
+           style="float: right">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+<div class="row" ng-if="error != null">
+    <div class="col-md-12">
+        <div class="alert alert-danger">{{error}}</div>
+    </div>
+</div>
+
+<wizard>
+    <wz-step wz-title="Estudiante">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="student">Estudiante *</label>
+                <select id="student" ng-model="student.id"
+                        class="form-control"
+                        ng-options="student.id as student.name for student in students | async:this"
+                >
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="submit" class="btn btn-primary" wz-next
+                       value="Continue"/>
+            </div>
+        </div>
+    </wz-step>
+    <wz-step wz-title="Detalles" canexit="$ctrl.finishedWizard">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label class="form-control">
+                    <input ng-model="enrollment.meet_requirements"
+                           type="checkbox" class="form-control-input">
+                    <span class="form-control-indicator"></span>
+                    <span class="form-control-description">
+                            Cumple Requisitos
+                        </span>
+                </label>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label class="form-control">
+                    <input ng-model="enrollment.is_repeat" type="checkbox"
+                           class="form-control-input">
+                    <span class="form-control-indicator"></span>
+                    <span class="form-control-description">
+                            Repite A&ntilde;o
+                        </span>
+                </label>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="institution">Instituci&oacute;n de
+                    Procedencia</label>
+                <select id="institution" ng-model="enrollment.comming_from"
+                        class="form-control"
+                        ng-options="i.id as i.name + '[' + i.province + ', '  + i.canton + ', ' + i.parish + ']' for i in institutions | async:this">
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label for="observations">Observaciones</label>
+                <textarea id="observations" ng-model="enrollment.observations"
+                        class="form-control"
+                >
+                </textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <input type="submit" class="btn btn-secondary" wz-previous
+                       value="Back"/>
+                <input type="submit" class="btn btn-primary" wz-next
+                       value="Continue"/>
+            </div>
+        </div>
+    </wz-step>
+    <wz-step>
+        <h1>Matr&iacute;cula Completada</h1>
+        <a class="btn btn-link"
+           ng-href="{{'#!/courses/'+ course.id + '/editions/' + edition.id + '/groups/' + group.id + '/enrollments'}}">
+            Regresar
+        </a>
+    </wz-step>
+</wizard>
+</div>

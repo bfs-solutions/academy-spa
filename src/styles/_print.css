@@ -1,0 +1,12 @@
+
+@media print {
+    .navbar, body > footer
+    {
+        display: none !important;
+    }
+    .head
+    {
+        margin-top: -50px !important;
+        font-size: 10px !important;
+    }
+}

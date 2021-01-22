@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="row">
+        <div class="col-sm-8 vcenter">
+            <h1>{{course.label}}</h1>
+            <h2>Períodos Lectivos</h2>
+        </div><!--
+        -->
+        <div class="col-sm-4 vcenter">
+            <a href="#!/courses/{{course.id}}/editions/_new"
+               class="btn btn-primary"
+               style="float: right">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+            <a href="#!/courses" class="btn btn-default"
+               style="float: right">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Período Lectivo</th>
+            <th>Enlaces</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="edition in course.editions | async:this">
+            <td>{{edition.date_start | date}} - {{edition.date_end | date}}</td>
+            <td>
+                <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups"
+                   class="btn btn-link">
+                    Paralelos
+                </a>
+            </td>
+            <td>
+                <button class="btn btn-danger"
+                        ng-if="edition.groups | async:this"
+                        ng-disabled="(edition.groups | async:this).length > 0"
+                        ng-click="$ctrl.openDeleteModal(edition)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

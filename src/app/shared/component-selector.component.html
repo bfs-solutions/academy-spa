@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-md-12 col-sm-6">
+        <label for="componentSelect">Componente</label>
+        <select class="form-control" id="componentSelect" required
+                ng-model="form.component" name="component"
+                ng-options="component.label for component in $ctrl.components"
+                ng-disabled="!$ctrl.components"
+                ng-change="$ctrl.onNext()">
+        </select>
+    </div>
+</div>

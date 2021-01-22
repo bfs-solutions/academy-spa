@@ -1,0 +1,178 @@
+<div class="row">
+    <div class="col-md-12" ng-show="$ctrl.loading">
+        <i class="fa fa-spinner fa-pulse fa-5x" aria-hidden="true"></i>
+    </div>
+    <div class="col-md-12" ng-show="!$ctrl.loading">
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="images/institution-logo.jpg" style="width: 75px" />
+            </div>
+            <div class="col-xs-10">
+                <div class="center bigtext" style="line-height: 1.1">UNIDAD EDUCATIVA "Dario Figueroa Larco"</div>
+                <!--<div class="center blob">REPORTE PARCIAL DEL ESTUDIANTE</div>-->
+                <div class="center blob">AÑO LECTIVO {{$ctrl.edition.date_start | date : 'yyyy'}} - {{$ctrl.edition.date_end | date : 'yyyy'}} JORNADA MATUTINA</div>
+                <!--<div class="center blob" style="margin: 0 auto 0">JORNADA MATUTINA</div>-->
+                <div class="student-name blob" style="margin: 0 auto 0">{{$ctrl.enrollment.studentObj.name}}</div>
+                <div class="blob" style="padding: 0 5px; text-transform: uppercase; margin: 0 auto 0; width: 90%; font-size: 12px">{{$ctrl.course.label}} PARALELO {{$ctrl.group.label}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="!$ctrl.loading">
+        <table class="table table-bordered table-condensed" width="100%"
+               cellpadding="1px" style="margin-bottom: 5px">
+            <tbody>
+            <tr class="blob" style="text-align: center">
+                <td rowspan="3" colspan="2">ASIGNATURA</td>
+                <td ng-repeat="half in $ctrl.course.selectedSubjects.getValue()[0].halves.getValue() | limitTo:($ctrl.halfIdx) track by $index"
+                    rowspan="3" width="40px" style="font-size: 12px">
+                    {{half.label}}
+                </td>
+                <td
+                        ng-repeat="half in $ctrl.course.selectedSubjects.getValue()[0].halves.getValue() | limitTo:1:$ctrl.halfIdx track by $index"
+                        colspan="{{half.partials.getValue().length + 1}}"
+                        style="font-size: 12px">
+                    {{half.label}}
+                </td>
+                <!--<td rowspan="3">Observaciones</td>-->
+            </tr>
+            <tr class="blob" style="text-align: center">
+                <td
+                        ng-repeat="partial in $ctrl.course.selectedSubjects.getValue()[0].halves.getValue()[$ctrl.halfIdx].partials.getValue() track by $index"
+                        rowspan="2" width="40px" style="font-size: 10px">
+                    {{partial.label}}
+                </td>
+                <td rowspan="2" width="40px" style="font-size: 10px">NOTA
+                    QUIM.
+                </td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr ng-repeat="subject in $ctrl.course.selectedSubjects.getValue() track by $index"
+                style="font-size: 10px; text-transform: uppercase; line-height: 1.1">
+                <td><span class="sangria">{{$index+1}}</span></td>
+                <td>
+                    <span>{{subject.label}}</span><br/>
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="half in subject.halves.getValue() | limitTo:$ctrl.halfIdx track by $index">
+                    <span
+                            ng-style="$ctrl.grades.subjects[subject.id][$index].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.grades.subjects[subject.id][$index].grade | numberToGeBehaviour}}
+                    </span>
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="partial in ($ctrl.course.selectedSubjects.getValue()[0].halves.getValue())[$ctrl.halfIdx].partials.getValue() track by $index">
+                    <span
+                            ng-style="$ctrl.grades.subjects[subject.id][$ctrl.halfIdx].partials[$index].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.grades.subjects[subject.id][$ctrl.halfIdx].partials[$index].grade | numberToGeBehaviour}}
+                    </span>
+                </td>
+                <td class="center"
+                    style="font-size: 10px">
+                    <span
+                            ng-style="$ctrl.grades.subjects[subject.id][$ctrl.halfIdx].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.grades.subjects[subject.id][$ctrl.halfIdx].grade |
+                    numberToGeBehaviour}}
+                    </span>
+                </td>
+                <!--<td></td>-->
+            </tr>
+            </tbody>
+            <tfoot ng-if="$ctrl.includeMeans">
+            <tr>
+                <td colspan="2" style="text-align: end; font-size: 10px">
+                    PROMEDIO
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="half in $ctrl.course.selectedSubjects.getValue()[0].halves.getValue() | limitTo:$ctrl.halfIdx track by $index">
+                    <span
+                            ng-style="$ctrl.grades.halves[$index].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.grades.halves[$index].grade | numberToGeBehaviour}}
+                    </span>
+                </td>
+                <td class="center"
+                    style="font-size: 10px"
+                    ng-repeat="partial in $ctrl.course.selectedSubjects.getValue()[0].halves.getValue()[$ctrl.halfIdx].partials.getValue() track by $index">
+                    <span
+                            ng-style="$ctrl.grades.halves[$ctrl.halfIdx].partials[$index].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.grades.halves[$ctrl.halfIdx].partials[$index].grade
+                    | numberToGeBehaviour}}
+                    </span>
+                </td>
+                <td class="center"
+                    style="font-size: 10px">
+                    <span
+                            ng-style="$ctrl.grades.halves[$ctrl.halfIdx].grade < 7 ? {'text-decoration': 'underline'} : null">
+                    {{$ctrl.grades.halves[$ctrl.halfIdx].grade | numberToGeBehaviour}}
+                    </span>
+                </td>
+                <!--<td></td>-->
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div ng-show="!$ctrl.loading" class="col-md-12"
+         ng-repeat="subject in ($ctrl.course.selectedSubjects | async:this | filter:{label: 'DESARROLLO COMPORTAMENTAL'}) track by $index">
+        {{subject.label}}<!--<br />-->
+        <!--<span style="font-size: 12px">{{subject.user.name || subject.user.login}}</span>-->
+        <table class="table table-bordered table-condensed"
+               style="font-size: 8px; margin-bottom: 5px" cellpadding="1px">
+            <tbody>
+            <tr>
+                <td>A = Muy Satisfactorio</td>
+                <td>{{"A" | behaviourToWords}}</td>
+                <td ng-repeat="partial in $ctrl.grades.subjects[subject.id][$ctrl.halfIdx].partials">
+                    {{partial.grade > 9 ? '&#10004;' : ''}}
+                </td>
+            </tr>
+            <tr>
+                <td>B = Satisfactorio</td>
+                <td>{{"B" | behaviourToWords}}</td>
+                <td ng-repeat="partial in $ctrl.grades.subjects[subject.id][$ctrl.halfIdx].partials">
+                    {{partial.grade >= 7 && partial.grade <= 8.99 ? '&#10004;' :
+                    ''}}
+                </td>
+            </tr>
+            <tr>
+                <td>C = Poco Satisfactorio</td>
+                <td>{{"C" | behaviourToWords}}</td>
+                <td ng-repeat="partial in $ctrl.grades.subjects[subject.id][$ctrl.halfIdx].partials">
+                    {{partial.grade >= 5 && partial.grade <= 6.99 ? '&#10004;' :
+                    ''}}
+                </td>
+            </tr>
+            <tr>
+                <td>D = Mejorable</td>
+                <td>{{"D" | behaviourToWords}}</td>
+                <td ng-repeat="partial in $ctrl.grades.subjects[subject.id][$ctrl.halfIdx].partials">
+                    {{partial.grade >= 4 && partial.grade <= 4.99 ? '&#10004;' :
+                    ''}}
+                </td>
+            </tr>
+            <tr>
+                <td>E = Insatisfactorio</td>
+                <td>{{"E" | behaviourToWords}}</td>
+                <td ng-repeat="partial in $ctrl.grades.subjects[subject.id][$ctrl.halfIdx].partials">
+                    {{partial.grade  < 4 ? '&#10004;' :
+                    ''}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="!$ctrl.loading" class="col-xs-12" style="margin-top: 30px;">
+        <div class="row">
+            <!--<div class="col-xs-6">-->
+                <!--<div class="sign">Lic. Marco Cevallos Espindola</div>-->
+                <!--<div class="center" style="width:90%;"><b>RECTOR/A</b></div>-->
+            <!--</div>-->
+            <div class="col-xs-6">
+                <div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>
+                <div class="center" style="width:90%;"><b>SECRETARIO/A</b></div>
+            </div>
+        </div>
+    </div>
+</div>

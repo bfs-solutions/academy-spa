@@ -1,0 +1,29 @@
+<div class="row">
+    <h1><i class="fa fa-magic"></i> Notas</h1>
+    <div class="row">
+        <a class="btn btn-link"
+           ng-href="#!/grade-update">
+            Modificar Nota
+        </a>
+    </div>
+    <div class="col-md-12">
+        <app-group-selector on-observable="$ctrl.onObservable(observable)">
+        </app-group-selector>
+    </div>
+    <table class="table" ng-show="group">
+        <thead>
+        <tr>
+            <th width="80%">Asignatura</th>
+            <th>Notas</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="subject in course.subjects | async:this">
+            <td>{{subject.label}}</td>
+            <td>
+                <a href="#!/grades{{subject.qualitative ? '-qualitative' : ''}}/{{group.id}}/{{subject.id}}">Notas</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

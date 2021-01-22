@@ -1,0 +1,20 @@
+<div>
+    <div class="modal-header">
+        <h2>Atenci&oacute;n</h2>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <p>
+            Est&aacute; a punto de eliminar la edición
+            <b>{{edition.date_start | date}} - {{edition.date_end | date}}</b>. ¿Est&aacute; seguro que
+            es eso lo que desea hacer?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="$ctrl.proceed()">
+            Eliminar
+        </button>
+        <button class="btn btn-default" type="button"
+                ng-click="$ctrl.dismiss({$value: 'cancel'})">Cancelar
+        </button>
+    </div>
+</div>

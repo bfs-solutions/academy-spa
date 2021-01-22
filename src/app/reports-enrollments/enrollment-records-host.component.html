@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Generar Actas de Matrícula</h1>
+    <form class="form-inline">
+      <div class="form-group">
+        <button class="btn btn-default" onclick="window.print()">
+          <i class="fa fa-print" aria-hidden="true"></i>
+        </button>
+      </div>
+    </form>
+    <app-group-selector on-observable="$ctrl.onGroupObservable(observable)">
+    </app-group-selector>
+    <app-enrollment-selector enrollments="enrollments | async:this">
+    </app-enrollment-selector>
+    <div ng-repeat="enrollment in enrollments | async:this | filter:{selected: true}">
+      <div class="app-page-break"></div>
+      <app-reports-enrollments-enrollment-record
+        edition="edition"
+        enrollment="enrollment">
+      </app-reports-enrollments-enrollment-record>
+    </div>
+  </div>
+</div>

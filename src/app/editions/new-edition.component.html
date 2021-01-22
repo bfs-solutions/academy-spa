@@ -1,0 +1,46 @@
+<div class="row">
+    <h1>{{course.label}}</h1>
+    <h1>Nuevo Período Lectivo</h1>
+    <form name="newEditionForm" class="form-horizontal" novalidate
+          ng-submit="$ctrl.submit(form)">
+        <div class="row" ng-if="error != null">
+            <div class="col-md-12">
+                <div class="alert alert-danger">{{error}}</div>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="dateStartInput" class="col-sm-3 control-label">Fecha de
+                Inicio *</label>
+            <div class="col-sm-9">
+                <input type="date" class="form-control" id="dateStartInput"
+                       required aria-describedby="dateStartHelpBlock"
+                       ng-model="form.date_start" name="date_start"/>
+                <span id="dateStartHelpBlock" class="help-block">
+                    Fecha de Inicio de este Período Lectivo del Curso (requerido).
+                </span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="dateEndInput" class="col-sm-3 control-label">Fecha de
+                Fin</label>
+            <div class="col-sm-9">
+                <input type="date" class="form-control" id="dateEndInput"
+                       aria-describedby="dateEndHelpBlock"
+                       ng-model="form.date_end" name="date_start"/>
+                <span id="dateEndHelpBlock" class="help-block">
+                    Fecha de Fin de este Período Lectivo del Curso.
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Crear Período Lectivo
+                </button>
+                <a href="#!/courses/{{course.id}}/editions"
+                   class="btn btn-default">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>

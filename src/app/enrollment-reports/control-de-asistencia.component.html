@@ -1,0 +1,75 @@
+<div class="row">
+    <!--<div style="margin-bottom: 50px;">-->
+        <!--<img src="images/institution-logo.jpg"-->
+             <!--style="width: 75px"/>-->
+        <!--<div style="display: inline-block; margin-left: 50px; text-align: center;">-->
+            <!--<span class="center bigtext">UNIDAD EDUCATIVA</span><br/>-->
+            <!--<span class="center bigtext">Dario Figueroa Larco</span><br/>-->
+            <!--<span class="center bigtext">Control de Asistencia</span><br/>-->
+            <!--<span>AÑO LECTIVO {{edition.date_start | date: 'yyyy'}} - {{edition.date_end | date: 'yyyy'}}</span>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="images/institution-logo.jpg" style="width: 75px"/>
+            </div>
+            <div class="col-xs-10">
+                <div class="center bigtext">UNIDAD EDUCATIVA "Dario Figueroa
+                    Larco"
+                </div>
+                <!--<div class="center blob">REPORTE PARCIAL DEL ESTUDIANTE</div>-->
+                <div class="center blob">AÑO LECTIVO {{edition.date_start
+                    | date : 'yyyy'}} - {{edition.date_end | date :
+                    'yyyy'}} JORNADA MATUTINA
+                </div>
+                <div class="blob"
+                     style="padding: 0 5px; text-transform: uppercase; margin: 10px auto 0; width: 90%">
+                    <!--{{$ctrl.course.label}} PARALELO {{$ctrl.group.label}}-->
+                    Control de Asistencia
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <b>{{course.label}} PARALELO {{group.label}}</b>
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <b>JORNADA</b> MATUTINA
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th width="30px">No</th>
+            <th width="400px">APELLIDOS Y NOMBRES</th>
+            <th>Firma</th>
+            <th width="200px">Observaciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="enrollment in group.enrollments | async:this | orderBy:'studentObj.name'">
+            <td style="font-size: 10px">{{$index + 1}}</td>
+            <td style="font-size: 10px">{{enrollment.studentObj.name}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- TODO: make the next element appear at the bottom of the page
+
+        Setting margin-top is not the correct way of doing this because the
+        content of the enrollment table has variable length.
+     -->
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-xs-offset-4 col-xs-4">
+            <div class="sign">INSPECCION</div>
+            <!--<div class="center" style="width:90%;"><b>RECTOR/A</b></div>-->
+        </div>
+        <!--<div class="col-xs-5">-->
+            <!--<div class="sign">Lic. Jaime Falc&oacute;n Ortega</div>-->
+            <!--<div class="center" style="width:90%;"><b>SECRETARIO/A</b></div>-->
+        <!--</div>-->
+    </div>
+</div>
