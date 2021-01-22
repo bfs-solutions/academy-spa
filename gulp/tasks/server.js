@@ -1,12 +1,12 @@
 
 "use strict";
 
-const path = require("path"),
-      connect = require("gulp-connect"),
-      watch = require("gulp-watch"),
-      proxy = require('http-proxy-middleware');
+const path = require("path");
+const gulp = require('gulp');
+const connect = require("gulp-connect");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
-module.exports = (config)=> [['watch'], ()=> {
+module.exports = (config)=> ()=> {
     connect.server({
         root: config.root,
         port: config.port,
@@ -16,7 +16,7 @@ module.exports = (config)=> [['watch'], ()=> {
         fallback: config.root + '/index.html',
         middleware: function() {
             return config.proxies.map(
-                item => proxy(item.path, {
+                item => createProxyMiddleware(item.path, {
                     target: item.target,
                     changeOrigin: true,
                     secure: false
@@ -25,5 +25,5 @@ module.exports = (config)=> [['watch'], ()=> {
         }
     });
 
-    watch(path.join(config.root, "./**")).pipe(connect.reload());
-}];
+    gulp.watch(path.join(config.root, "./**"), () => connect.reload());
+};
