@@ -1,5 +1,10 @@
 "use strict";
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+import AngularUIBootstrapModule from 'angular-ui-bootstrap';
+
 import sharedModule from "../shared/shared.module";
 import editionsComponent from "./editions.component";
 import groupsComponent from "./groups.component";
@@ -9,7 +14,12 @@ import * as deleteEdition from "./delete-edition.component";
 import * as deleteGroup from './delete-group.component';
 
 export default angular.module("smart-academy-editions", [
-    "ngRoute", "asyncFilter", 'ui.bootstrap', sharedModule.name
+    AngularRouteModule, 
+    "asyncFilter", 
+    AngularUIBootstrapModule, 
+    
+    sharedModule.name
+
 ])
 
     .component("saEditions", editionsComponent)

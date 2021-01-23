@@ -1,12 +1,21 @@
 "use strict";
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+import AngularUIBootstrapModule from 'angular-ui-bootstrap';
+
 import sharedModule from "../shared/shared.module";
 import groupTeachingsComponent from "./group-teachings.component";
 import groupNewTeachingComponent from "./group-new-teaching.component";
 import * as deleteTeaching from './delete-teaching.component';
 
 export default angular.module("smart-academy-teachings", [
-    "ngRoute", "asyncFilter", "ui.bootstrap", sharedModule.name
+    AngularRouteModule, 
+    'asyncFilter', 
+    AngularUIBootstrapModule,
+    
+    sharedModule.name
 ])
 
     .component("saGroupTeachings", groupTeachingsComponent)

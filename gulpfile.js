@@ -53,8 +53,7 @@ config.copy = {
 config.browserify = {
     base: config._src,
     src: [
-        path.join(config._src, "./vendor.js"),
-        path.join(config._src, "./app/smart-academy.module.js")
+        path.join(config._src, "./main.js")
     ],
     dest: path.join(config._dest)
 };

@@ -1,6 +1,11 @@
 
 'use strict';
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+import AngularUIBootstrapModule from 'angular-ui-bootstrap';
+
 import sharedModule from '../shared/shared.module';
 
 import * as students from './students.component';
@@ -15,7 +20,11 @@ import * as editStudent from './edit-student.component';
  * * *appStudentsEditStudent* using {@link EditStudentComponent}
  */
 export default angular.module('app.students', [
-  'ngRoute', 'asyncFilter', 'ui.bootstrap', sharedModule.name
+  AngularRouteModule, 
+  'asyncFilter', 
+  AngularUIBootstrapModule,
+  
+  sharedModule.name
 ])
 
   .component('appStudents', students.StudentsComponent)

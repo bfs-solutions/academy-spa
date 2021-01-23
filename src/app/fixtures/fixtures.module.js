@@ -1,5 +1,7 @@
 'use strict';
 
+import angular from "angular";
+
 import * as collectionService from "../shared/collection.service";
 import * as provincesService from "./provinces.service";
 import * as subjectStructuresService from "./subject-structures.service";

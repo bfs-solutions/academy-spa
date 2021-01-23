@@ -1,6 +1,12 @@
 
 'use strict';
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+import NgStorageModule from 'ngstorage';
+import AngularUIBootstrapModule from 'angular-ui-bootstrap';
+
 import sharedModule from '../shared/shared.module';
 import securityModule from '../security/security.module';
 
@@ -20,7 +26,12 @@ import * as editUser from './edit-user.component';
  * * *appUsersEditUser* using {@link EditUserComponent}
  */
 export default angular.module('app.users', [
-  'ngRoute', 'asyncFilter', 'ngStorage', 'ui.bootstrap', sharedModule.name,
+  AngularRouteModule, 
+  'asyncFilter', 
+  NgStorageModule.name,, 
+  AngularUIBootstrapModule, 
+  
+  sharedModule.name,
   securityModule.name
 ])
 

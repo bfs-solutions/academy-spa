@@ -1,5 +1,11 @@
 'use strict';
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+import NgStorageModule from 'ngstorage';
+import 'angular-acl';
+
 import sharedModule from "../shared/shared.module";
 import fixturesModule from "../fixtures/fixtures.module";
 import * as authenticationService from "./authentication.service";
@@ -21,7 +27,12 @@ import * as notAllowed from "./not-allowed.component";
  * * *appSecurityNotAllowed* using {@link NotAllowedComponent}
  */
 export default angular.module('app.security', [
-    'ngRoute', 'asyncFilter', 'ngStorage', 'mm.acl', sharedModule.name,
+    AngularRouteModule, 
+    'asyncFilter', 
+    NgStorageModule.name, 
+    'mm.acl', 
+    
+    sharedModule.name,
     fixturesModule.name
 ])
 

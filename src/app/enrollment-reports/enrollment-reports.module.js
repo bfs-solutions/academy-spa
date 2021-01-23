@@ -1,12 +1,19 @@
 "use strict";
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+
 import sharedModule from "../shared/shared.module";
 import nominaDeMatriculadosComponent from "./nomina-de-matriculados.component";
 import reporteResumen from "./reporte-resumen.component";
 import controlDeAsistencia from "./control-de-asistencia.component";
 
 export default angular.module("smart-academy-enrollment-reports", [
-    "ngRoute", "asyncFilter", sharedModule.name
+    AngularRouteModule, 
+    "asyncFilter", 
+    
+    sharedModule.name
 ])
 
     .component("saNominaDeMatriculados", nominaDeMatriculadosComponent)

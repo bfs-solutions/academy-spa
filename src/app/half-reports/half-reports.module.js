@@ -1,5 +1,10 @@
 'use strict';
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+import AngularUIBootstrapModule from 'angular-ui-bootstrap';
+
 import sharedModule from "../shared/shared.module";
 import * as studentHalfReportHost from "./student-half-report-host.component";
 import * as studentHalfReport from "./student-half-report.component";
@@ -23,7 +28,11 @@ import * as subjectHalfReport from './subject-half-report.component';
  *    {@link SubjectHalfReportHostComponent}
  */
 export default angular.module('app.half-reports', [
-    'ngRoute', 'asyncFilter', 'ui.bootstrap', sharedModule.name
+    AngularRouteModule, 
+    'asyncFilter', 
+    AngularUIBootstrapModule, 
+    
+    sharedModule.name
 ])
 
     .component('appHalfReportsStudentHalfReportHost',

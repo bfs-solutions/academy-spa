@@ -1,5 +1,9 @@
 'use strict';
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+
 import sharedModule from "../shared/shared.module";
 import * as studentPartialReportHost from "./student-partial-report-host.component";
 import * as studentPartialReport from "./student-partial-report.component";
@@ -21,7 +25,10 @@ import * as subjectPartialReportHost
  *   {@link StudentHalfReportComponent}
  */
 export default angular.module('app.partial-reports', [
-    'ngRoute', 'asyncFilter', sharedModule.name
+    AngularRouteModule, 
+    "asyncFilter", 
+    
+    sharedModule.name
 ])
 
     .component('appPartialReportsStudentPartialReportHost',

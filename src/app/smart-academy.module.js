@@ -2,6 +2,11 @@
 
 "use strict";
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import AngularUIBootstrapModule from 'angular-ui-bootstrap';
+import 'angular1-async-filter';
+
 import dashboardComponent from "./dashboard.component";
 
 import usersModule from "./users/users.module";
@@ -23,11 +28,21 @@ import reportsEnrollments from './reports-enrollments/reports-enrollments.module
 import gradesTemplates from './grades-templates/grades-templates.module';
 import seReports from "./se-reports/se-reports.module";
 
-export default angular.module("smart-academy", [
-    "ui.bootstrap", "ngRoute", "asyncFilter", institutionsModule.name,
-    usersModule.name, coursesModel.name, securityModule.name,
-    enrollmentsModule.name, reportsModule.name, gradesModule.name,
-    editionsModule.name, teachingsModule.name, enrollmentReportsModule.name,
+export const SmartAcademyModule = angular.module("smart-academy", [
+    AngularUIBootstrapModule, 
+    AngularRouteModule, 
+    'asyncFilter', 
+    
+    institutionsModule.name,
+    usersModule.name, 
+    coursesModel.name, 
+    securityModule.name,
+    enrollmentsModule.name, 
+    reportsModule.name, 
+    gradesModule.name,
+    editionsModule.name, 
+    teachingsModule.name, 
+    enrollmentReportsModule.name,
 
     partialReports.name,
     halfReports.name,
