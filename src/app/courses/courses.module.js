@@ -1,5 +1,10 @@
 "use strict";
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+import 'angular-bootstrap-show-errors';
+
 import sharedModule from "../shared/shared.module";
 import fixturesModule from "../fixtures/fixtures.module";
 
@@ -9,7 +14,11 @@ import newCourseComponent from "./new-course.component";
 import newSubjectComponent from "./new-subject.component";
 
 export default angular.module("smart-academy-courses", [
-    "ngRoute", "asyncFilter", sharedModule.name, fixturesModule.name
+    AngularRouteModule, 
+    "asyncFilter", 
+    
+    sharedModule.name, 
+    fixturesModule.name
 ])
 
     .component("saCourses", coursesComponent)

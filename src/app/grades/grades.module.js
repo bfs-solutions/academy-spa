@@ -1,5 +1,8 @@
 "use strict";
 
+import angular from "angular";
+import 'angular1-async-filter';
+
 import sharedModule from "../shared/shared.module";
 import {GradesMeanFilter} from "./grades-mean.filter";
 import gradesComponent from "./grades.component";

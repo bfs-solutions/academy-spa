@@ -1,5 +1,7 @@
 "use strict";
 
+import angular from "angular";
+
 import {CoursesService} from "./courses.service";
 import {EditionsService} from "./editions.service";
 import {GroupsService} from "./groups.service";

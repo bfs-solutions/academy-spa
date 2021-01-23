@@ -1,5 +1,9 @@
 "use strict";
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import AngularUIBootstrapModule from 'angular-ui-bootstrap';
+
 import sharedModule from "../shared/shared.module";
 import {NumberToWordsFilter} from "./number-to-words.filter";
 import {BehaviourToWordsFilter} from "./behaviour-to-words.filter";
@@ -14,7 +18,10 @@ import promotionCertificateComponent from "./promotion-certificate.component";
 import promotionCertificatePageComponent from "./promotion-certificate-page.component";
 
 export default angular.module("smart-academy-reports", [
-    "ngRoute", "ui.bootstrap", sharedModule.name
+    AngularRouteModule, 
+    AngularUIBootstrapModule, 
+    
+    sharedModule.name
 ])
 
     .filter("numberToWords", NumberToWordsFilter)

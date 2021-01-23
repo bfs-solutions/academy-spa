@@ -1,5 +1,11 @@
 "use strict";
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+import 'angular1-async-filter';
+import "angular-wizard";
+import AngularFileSaverModule from "angular-file-saver"
+
 import sharedModule from "../shared/shared.module";
 import enrollmentsComponent from "./enrollments.component";
 import enrollmentListComponent from "./enrollment-list.component";
@@ -10,7 +16,11 @@ import * as deleteEnrollment from './delete-enrollment.component';
 import * as editEnrollment from './edit-enrollment.component';
 
 export default angular.module("smart-academy-enrollments", [
-    "ngRoute", "asyncFilter", "mgo-angular-wizard", 'ngFileSaver',
+    AngularRouteModule, 
+    "asyncFilter", 
+    "mgo-angular-wizard", 
+    AngularFileSaverModule,
+
     sharedModule.name
 ])
 

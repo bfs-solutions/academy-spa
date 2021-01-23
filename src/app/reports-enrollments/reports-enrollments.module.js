@@ -1,6 +1,9 @@
 
 'use strict';
 
+import angular from "angular";
+import AngularRouteModule from 'angular-route';
+
 import * as enrollmentRecordsHost from './enrollment-records-host.component';
 import * as enrollmentRecord from './enrollment-record.component';
 import * as enrollmentCertificatesHost
@@ -17,7 +20,7 @@ import * as enrollmentCertificate from './enrollment-certificate.component';
  * * *appReportsEnrollmentsEnrollmentRecord* using
  *   {@link EnrollmentCertificateComponent}
  */
-export default angular.module('app.reports-enrollments', ['ngRoute'])
+export default angular.module('app.reports-enrollments', [AngularRouteModule])
 
   .component('appReportsEnrollmentsEnrollmentRecordsHost',
     enrollmentRecordsHost.EnrollmentRecordsHostComponent)
