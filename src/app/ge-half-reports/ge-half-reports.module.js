@@ -3,7 +3,7 @@
 import angular from "angular";
 import AngularRouteModule from 'angular-route';
 import 'angular1-async-filter';
-import AngularUIBootstrapModule from 'angular-ui-bootstrap';
+import AngularUIBootstrapModule from 'ui-bootstrap4';
 
 import sharedModule from "../shared/shared.module";
 import * as studentHalfReportHost from "./student-half-report-host.component";
