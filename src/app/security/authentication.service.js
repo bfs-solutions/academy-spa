@@ -1,6 +1,7 @@
 'use strict';
 
 import * as rx from "rx";
+import { Buffer } from 'buffer';
 
 /** Provide user authentication capability as observable.
  *

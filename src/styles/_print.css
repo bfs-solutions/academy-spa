@@ -1,6 +1,6 @@
 
 @media print {
-    .navbar, body > footer
+    body > footer
     {
         display: none !important;
     }

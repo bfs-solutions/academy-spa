@@ -1,10 +1,11 @@
 
 // Import Twitter Bootstrap stylesheets as base
-@import "bootstrap"
+@import "~bootstrap"
 
-@import "font-awesome"
+$fa-font-path: "~font-awesome/fonts"
+@import "~font-awesome/scss/font-awesome"
 
-@import "angular-wizard/dist/angular-wizard.min.css"
+@import "~angular-wizard/dist/angular-wizard.min.css"
 
 // Layout styles
 body
@@ -19,7 +20,7 @@ body > footer
   line-height: 30px
   background-color: #9BBE3B
 
-.navbar-fixed-top
+.navbar.fixed-top
   background-color: #438EB9
   height: 60px
   padding: 5px 0
