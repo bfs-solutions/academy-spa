@@ -7,6 +7,7 @@ import AngularRouteModule from 'angular-route';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 import 'angular1-async-filter';
 
+import { AppComponent } from './app.component';
 import dashboardComponent from "./dashboard.component";
 
 import usersModule from "./users/users.module";
@@ -59,6 +60,7 @@ export const SmartAcademyModule = angular.module("smart-academy", [
 
     seReports.name
 ])
+    .component(AppComponent.name, AppComponent)
     .component("saDashboard", dashboardComponent)
 
     .config(function ($routeProvider, $locationProvider) {
