@@ -1,15 +1,21 @@
 "use strict";
 
+import angular from "angular";
 import coursesComponentTemplate from "./courses.component.html";
+import { CoursesService } from '../shared/courses.service';
+
+interface IScope extends angular.IScope {
+    courses: any;
+}
 
 class CoursesComponentController {
 
-    constructor($scope, courses) {
+    constructor($scope: IScope, courses: CoursesService) {
         "ngInject";
 
         $scope.courses = courses;
 
-        courses.subscribe(courses => {
+        courses.subscribe((courses: any[]) => {
             if (!courses) return;
 
             courses.forEach(course => {

@@ -74,6 +74,9 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'build'),
   },
+  resolve: {
+    extensions: [".ts", ".js"]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
@@ -88,14 +91,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.(j|t)s$/i,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: ["angularjs-annotate"]
-          }
+          loader: 'babel-loader'
         }
       },
       {
