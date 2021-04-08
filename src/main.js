@@ -1,7 +1,12 @@
 "use strict";
 
-import angular from "angular";
+import 'zone.js';
+import 'reflect-metadata';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { setAngularJSGlobal } from '@angular/upgrade/static';
+import * as angular from 'angular';
 
-import { SmartAcademyModule } from "./app/smart-academy.module";
+import { AppModule } from './app/app.module';
 
-angular.bootstrap(document.body, [SmartAcademyModule.name], { strictDi: true });
+setAngularJSGlobal(angular);
+platformBrowserDynamic().bootstrapModule(AppModule);

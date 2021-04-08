@@ -8,6 +8,12 @@
     "start": "webpack serve"
   },
   "dependencies": {
+    "@angular/common": "^11.2.8",
+    "@angular/compiler": "^11.2.8",
+    "@angular/core": "^11.2.8",
+    "@angular/platform-browser": "^11.2.8",
+    "@angular/platform-browser-dynamic": "^11.2.8",
+    "@angular/upgrade": "^11.2.8",
     "angular": "^1.8.2",
     "angular-acl": "^0.1.10",
     "angular-bootstrap-show-errors": "^2.3.0",
@@ -19,8 +25,11 @@
     "buffer": "^6.0.2",
     "font-awesome": "^4.7.0",
     "ngstorage": "^0.3.11",
+    "reflect-metadata": "^0.1.13",
     "rx": "^4.1.0",
-    "ui-bootstrap4": "^3.0.7"
+    "rxjs": "^6.6.7",
+    "ui-bootstrap4": "^3.0.7",
+    "zone.js": "^0.11.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
