@@ -25,9 +25,10 @@ import gradesQualitativeTemplate from "./grades-qualitative.component.html";
 
 class GradesQualitativeController {
 
-    constructor($scope, $routeParams, courses, editions, groups, subjects, $filter) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', 'courses', 'editions', 'groups', 'subjects', '$filter'];
 
+    constructor($scope, $routeParams, courses, editions, groups, subjects, $filter) {
+        
         $scope.editNote = false;
         $scope.saving = false;
         $scope.schemas = GRADE_SCHEMAS;

@@ -5,9 +5,9 @@ import partialSelectorTemplate from "./partial-selector.component.html";
 
 class PartialSelectorController {
 
-    constructor($scope) {
-        'ngInject';
+    static $inject = ['$scope'];
 
+    constructor($scope) {
         this.observable = new rx.BehaviorSubject();
 
         this.$scope = $scope;

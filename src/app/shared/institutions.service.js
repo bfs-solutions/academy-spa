@@ -8,9 +8,8 @@ import * as collectionService from "./collection.service";
  */
 export class IntitutionsService extends collectionService.CollectionService {
 
-    constructor($http, $q, path) {
-        'ngInject';
-
+    constructor($http, path) {
+    
         super($http, 'institutions', path);
     }
 
@@ -36,9 +35,8 @@ export class IntitutionsService extends collectionService.CollectionService {
  */
 export function factory(path) {
 
-    return function ($http) {
-        'ngInject';
-
+    return ['$http', function ($http) {
+        
         return new IntitutionsService($http, path);
-    };
+    }];
 }

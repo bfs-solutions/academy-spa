@@ -32,12 +32,11 @@ export default angular.module('app.ge-half-reports', [
     .component('appGeHalfReportsStudentHalfReport',
         studentHalfReport.StudentHalfReportComponent)
 
-    .config(function ($routeProvider) {
-        'ngInject';
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/ge-half-reports/student-half-report', {
                 template: `<app-ge-half-reports-student-half-report-host>
                    </app-ge-half-reports-student-half-report-host>`
             });
-    });
+    }]);

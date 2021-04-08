@@ -8,9 +8,10 @@ import * as collectionService from "../shared/collection.service";
  */
 export class CantonsService extends collectionService.CollectionService {
 
-    constructor($http, path) {
-        'ngInject';
+    static $inject = ['$http', 'path'];
 
+    constructor($http, path) {
+        
         super($http, 'cantons', path);
     }
 

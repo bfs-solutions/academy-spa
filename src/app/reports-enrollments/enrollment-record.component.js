@@ -5,9 +5,9 @@ import enrollmentRecordTemplate from './enrollment-record.component.html';
 
 class EnrollmentRecordController {
 
-  constructor(institutions){
-    'ngInject';
+  static $inject = ['institutions'];
 
+  constructor(institutions){
     institutions.subscribe(institutions => {
       if(!institutions){ return; }
 

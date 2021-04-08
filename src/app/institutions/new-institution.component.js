@@ -8,9 +8,9 @@ import institutionFormTemplate from "./institution-form.template.html";
  */
 class NewInstitutionController {
 
-    constructor($scope, $location, provinces, institutions) {
-        'ngInject';
+    static $inject = ['$scope', '$location', 'provinces', 'institutions'];
 
+    constructor($scope, $location, provinces, institutions) {
         $scope.provinces = provinces;
 
         this.$scope = $scope;

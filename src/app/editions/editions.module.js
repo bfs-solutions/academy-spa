@@ -28,9 +28,8 @@ export default angular.module("smart-academy-editions", [
     .component('saDeleteGroup', deleteGroup.DeleteGroupComponent)
     .component('saDeleteEdition', deleteEdition.DeleteEditionComponent)
 
-    .config(function ($routeProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
 
             .when('/courses/:course/editions', {
@@ -44,4 +43,4 @@ export default angular.module("smart-academy-editions", [
             .when('/courses/:course/editions/:edition/groups', {
                 template: '<sa-groups></sa-groups>'
             });
-    });
+    }]);

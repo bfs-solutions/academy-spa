@@ -5,9 +5,9 @@ import studentHalfReportHostTemplate from "./student-half-report-host.component.
 
 class StudentHalfReportHostController {
 
-    constructor($scope, users) {
-        'ngInject';
+    static $inject = ['$scope', 'users'];
 
+    constructor($scope, users) {
         this.$scope = $scope;
 
         $scope.halves = new rx.BehaviorSubject();

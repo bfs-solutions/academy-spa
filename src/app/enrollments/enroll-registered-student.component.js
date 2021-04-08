@@ -4,9 +4,10 @@ import enrollRegisteredStudentComponentTemplate from "./enroll-registered-studen
 
 class EnrollRegisteredStudentComponentController {
 
-    constructor($scope, $routeParams, students, courses, institutions) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', 'students', 'courses', 'institutions'];
 
+    constructor($scope, $routeParams, students, courses, institutions) {
+        
         let courseId = parseInt($routeParams.course);
         let editionId = parseInt($routeParams.edition);
         let groupId = parseInt($routeParams.group);

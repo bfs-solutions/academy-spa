@@ -4,9 +4,10 @@ import editionsComponentTemplate from "./editions.component.html";
 
 class EditionsComponentController {
 
-    constructor($scope, $routeParams, $uibModal, courses) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', '$uibModal', 'courses'];
 
+    constructor($scope, $routeParams, $uibModal, courses) {
+        
         let courseId = parseInt($routeParams.course);
 
         courses.subscribe(courses => {

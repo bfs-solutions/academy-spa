@@ -6,9 +6,9 @@ import componentSelectorTemplate from "./component-selector.component.html";
 
 class ComponentSelectorController {
 
-    constructor($scope) {
-        'ngInject';
+    static $inject = ['$scope'];
 
+    constructor($scope) {
         this.observable = new rx.BehaviorSubject();
 
         this.$scope = $scope;

@@ -5,9 +5,9 @@ import userFormTemplate from './user-form.template.html';
 
 class EditUserController {
 
-  constructor($scope, $routeParams, $location, users){
-    'ngInject';
+  static $inject = ['$scope', '$routeParams', '$location', 'users'];
 
+  constructor($scope, $routeParams, $location, users){
     this.$scope = $scope;
     this.users = users;
     this.$location = $location;

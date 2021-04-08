@@ -53,9 +53,8 @@ export default angular.module('app.half-reports', [
     .component('appHalfReportsSubjectHalfReport',
         subjectHalfReport.SubjectHalfReportComponent)
 
-    .config(function ($routeProvider) {
-        'ngInject';
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/half-reports/student-half-report', {
                 template: `<app-half-reports-student-half-report-host>
@@ -71,4 +70,4 @@ export default angular.module('app.half-reports', [
                 template: `<app-half-reports-subject-half-report-host>
                    </app-half-reports-subject-half-report-host>`
             });
-    });
+    }]);

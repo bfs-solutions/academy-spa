@@ -29,9 +29,8 @@ export default angular.module('app.se-reports', [
 
     .component('appSeReportsFinalGrades', finalGrades.FinalGradesComponent)
 
-    .config(function ($routeProvider) {
-        'ngInject';
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/se-reports/se-report', {
                 template: `<app-se-reports-se-report-host>
@@ -42,4 +41,4 @@ export default angular.module('app.se-reports', [
                 template: `<app-se-reports-final-grades-host>
                    </app-se-reports-final-grades-host>`
             });
-    });
+    }]);

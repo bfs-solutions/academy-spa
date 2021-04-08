@@ -3,9 +3,10 @@ import enrollmentFormTemplate from './enrollment-form.template.html';
 
 class EditEnrollmentController {
 
-    constructor($scope){
-        "ngInject";
+    static $inject = ['$scope'];
 
+    constructor($scope){
+        
         this.modeEdit = true;
         this.$scope = $scope;
     }

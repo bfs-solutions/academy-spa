@@ -30,12 +30,11 @@ export default angular.module('app.grades-templates', [
     .component('appGradesTemplatesSubjectHalfTemplate',
         subjectHalfTemplate.SubjectHalfTemplateComponent)
 
-    .config(function ($routeProvider) {
-        'ngInject';
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/grades-templates/subject-half-template', {
                 template: `<app-grades-templates-subject-half-template-host>
                    </app-grades-templates-subject-half-template-host>`
             });
-    });
+    }]);

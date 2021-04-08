@@ -4,9 +4,10 @@ import groupsComponentTemplate from "./groups.component.html";
 
 class GroupsComponentController {
 
-    constructor($scope, $routeParams, $uibModal, courses, editions) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', '$uibModal', 'courses', 'editions'];
 
+    constructor($scope, $routeParams, $uibModal, courses, editions) {
+        
         $scope.adding = false;
 
         let courseId = parseInt($routeParams.course),
@@ -37,7 +38,7 @@ class GroupsComponentController {
 
         let chars = [], char = ("A").charCodeAt(0);
 
-        groups.forEach(group => chars.push(group.label.charCodeAt(0) + 1));
+        (groups || []).forEach(group => chars.push(group.label.charCodeAt(0) + 1));
 
         char = chars.reduce((a, b) => a > b ? a : b, char);
 

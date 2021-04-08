@@ -10,9 +10,10 @@ interface IScope extends angular.IScope {
 
 class CoursesComponentController {
 
-    constructor($scope: IScope, courses: CoursesService) {
-        "ngInject";
+    static $inject = ['$scope','courses'];
 
+    constructor($scope: IScope, courses: CoursesService) {
+        
         $scope.courses = courses;
 
         courses.subscribe((courses: any[]) => {

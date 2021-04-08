@@ -5,9 +5,10 @@ import {PartialsService} from "./partials.service";
 
 export class HalvesService extends CollectionService {
 
-    constructor($http) {
-        "ngInject";
+    static $inject = ['$http'];
 
+    constructor($http) {
+        
         super($http, "halfs", arguments[1]);
     }
 

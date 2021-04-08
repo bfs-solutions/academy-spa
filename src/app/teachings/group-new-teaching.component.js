@@ -4,9 +4,9 @@ import groupNewTeachingComponentTemplate from "./group-new-teaching.component.ht
 
 class GroupNewTeachingComponentController {
 
-    constructor($scope, $routeParams, $location, AclService, courses, users) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', '$location', 'AclService', 'courses', 'users'];
 
+    constructor($scope, $routeParams, $location, AclService, courses, users) {
         let courseId = parseInt($routeParams.course);
 
         $scope.can = AclService.can;

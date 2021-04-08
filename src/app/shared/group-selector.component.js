@@ -5,9 +5,9 @@ import groupSelectorTemplate from "./group-selector.component.html";
 
 class GroupSelectorController {
 
-    constructor($scope, courses) {
-        'ngInject';
+    static $inject = ['$scope', 'courses'];
 
+    constructor($scope, courses) {
         $scope.courses = courses;
 
         this.observable = new rx.BehaviorSubject();

@@ -5,9 +5,9 @@ import groupPartialReportTemplate from './group-partial-report.component.html';
 
 class GroupPartialReportController {
 
-    constructor($scope, gradesCalculator) {
-        'ngInject';
+    static $inject = ['$scope', 'gradesCalculator'];
 
+    constructor($scope, gradesCalculator) {
         this.loading = true;
 
         this.$scope = $scope;

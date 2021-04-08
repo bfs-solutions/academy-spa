@@ -12,9 +12,9 @@ import { Buffer } from 'buffer';
  */
 export class AuthenticationService extends rx.BehaviorSubject {
 
-    constructor($http, $sessionStorage, users) {
-        'ngInject';
+    static $inject = ['$http', '$sessionStorage', 'users'];
 
+    constructor($http, $sessionStorage, users) {
         // set initial authentication value using session state
         super(!!$sessionStorage.authentication);
 

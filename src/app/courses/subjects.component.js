@@ -4,6 +4,8 @@ import subjectsComponentTemplate from "./subjects.component.html";
 
 class SubjectsComponentController {
 
+    static $inject = ['$scope', '$routeParams', 'courses'];
+
     constructor($scope, $routeParams, courses) {
         "ngInject";
 

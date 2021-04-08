@@ -7,8 +7,6 @@ import subjectMultiSelectorTemplate from "./subject-multi-selector.component.htm
 class SubjectMultiSelectorController {
 
     constructor(){
-        'ngInject';
-
         this.observable = new rx.BehaviorSubject([]);
     }
 

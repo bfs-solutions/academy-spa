@@ -4,9 +4,10 @@ import studentHalfReportTemplate from "./student-half-report.component.html";
 
 class StudentHalfReportController {
 
-    constructor($scope, gradesCalculator) {
-        'ngInject';
+    static $inject = ['$scope', 'gradesCalculator'];
 
+    constructor($scope, gradesCalculator) {
+        
         this.loading = true;
 
         this.$scope = $scope;

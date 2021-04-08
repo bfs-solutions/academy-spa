@@ -8,9 +8,9 @@ import SEReportHostTemplate
 
 class SEReportHostController {
 
-    constructor($scope, users) {
-        'ngInject';
+    static $inject = ['$scope', 'users'];
 
+    constructor($scope, users) {
         this.$scope = $scope;
 
         $scope.halves = new rx.BehaviorSubject();

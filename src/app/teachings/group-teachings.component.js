@@ -4,9 +4,9 @@ import groupTeachingsComponentTemplate from "./group-teachings.component.html";
 
 class GroupTeachingsComponentController {
 
-    constructor($scope, $routeParams, $uibModal, courses) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', '$uibModal', 'courses'];
 
+    constructor($scope, $routeParams, $uibModal, courses) {
         let courseId = parseInt($routeParams.course);
 
         this.$scope = $scope;

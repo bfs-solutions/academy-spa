@@ -9,9 +9,8 @@
  * @returns {{restrict: string, priority: number, compile: compile}}
  * @constructor
  */
-export const ADirective = function (authorization) {
-    'ngInject';
-
+export const ADirective = ['authorization', function (authorization) {
+    
     return {
         restrict: 'E',
         priority: 100,
@@ -60,4 +59,4 @@ export const ADirective = function (authorization) {
             };
         }
     };
-};
+}];

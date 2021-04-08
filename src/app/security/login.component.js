@@ -8,10 +8,11 @@ import loginTemplate from "./login.component.html";
  */
 class LoginController {
 
+    static $inject = ['$scope', '$location', '$routeParams', 'authentication', 'securityRules',
+        'AclService'];
+
     constructor($scope, $location, $routeParams, authentication, securityRules,
                 AclService) {
-        'ngInject';
-
         this.$scope = $scope;
         this.$location = $location;
         this.$routeParams = $routeParams;

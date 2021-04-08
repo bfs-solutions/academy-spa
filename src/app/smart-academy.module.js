@@ -63,9 +63,8 @@ export const SmartAcademyModule = angular.module("smart-academy", [
     .component(AppComponent.name, AppComponent)
     .component("saDashboard", dashboardComponent)
 
-    .config(function ($routeProvider, $locationProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        
         $routeProvider
             .when('/dashboard', {
                 template: '<sa-dashboard></sa-dashboard>'
@@ -82,4 +81,4 @@ export const SmartAcademyModule = angular.module("smart-academy", [
          anchor links and router paths are avoided.
          */
         $locationProvider.hashPrefix('!');
-    });
+    }]);

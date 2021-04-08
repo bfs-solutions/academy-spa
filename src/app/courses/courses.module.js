@@ -26,9 +26,8 @@ export default angular.module("smart-academy-courses", [
     .component("saNewCourse", newCourseComponent)
     .component("saNewSubject", newSubjectComponent)
 
-    .config(function ($routeProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/courses', {
                 template: '<sa-courses></sa-courses>'
@@ -45,4 +44,4 @@ export default angular.module("smart-academy-courses", [
             .when('/courses/:course/subjects/_new', {
                 template: '<sa-new-subject></sa-new-subject>'
             });
-    });
+    }]);

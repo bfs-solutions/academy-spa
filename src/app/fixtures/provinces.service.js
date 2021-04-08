@@ -9,9 +9,9 @@ import * as cantonsService from "./cantons.service";
  */
 export class ProvincesService extends collectionService.CollectionService {
 
-    constructor($http) {
-        'ngInject';
+    static $inject = ['$http'];
 
+    constructor($http) {
         super($http, 'provinces', 'fixtures/provinces.json');
     }
 

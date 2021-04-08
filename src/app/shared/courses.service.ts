@@ -7,10 +7,11 @@ import {SubjectsService} from "./subjects.service";
 
 export class CoursesService extends CollectionService {
 
+    static $inject = ['$http', 'dateFilter'];
+
     constructor($http: angular.IHttpProvider, 
         protected dateFilter: angular.IFilterDate) {
-        "ngInject";
-
+        
         super($http, "courses");
     }
 

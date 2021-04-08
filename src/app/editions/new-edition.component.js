@@ -4,9 +4,10 @@ import newEditionComponentTemplate from "./new-edition.component.html";
 
 class NewEditionComponentController {
 
-    constructor($scope, $routeParams, $location, courses) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', '$location', 'courses'];
 
+    constructor($scope, $routeParams, $location, courses) {
+        
         let courseId = parseInt($routeParams.course);
 
         $scope.form = {
