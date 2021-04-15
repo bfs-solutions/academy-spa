@@ -7,7 +7,7 @@ import NgStorageModule from 'ngstorage';
 import 'angular-acl';
 
 import sharedModule from "../shared/shared.module";
-import fixturesModule from "../fixtures/fixtures.module";
+import fixturesModule from "../fixtures/fixtures.module.ajs";
 import * as authenticationService from "./authentication.service";
 import * as authorizationService from "./authorization.service";
 import * as aDirective from "./a.directive";
