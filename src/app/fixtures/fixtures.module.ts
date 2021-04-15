@@ -3,8 +3,7 @@
 import angular from "angular";
 import { downgradeInjectable } from "@angular/upgrade/static";
 
-import * as collectionService from "../shared/collection.service";
-import * as provincesService from "./provinces.service";
+import { ProvincesService } from "./provinces.service";
 import { SecurityRulesService } from "./security-rules.service";
 import { SubjectStructuresService } from "./subject-structures.service";
 
@@ -18,6 +17,6 @@ import { SubjectStructuresService } from "./subject-structures.service";
 export default angular.module('app.fixtures', [])
 
     .service('securityRules', downgradeInjectable(SecurityRulesService))
-    .service('provinces', provincesService.ProvincesService)
+    .service('provinces', downgradeInjectable(ProvincesService))
 
     .service('subjectStructures', downgradeInjectable(SubjectStructuresService));

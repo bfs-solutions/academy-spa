@@ -46,7 +46,7 @@
                 <div class="col-sm-9">
                     <select class="form-control" id="provinceSelect" required
                             ng-model="form.province" name="province"
-                            ng-options="province.name for province in provinces | async:this">
+                            ng-options="province.name for province in provinces.observable$ | async:this">
 
                     </select>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="col-sm-9">
                     <select class="form-control" id="cantonSelect" required
                             ng-model="form.canton" name="canton"
-                            ng-options="canton.name for canton in form.province.cantons | async:this"
+                            ng-options="canton.name for canton in form.province.cantons.observable$ | async:this"
                             ng-disabled="!form.province">
                     </select>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="col-sm-9">
                     <select class="form-control" id="parishSelect" required
                             ng-model="form.parish" name="parish"
-                            ng-options="parish.name for parish in form.canton.parishes | async:this"
+                            ng-options="parish.name for parish in form.canton.parishes.observable$ | async:this"
                             ng-disabled="!form.canton">
                     </select>
                 </div>

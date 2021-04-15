@@ -36,7 +36,7 @@ class EditInstitutionController {
                 $scope.form.type = this.institution.type;
             });
 
-            provinces.subscribe(provinces => {
+            provinces.observable$.subscribe(provinces => {
                 if (!provinces) {
                     return;
                 }
@@ -47,7 +47,7 @@ class EditInstitutionController {
                     $scope.form.province = province;
                 });
 
-                province.cantons.subscribe(cantons => {
+                province.cantons.observable$.subscribe(cantons => {
 
                     if (!cantons) {
                         return;
@@ -59,7 +59,7 @@ class EditInstitutionController {
                         $scope.form.canton = canton;
                     });
 
-                    canton.parishes.subscribe(parishes => {
+                    canton.parishes.observable$.subscribe(parishes => {
                         if (!parishes) {
                             return;
                         }
