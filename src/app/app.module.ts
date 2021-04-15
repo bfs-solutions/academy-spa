@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { UpgradeModule } from '@angular/upgrade/static';
 
 import { SmartAcademyModule } from './smart-academy.module';
@@ -7,6 +8,7 @@ import { SmartAcademyModule } from './smart-academy.module';
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     UpgradeModule
   ]
 })

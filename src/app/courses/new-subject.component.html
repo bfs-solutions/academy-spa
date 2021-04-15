@@ -39,7 +39,7 @@
                 <select class="form-control" id="structureSelect"
                         aria-describedby="structureHelpBlock"
                         ng-model="form.structure" name="structure"
-                        ng-options="structure.name for structure in subjectStructures | async:this"
+                        ng-options="structure.name for structure in subjectStructures.observable$ | async:this"
                         required>
                 </select>
                 <span id="structureHelpBlock" class="help-block">

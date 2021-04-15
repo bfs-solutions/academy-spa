@@ -1,10 +1,11 @@
 'use strict';
 
 import angular from "angular";
+import { downgradeInjectable } from "@angular/upgrade/static";
 
 import * as collectionService from "../shared/collection.service";
 import * as provincesService from "./provinces.service";
-import * as subjectStructuresService from "./subject-structures.service";
+import { SubjectStructuresService } from "./subject-structures.service";
 
 /** Fixtures module.
  *
@@ -19,4 +20,4 @@ export default angular.module('app.fixtures', [])
         'securityRules', './fixtures/security-rules.json'))
     .service('provinces', provincesService.ProvincesService)
 
-    .service('subjectStructures', subjectStructuresService.SubjectStructures);
+    .service('subjectStructures', downgradeInjectable(SubjectStructuresService));
