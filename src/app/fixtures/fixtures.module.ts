@@ -5,6 +5,7 @@ import { downgradeInjectable } from "@angular/upgrade/static";
 
 import * as collectionService from "../shared/collection.service";
 import * as provincesService from "./provinces.service";
+import { SecurityRulesService } from "./security-rules.service";
 import { SubjectStructuresService } from "./subject-structures.service";
 
 /** Fixtures module.
@@ -16,8 +17,7 @@ import { SubjectStructuresService } from "./subject-structures.service";
  */
 export default angular.module('app.fixtures', [])
 
-    .service('securityRules', collectionService.factory(
-        'securityRules', './fixtures/security-rules.json'))
+    .service('securityRules', downgradeInjectable(SecurityRulesService))
     .service('provinces', provincesService.ProvincesService)
 
     .service('subjectStructures', downgradeInjectable(SubjectStructuresService));

@@ -20,7 +20,7 @@ class LoginController {
         this.AclService = AclService;
 
         // load security rules
-        securityRules.subscribe(securityRules => {
+        securityRules.observable$.subscribe(securityRules => {
 
             // discard initial invalid state
             if (!securityRules) {
