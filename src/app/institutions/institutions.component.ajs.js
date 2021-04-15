@@ -1,6 +1,6 @@
 'use strict';
 
-import institutionsTemplate from "./institutions.component.html";
+import institutionsTemplate from "./institutions.component.ajs.html";
 
 /** Institutions component controller.
  *

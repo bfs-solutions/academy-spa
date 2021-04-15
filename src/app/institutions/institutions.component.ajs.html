@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-sm-12" *ngIf="loading">
+    <div class="col-sm-12" ng-show="institutions.loading">
         <i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Cargando...
     </div>
-    <div class="col-sm-12" *ngIf="!loading">
+    <div class="col-sm-12" ng-show="!institutions.loading">
         <h1><i class="fa fa-institution"></i> Centros Educativos</h1>
         <form class="form-inline">
             <div class="form-group">
@@ -33,7 +33,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let institution of institutions">
+            <tr ng-repeat="institution in institutions | async:this | filter : search | limitTo : institutionsPerPage : (currentInstitutionsPage - 1) * institutionsPerPage ">
                 <td>{{institution.name}}</td>
                 <td>{{institution.province}}</td>
                 <td>{{institution.canton}}</td>
@@ -52,5 +52,11 @@
             </tr>
             </tbody>
         </table>
+        <ul uib-pagination
+            ng-disabled="(institutions | async:this | filter : search).length <= institutionsPerPage"
+            total-items="(institutions | async:this | filter : search).length"
+            ng-model="currentInstitutionsPage"
+            items-per-page="institutionsPerPage" boundary-link-numbers="true"
+            max-size="7" force-ellipses="true" boundary-links="true"></ul>
     </div>
 </div>

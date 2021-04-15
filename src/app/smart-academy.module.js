@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import dashboardComponent from "./dashboard.component";
 
 import usersModule from "./users/users.module";
-import institutionsModule from "./institutions/institutions.module";
+import institutionsModule from "./institutions/institutions.module.ajs";
 import securityModule from "./security/security.module";
 import coursesModel from "./courses/courses.module";
 import enrollmentsModule from "./enrollments/enrollments.module";

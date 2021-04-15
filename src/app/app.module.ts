@@ -5,11 +5,15 @@ import { UpgradeModule } from '@angular/upgrade/static';
 
 import { SmartAcademyModule } from './smart-academy.module';
 
+import { InstitutionsModule } from './institutions/institutions.module';
+
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    UpgradeModule
+    UpgradeModule,
+
+    InstitutionsModule
   ]
 })
 export class AppModule {
