@@ -1,17 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
-import { Collection } from "../core/collection";
+import { CollectionService } from "../core/collection.service";
 
 @Injectable({
     providedIn: 'root'
 })
-export class SubjectStructuresService {
+export class SubjectStructuresService extends CollectionService {
 
-    observable$ = this.http.get<Collection>('/fixtures/subject-structures.json').pipe(
-        map(res => res._embedded['subject-structures'])
-    )
-
-    constructor(protected http: HttpClient) {}
+    constructor(http: HttpClient) {
+        super(http, 'subject-structures', '/fixtures/subject-structures.json');
+    }
 }
