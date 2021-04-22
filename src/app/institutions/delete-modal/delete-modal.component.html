@@ -3,36 +3,36 @@
         <h2>Atenci&oacute;n</h2>
     </div>
     <div class="modal-body" id="modal-body">
-        <p ng-show="!$ctrl.blocked">
+        <p *ngIf="!blocked">
             Est&aacute; a punto de eliminar el registro de Centro Educativo
-            <b>{{$ctrl.resolve.institution.name}}</b>. ¿Est&aacute; seguro que
+            <b>{{institution.name}}</b>. ¿Est&aacute; seguro que
             es eso
             lo que desea hacer?
         </p>
-        <p ng-show="$ctrl.blocked">
+        <p *ngIf="blocked">
             No es posible eliminar el registro de Centro Educativo
-            <b>{{$ctrl.resolve.institution.name}}</b> dado que existen registros
+            <b>{{institution.name}}</b> dado que existen registros
             de
             matr&iacute;cula de estudiantes asociados al mismo.
         </p>
-        <div class="row" ng-if="$ctrl.error != null">
+        <div class="row" *ngIf="error">
             <div class="col-md-12">
-                <div class="alert alert-danger">{{$ctrl.error}}</div>
+                <div class="alert alert-danger">{{error}}</div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-danger" type="button" ng-click="$ctrl.proceed()"
-                ng-disabled="$ctrl.deleting || $ctrl.blocked">
-            <i ng-if="!$ctrl.deleting" class="fa fa-trash"
+        <button class="btn btn-danger" type="button" (click)="proceed()"
+                [disabled]="deleting || blocked">
+            <i *ngIf="!deleting" class="fa fa-trash"
                aria-hidden="true"></i>
-            <i ng-if="$ctrl.deleting" class="fa fa-spinner fa-spin"
+            <i *ngIf="deleting" class="fa fa-spinner fa-spin"
                aria-hidden="true"></i>
             Eliminar
         </button>
         <button class="btn btn-default" type="button"
-                ng-click="$ctrl.dismiss({$value: 'cancel'})"
-                ng-disabled="$ctrl.deleting">
+                (click)="activeModal.dismiss()"
+                [disabled]="deleting">
             Cancelar
         </button>
     </div>

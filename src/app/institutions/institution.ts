@@ -1,5 +1,6 @@
+import { Resource } from '../core/resource';
 
-export interface Institution {
+export interface Institution extends Resource {
     id: number;
     name: string;
     province: string;

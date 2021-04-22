@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-sm-12" *ngIf="loading">
+        <i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Cargando...
+    </div>
+    <div class="col-sm-12" *ngIf="!loading">
+        <h1><i class="fa fa-institution"></i> Centros Educativos</h1>
+        <form class="form-inline">
+            <div class="form-group">
+                <a class="btn btn-primary" href="#!/institutions/_new">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <!--Nuevo Centro Educativo-->
+                </a>
+            </div>
+        </form>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Provincia</th>
+                    <th>Cant&oacute;n</th>
+                    <th>Parroquia</th>
+                    <th>Tipo</th>
+                    <th style="text-align: right">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let institution of institutions">
+                    <td>{{institution.name}}</td>
+                    <td>{{institution.province}}</td>
+                    <td>{{institution.canton}}</td>
+                    <td>{{institution.parish}}</td>
+                    <td>{{institution.type}}</td>
+                    <td style="text-align: right">
+                        <a class="btn btn-warning" href="#!/institutions/{{institution.id}}/_edit">
+                            <i class="fa fa-edit" aria-hidden="true"></i>
+                        </a>
+
+                        &nbsp;
+
+                        <a (click)="openDeleteModal(institution)" class="btn btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

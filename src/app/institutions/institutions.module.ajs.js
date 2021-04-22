@@ -8,10 +8,9 @@ import { downgradeComponent } from '@angular/upgrade/static';
 
 import sharedModule from "../shared/shared.module";
 import fixturesModule from "../fixtures/fixtures.module.ajs";
-import * as deleteModal from "./delete-modal.component";
 import * as newInstitution from "./new-institution.component";
 import * as editInstitution from "./edit-institution.component";
-import { InstitutionsComponent } from "./institutions.component";
+import { InstitutionsComponent } from "./institutions/institutions.component";
 
 /** Institutions module.
  *
@@ -35,8 +34,6 @@ export default angular.module('app.institutions', [
     .directive('appInstitutions', downgradeComponent({
         component: InstitutionsComponent
     }))
-    .component('appInstitutionsDeleteModal',
-        deleteModal.DeleteModalComponent)
     .component('appInstitutionsNewInstitution',
         newInstitution.NewInstitutionComponent)
     .component('appInstitutionsEditInstitution',
