@@ -24,10 +24,8 @@
     <div class="modal-footer">
         <button class="btn btn-danger" type="button" (click)="proceed()"
                 [disabled]="deleting || blocked">
-            <i *ngIf="!deleting" class="fa fa-trash"
-               aria-hidden="true"></i>
-            <i *ngIf="deleting" class="fa fa-spinner fa-spin"
-               aria-hidden="true"></i>
+            <fa-icon *ngIf="!deleting" icon="trash"></fa-icon>
+            <fa-icon *ngIf="deleting" icon="spinner" [spin]="true"></fa-icon>
             Eliminar
         </button>
         <button class="btn btn-default" type="button"

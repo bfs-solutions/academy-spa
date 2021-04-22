@@ -3,11 +3,11 @@
         <i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Cargando...
     </div>
     <div class="col-sm-12" *ngIf="!loading">
-        <h1><i class="fa fa-institution"></i> Centros Educativos</h1>
+        <h1><fa-icon icon="university"></fa-icon> Centros Educativos</h1>
         <form class="form-inline">
             <div class="form-group">
                 <a class="btn btn-primary" href="#!/institutions/_new">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <fa-icon icon="plus" aria-hidden="true"></fa-icon>
                     <!--Nuevo Centro Educativo-->
                 </a>
             </div>
@@ -33,13 +33,13 @@
                     <td>{{institution.type}}</td>
                     <td style="text-align: right">
                         <a class="btn btn-warning" href="#!/institutions/{{institution.id}}/_edit">
-                            <i class="fa fa-edit" aria-hidden="true"></i>
+                            <fa-icon icon="edit"></fa-icon>
                         </a>
 
                         &nbsp;
 
                         <a (click)="openDeleteModal(institution)" class="btn btn-danger">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            <fa-icon icon="trash"></fa-icon>
                         </a>
                     </td>
                 </tr>
