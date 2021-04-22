@@ -13,7 +13,7 @@ import { Cantons } from "./cantons";
 export class ProvincesService extends CollectionService<Province> {
 
     constructor(http: HttpClient) {
-        super(http, 'provinces', '/fixtures/provinces.json');
+        super(http, 'provinces', '/assets/fixtures/provinces.json');
     }
 
     protected mapResource(resource: Resource): Province {

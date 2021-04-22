@@ -1,17 +1,16 @@
 import { Component, OnInit } from "@angular/core";
-import { Resource } from "../core/resource";
 
-import template from './institutions.component.html';
+import { Institution } from "./institution";
 import { InstitutionsService } from "./institutions.service";
 
 @Component({
     selector: 'app-institutions',
-    template: `${template}`
+    templateUrl: './institutions.component.html'
 })
 export class InstitutionsComponent implements OnInit {
 
     loading = false;
-    institutions!: Resource[];
+    institutions!: Institution[];
 
     constructor(protected institutionsService: InstitutionsService) {}
 

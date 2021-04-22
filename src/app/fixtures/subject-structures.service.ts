@@ -9,6 +9,6 @@ import { CollectionService } from "../core/collection.service";
 export class SubjectStructuresService extends CollectionService {
 
     constructor(http: HttpClient) {
-        super(http, 'subject-structures', '/fixtures/subject-structures.json');
+        super(http, 'subject-structures', '/assets/fixtures/subject-structures.json');
     }
 }

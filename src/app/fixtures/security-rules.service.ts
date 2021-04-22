@@ -10,6 +10,6 @@ import { CollectionService } from "../core/collection.service";
 export class SecurityRulesService extends CollectionService {
 
     constructor(http: HttpClient) {
-        super(http, 'securityRules', '/fixtures/security-rules.json');
+        super(http, 'securityRules', '/assets/fixtures/security-rules.json');
     }
 }

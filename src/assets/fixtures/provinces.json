@@ -1,0 +1,206 @@
+{
+  "_embedded": {
+    "provinces": [
+      {
+        "name": "AZUAY",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-AZUAY.json"
+          }
+        }
+      },
+      {
+        "name": "BOLIVAR",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-BOLIVAR.json"
+          }
+        }
+      },
+      {
+        "name": "CAÑAR",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-CAÑAR.json"
+          }
+        }
+      },
+      {
+        "name": "CARCHI",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-CARCHI.json"
+          }
+        }
+      },
+      {
+        "name": "COTOPAXI",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-COTOPAXI.json"
+          }
+        }
+      },
+      {
+        "name": "CHIMBORAZO",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-CHIMBORAZO.json"
+          }
+        }
+      },
+      {
+        "name": "EL ORO",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-EL ORO.json"
+          }
+        }
+      },
+      {
+        "name": "ESMERALDAS",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-ESMERALDAS.json"
+          }
+        }
+      },
+      {
+        "name": "GUAYAS",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-GUAYAS.json"
+          }
+        }
+      },
+      {
+        "name": "IMBABURA",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-IMBABURA.json"
+          }
+        }
+      },
+      {
+        "name": "LOJA",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-LOJA.json"
+          }
+        }
+      },
+      {
+        "name": "LOS RIOS",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-LOS RIOS.json"
+          }
+        }
+      },
+      {
+        "name": "MANABI",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-MANABI.json"
+          }
+        }
+      },
+      {
+        "name": "MORONA SANTIAGO",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-MORONA SANTIAGO.json"
+          }
+        }
+      },
+      {
+        "name": "NAPO",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-NAPO.json"
+          }
+        }
+      },
+      {
+        "name": "PASTAZA",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-PASTAZA.json"
+          }
+        }
+      },
+      {
+        "name": "PICHINCHA",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-PICHINCHA.json"
+          }
+        }
+      },
+      {
+        "name": "TUNGURAHUA",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-TUNGURAHUA.json"
+          }
+        }
+      },
+      {
+        "name": "ZAMORA CHINCHIPE",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-ZAMORA CHINCHIPE.json"
+          }
+        }
+      },
+      {
+        "name": "GALAPAGOS",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-GALAPAGOS.json"
+          }
+        }
+      },
+      {
+        "name": "SUCUMBIOS",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-SUCUMBIOS.json"
+          }
+        }
+      },
+      {
+        "name": "ORELLANA",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-ORELLANA.json"
+          }
+        }
+      },
+      {
+        "name": "SANTO DOMINGO DE LOS TSACHILAS",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-SANTO DOMINGO DE LOS TSACHILAS.json"
+          }
+        }
+      },
+      {
+        "name": "SANTA ELENA",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-SANTA ELENA.json"
+          }
+        }
+      },
+      {
+        "name": "ZONAS NO DELIMITADAS",
+        "_links": {
+          "province-has-cantons": {
+            "href": "/assets/fixtures/province-ZONAS NO DELIMITADAS.json"
+          }
+        }
+      }
+    ]
+  }
+}
