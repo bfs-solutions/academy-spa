@@ -8,7 +8,6 @@ import { downgradeComponent } from '@angular/upgrade/static';
 
 import sharedModule from "../shared/shared.module";
 import fixturesModule from "../fixtures/fixtures.module.ajs";
-// import * as institutions from "./institutions.component.ajs";
 import * as deleteModal from "./delete-modal.component";
 import * as newInstitution from "./new-institution.component";
 import * as editInstitution from "./edit-institution.component";
