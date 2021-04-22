@@ -26,6 +26,8 @@ export class DeleteModalComponent implements OnInit {
   }
 
   proceed() {
+    this.deleting = true;
+
     this.institutionsService.deleteResource(this.institution).subscribe(
       () => this.activeModal.close(),
       error => this.error = error
