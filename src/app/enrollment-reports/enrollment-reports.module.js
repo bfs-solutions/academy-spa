@@ -4,7 +4,7 @@ import angular from "angular";
 import AngularRouteModule from 'angular-route';
 import 'angular1-async-filter';
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import nominaDeMatriculadosComponent from "./nomina-de-matriculados.component";
 import reporteResumen from "./reporte-resumen.component";
 import controlDeAsistencia from "./control-de-asistencia.component";

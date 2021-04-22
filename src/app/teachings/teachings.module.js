@@ -5,7 +5,7 @@ import AngularRouteModule from 'angular-route';
 import 'angular1-async-filter';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import groupTeachingsComponent from "./group-teachings.component";
 import groupNewTeachingComponent from "./group-new-teaching.component";
 import * as deleteTeaching from './delete-teaching.component';

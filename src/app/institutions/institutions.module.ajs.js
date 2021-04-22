@@ -6,7 +6,7 @@ import 'angular1-async-filter';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 import { downgradeComponent } from '@angular/upgrade/static';
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import fixturesModule from "../fixtures/fixtures.module.ajs";
 import * as newInstitution from "./new-institution.component";
 import * as editInstitution from "./edit-institution.component";

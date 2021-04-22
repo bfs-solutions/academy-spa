@@ -3,7 +3,7 @@
 import angular from "angular";
 import 'angular1-async-filter';
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import {GradesMeanFilter} from "./grades-mean.filter";
 import gradesComponent from "./grades.component";
 import * as gradesQualitative from "./grades-qualitative.component";

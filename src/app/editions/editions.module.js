@@ -5,7 +5,7 @@ import AngularRouteModule from 'angular-route';
 import 'angular1-async-filter';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import editionsComponent from "./editions.component";
 import groupsComponent from "./groups.component";
 import newEditionComponent from "./new-edition.component";

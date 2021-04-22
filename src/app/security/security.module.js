@@ -6,7 +6,7 @@ import 'angular1-async-filter';
 import NgStorageModule from 'ngstorage';
 import 'angular-acl';
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import fixturesModule from "../fixtures/fixtures.module.ajs";
 import * as authenticationService from "./authentication.service";
 import * as authorizationService from "./authorization.service";

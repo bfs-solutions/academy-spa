@@ -7,7 +7,7 @@ import 'angular1-async-filter';
 import NgStorageModule from 'ngstorage';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 
-import sharedModule from '../shared/shared.module';
+import sharedModule from '../shared/shared.module.ajs';
 import securityModule from '../security/security.module';
 
 import * as users from './users.component';
