@@ -11,10 +11,11 @@ import { Resource } from "./hal/resource";
  */
 export class CollectionService<T extends Resource, K = T> extends BehaviorSubject<K[]> {
 
+    public loading = false;
     protected path: string;
     protected retrieved = false;
 
-    constructor(protected http: HttpClient, protected name: string, path: string) {
+    constructor(protected http: HttpClient, protected name: string, path?: string) {
         super([]);
 
         this.path = path || `/${name}`;
@@ -32,12 +33,14 @@ export class CollectionService<T extends Resource, K = T> extends BehaviorSubjec
     }
 
     retrieveCollection() {
+        this.loading = true;
+
         this.http.get<Collection<{[collection: string]: T[]}>>(this.path)
-            .pipe(
-                map(collection => collection._embedded[this.name]
-                    .map(this.mapResource.bind(this))
-                )
-            ).subscribe(this);
+            .subscribe(
+                collection => this.next(collection._embedded[this.name]
+                    .map(this.mapResource.bind(this))), 
+                error => this.error(error)
+            ).add(() => this.loading = false);
         
         return this;
     }

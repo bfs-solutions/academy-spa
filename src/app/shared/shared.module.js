@@ -1,6 +1,7 @@
 "use strict";
 
 import angular from "angular";
+import { downgradeInjectable } from "@angular/upgrade/static";
 
 import {CoursesService} from "./courses.service";
 import {EditionsService} from "./editions.service";
@@ -9,7 +10,6 @@ import {EnrollmentsService} from "./enrollments.service";
 import {StudentsService} from "./students.service";
 import {SubjectsService} from "./subjects.service";
 import {UsersService} from "./users.service";
-import * as institutionsService from "./institutions.service";
 import * as gradesCalculatorService from "./grades-calculator.service";
 import * as groupSelector from "./group-selector.component";
 import * as halfSelector from "./half-selector.component";
@@ -20,6 +20,7 @@ import * as subjectMultiSelector from './subject-multi-selector.component';
 import * as componentSelector from "./component-selector.component";
 
 import * as useFilter from './use-filter.filter';
+import { InstitutionsService } from "./institutions.service";
 
 export default angular.module("smart-academy-shared", [])
 
@@ -30,7 +31,7 @@ export default angular.module("smart-academy-shared", [])
     .service("students", StudentsService)
     .service("subjects", SubjectsService)
     .service("users", UsersService)
-    .service('institutions', institutionsService.factory())
+    .service('institutions', downgradeInjectable(InstitutionsService))
 
     .service('gradesCalculator', gradesCalculatorService.GradesCalculatorService)
 

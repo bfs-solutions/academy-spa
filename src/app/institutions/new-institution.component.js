@@ -39,22 +39,10 @@ class NewInstitutionController {
 
         this.processing = true;
 
-        this.institutions.addResource(institution).then(
-            (res) => {
-                this.processing = false;
-
-                if (200 > res.status || res.status > 299) {
-                    this.$scope.error = `${res.statusText}: ${res.data.toString()}`;
-                    return;
-                }
-
-                this.$location.path('/institutions');
-            },
-            (err) => {
-                this.$scope.error = err;
-                this.processing = false;
-            }
-        );
+        this.institutions.addResource(institution).subscribe(
+            () => this.$location.path('/institutions'),
+            err => this.$scope.error = err
+        ).add(() => this.processing = false);
     }
 }
 

@@ -94,25 +94,15 @@ class EditInstitutionController {
 
         this.processing = true;
 
-        this.institutions.updateResource(this.institution, institution).then(
-            (res) => {
-                this.processing = false;
-
-                if (200 > res.status || res.status > 299) {
-                    this.$scope.error = `${res.statusText}: ${res.data.toString()}`;
-                    return;
-                }
-
+        this.institutions.updateResource(this.institution, institution).subscribe(
+            () => {
                 // force retrieval of institutions collection
                 this.institutions.retrieveCollection();
 
                 this.$location.path('/institutions');
             },
-            (err) => {
-                this.$scope.error = err;
-                this.processing = false;
-            }
-        );
+            (err) => this.$scope.error = err
+        ).add(() => this.processing = false);
     }
 }
 
