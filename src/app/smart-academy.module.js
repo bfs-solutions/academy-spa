@@ -22,7 +22,7 @@ import teachingsModule from "./teachings/teachings.module";
 import enrollmentReportsModule from "./enrollment-reports/enrollment-reports.module";
 import partialReports from "./partial-reports/partial-reports.module";
 import halfReports from "./half-reports/half-reports.module";
-import fixtureModule from "./fixtures/fixtures.module";
+import fixtureModule from "./fixtures/fixtures.module.ajs";
 import geHalfReports from "./ge-half-reports/ge-half-reports.module";
 import studentsModule from "./students/students.module";
 import reportsEnrollments from './reports-enrollments/reports-enrollments.module';
