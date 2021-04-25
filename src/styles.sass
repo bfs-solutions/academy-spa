@@ -1,10 +1,11 @@
 
 // Import Twitter Bootstrap stylesheets as base
-@import "bootstrap"
+@import "~bootstrap"
 
-@import "font-awesome"
+$fa-font-path: "~font-awesome/fonts"
+@import "~font-awesome/scss/font-awesome"
 
-@import "angular-wizard/dist/angular-wizard.min.css"
+@import "~angular-wizard/dist/angular-wizard.min.css"
 
 // Layout styles
 body
@@ -107,4 +108,4 @@ hr.report
 
 
 // Import styles for the Print media
-@import "./_print"
+@import "./styles/_print"
