@@ -9,9 +9,10 @@ import {TeachingsService} from "./teachings.service";
  */
 export class UsersService extends CollectionService {
 
-    constructor($http) {
-        "ngInject";
+    static $inject = ['$http'];
 
+    constructor($http) {
+        
         super($http, "users");
     }
 

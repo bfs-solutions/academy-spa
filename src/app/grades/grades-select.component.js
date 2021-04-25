@@ -4,9 +4,10 @@ import gradesSelectComponentTemplate from "./grades-select.component.html";
 
 class GradesSelectComponentController {
 
-    constructor($scope, courses) {
-        "ngInject";
+    static $inject = ['$scope', 'courses'];
 
+    constructor($scope, courses) {
+        
         $scope.courses = courses;
 
         this.$scope = $scope;

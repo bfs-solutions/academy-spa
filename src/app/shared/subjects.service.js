@@ -9,9 +9,10 @@ import * as subjectGradesCalculator
 
 export class SubjectsService extends CollectionService {
 
-    constructor($http) {
-        "ngInject";
+    static $inject = ['$http'];
 
+    constructor($http) {
+        
         super($http, "subjects", arguments[1]);
     }
 

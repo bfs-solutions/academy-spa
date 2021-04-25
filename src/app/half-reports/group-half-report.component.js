@@ -4,9 +4,9 @@ import groupHalfReportTemplate from "./group-half-report.component.html";
 
 class GroupHalfReportController {
 
-    constructor($scope, gradesCalculator) {
-        'ngInject';
+    static $inject = ['$scope', 'gradesCalculator'];
 
+    constructor($scope, gradesCalculator) {
         this.loading = true;
 
         this.$scope = $scope;

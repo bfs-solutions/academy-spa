@@ -4,9 +4,10 @@ import enrollmentsComponentTemplate from "./enrollments.component.html";
 
 export class EnrollmentsComponentController {
 
-    constructor($scope, courses) {
-        "ngInject";
+    static $inject = ['$scope', 'courses'];
 
+    constructor($scope, courses) {
+        
         $scope.courses = courses;
     }
 }

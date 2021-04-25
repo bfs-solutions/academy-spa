@@ -9,9 +9,9 @@ import studentsTemplate from './students.component.html';
  */
 class StudentsController {
 
-  constructor($scope, students){
-    'ngInject';
+  static $inject = ['$scope', 'students'];
 
+  constructor($scope, students){
     // initialize scope
     $scope.students = students;
     $scope.currentStudentsPage = 1;

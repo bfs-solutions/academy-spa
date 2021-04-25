@@ -5,9 +5,10 @@ import promotionCertificatePageComponentTemplate from "./promotion-certificate-p
 
 class PromotionCertificatePageComponentController {
 
-    constructor($scope, courses) {
-        "ngInject";
+    static $inject = ['$scope', 'courses'];
 
+    constructor($scope, courses) {
+        
         $scope.subjects = new rx.BehaviorSubject();
         this.selectedSubjects = rx.BehaviorSubject();
         $scope.enrollments = new rx.BehaviorSubject();

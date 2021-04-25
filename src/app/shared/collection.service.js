@@ -108,9 +108,8 @@ export class CollectionService extends BehaviorSubject {
 
 export function factory(name, path) {
 
-    return function ($http) {
-        'ngInject';
-
+    return ['$http', function ($http) {
+        
         return new CollectionService($http, name, path);
-    };
+    }];
 }

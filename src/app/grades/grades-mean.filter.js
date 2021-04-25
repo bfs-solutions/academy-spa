@@ -1,6 +1,6 @@
 'use strict';
 
-export function GradesMeanFilter($filter) {
+export const GradesMeanFilter = ['$filter', function GradesMeanFilter($filter) {
     "ngInject";
 
     return function (grades, components, filter = null) {
@@ -14,4 +14,4 @@ export function GradesMeanFilter($filter) {
 
         return gradeList.reduce((a, b) => a + b, 0) / gradeList.length;
     }
-}
+}];

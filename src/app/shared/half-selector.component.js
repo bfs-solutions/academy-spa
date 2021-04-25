@@ -5,9 +5,9 @@ import halfSelectorTemplate from "./half-selector.component.html";
 
 class HalfSelectorController {
 
-    constructor($scope) {
-        'ngInject';
+    static $inject = ['$scope'];
 
+    constructor($scope) {
         this.observable = new rx.BehaviorSubject();
 
         this.$scope = $scope;

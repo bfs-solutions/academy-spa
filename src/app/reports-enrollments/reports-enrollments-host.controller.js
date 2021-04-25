@@ -7,9 +7,9 @@ import * as rx from 'rx';
  */
 export class ReportsEnrollmentsHostController {
 
-  constructor($scope){
-    'ngInject';
+  static $inject = ['$scope'];
 
+  constructor($scope){
     this.$scope = $scope;
 
     $scope.enrollments = new rx.BehaviorSubject();

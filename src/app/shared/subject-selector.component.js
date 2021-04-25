@@ -6,9 +6,9 @@ import subjectSelectorTemplate from "./subject-selector.component.html";
 
 class SubjectSelectorController {
 
-    constructor($scope) {
-        'ngInject';
+    static $inject = ['$scope'];
 
+    constructor($scope) {
         this.observable = new rx.BehaviorSubject();
 
         this.$scope = $scope;

@@ -34,9 +34,8 @@ export default angular.module('app.reports-enrollments', [AngularRouteModule])
   .component('appReportsEnrollmentsEnrollmentCertificate',
     enrollmentCertificate.EnrollmentCertificateComponent)
 
-  .config(function($routeProvider) {
-    'ngInject';
-
+  .config(['$routeProvider', function($routeProvider) {
+    
     $routeProvider
       .when('/reports-enrollments/enrollment-records', {
         template: '<app-reports-enrollments-enrollment-records-host>' +
@@ -47,4 +46,4 @@ export default angular.module('app.reports-enrollments', [AngularRouteModule])
         template: '<app-reports-enrollments-enrollment-certificates-host>' +
         '</app-reports-enrollments-enrollment-certificates-host>'
       });
-  });
+  }]);

@@ -3,9 +3,9 @@
 /** Provide user authorization capability checks */
 export class AuthorizationService {
 
-    constructor($route, AclService) {
-        'ngInject';
+    static $inject = ['$route', 'AclService'];
 
+    constructor($route, AclService) {
         this.$route = $route;
         this.AclService = AclService;
 

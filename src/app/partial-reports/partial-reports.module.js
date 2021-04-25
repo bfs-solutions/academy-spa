@@ -46,9 +46,8 @@ export default angular.module('app.partial-reports', [
     .component('appPartialReportsSubjectPartialReportHost',
         subjectPartialReportHost.SubjectPartialReportHostComponent)
 
-    .config(function ($routeProvider) {
-        'ngInject';
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/partial-reports/student-partial-report', {
                 template: `<app-partial-reports-student-partial-report-host>
@@ -64,4 +63,4 @@ export default angular.module('app.partial-reports', [
                 template: `<app-partial-reports-subject-partial-report-host>
                    </app-partial-reports-subject-partial-report-host>`
             });
-    });
+    }]);

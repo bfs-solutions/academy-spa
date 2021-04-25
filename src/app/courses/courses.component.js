@@ -4,9 +4,10 @@ import coursesComponentTemplate from "./courses.component.html";
 
 class CoursesComponentController {
 
-    constructor($scope, courses) {
-        "ngInject";
+    static $inject = ['$scope','courses'];
 
+    constructor($scope, courses) {
+        
         $scope.courses = courses;
 
         courses.subscribe(courses => {

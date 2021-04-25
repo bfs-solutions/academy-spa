@@ -8,9 +8,10 @@ import * as enrollmentGradesCalculator
 
 export class EnrollmentsService extends CollectionService {
 
-    constructor($http) {
-        "ngInject";
+    static $inject = ['$http'];
 
+    constructor($http) {
+        
         super($http, "enrollments", arguments[1]);
     }
 

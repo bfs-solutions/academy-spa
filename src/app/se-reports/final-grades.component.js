@@ -5,9 +5,9 @@ import finalGradesTemplate from "./final-grades.component.html";
 
 class FinalGradesController {
 
-    constructor($scope) {
-        'ngInject';
+    static $inject = ['$scope'];
 
+    constructor($scope) {
         this.loading = true;
 
         this.$scope = $scope;

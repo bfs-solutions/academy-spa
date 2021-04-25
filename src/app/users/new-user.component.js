@@ -9,9 +9,9 @@ import userFormTemplate from './user-form.template.html';
  */
 class NewUserController {
 
-  constructor($scope, $location, users){
-    'ngInject';
+  static $inject = ['$scope', '$location', 'users'];
 
+  constructor($scope, $location, users){
     this.$scope = $scope;
     this.$location = $location;
     this.users = users;

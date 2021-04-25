@@ -9,7 +9,6 @@ const stringify = require('stringify');
 const buffer = require('gulp-buffer');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
-const ngAnnotate = require('gulp-ng-annotate');
 
 module.exports = ({ base, src, dest })=> ()=> gulp.src(src, { read: false, base })
     .pipe(tap(function (file) {
@@ -17,8 +16,11 @@ module.exports = ({ base, src, dest })=> ()=> gulp.src(src, { read: false, base 
         // replace file contents with browserify's bundle stream
         file.contents = browserify(file.path, { debug: true,  })
             .transform(babelify.configure({
-                presets: ['@babel/env'],
-                plugins: ['@babel/transform-runtime']
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    '@babel/plugin-transform-runtime',
+                    '@babel/plugin-proposal-class-properties'
+                ]
             }))
             .transform(stringify, {
                 appliesTo: { includeExtensions: ['.html', '.txt'] }
@@ -34,8 +36,6 @@ module.exports = ({ base, src, dest })=> ()=> gulp.src(src, { read: false, base 
     .pipe(sourcemaps.init({
         loadMaps: true // Load the sourcemaps browserify already generated
     }))
-
-    .pipe(ngAnnotate())
 
     .pipe(uglify())
 

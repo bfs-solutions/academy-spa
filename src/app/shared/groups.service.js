@@ -6,9 +6,10 @@ import {TeachingsService} from "./teachings.service";
 
 export class GroupsService extends CollectionService {
 
-    constructor($http) {
-        "ngInject";
+    static $inject = ['$http'];
 
+    constructor($http) {
+        
         super($http, "groups", arguments[1]);
     }
 

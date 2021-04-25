@@ -32,9 +32,8 @@ export default angular.module("smart-academy-enrollments", [
     .component('saDeleteEnrollment', deleteEnrollment.DeleteEnrollmentComponent)
     .component('saEditEnrollment', editEnrollment.EditEnrollmentComponent)
 
-    .config(function ($routeProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/enrollments', {
                 template: '<sa-enrollments></sa-enrollments>'
@@ -51,4 +50,4 @@ export default angular.module("smart-academy-enrollments", [
             .when('/courses/:course/editions/:edition/groups/:group/enrollments/_existing', {
                 template: '<sa-enroll-registered-student></sa-enroll-registered-student>'
             });
-    });
+    }]);

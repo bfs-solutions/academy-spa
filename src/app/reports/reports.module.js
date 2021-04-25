@@ -40,9 +40,8 @@ export default angular.module("smart-academy-reports", [
     .component("saPromotionCertificate", promotionCertificateComponent)
     .component("saPromotionCertificatePage", promotionCertificatePageComponent)
 
-    .config(function ($routeProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/reports', {
                 template: '<sa-reports></sa-reports>'
@@ -51,4 +50,4 @@ export default angular.module("smart-academy-reports", [
             .when('/reports/promotion-certificate', {
                 template: '<sa-promotion-certificate-page></sa-promotion-certificate-page>'
             });
-    });
+    }]);

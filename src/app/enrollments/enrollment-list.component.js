@@ -4,9 +4,10 @@ import enrollmentListComponentTemplate from "./enrollment-list.component.html";
 
 class EnrollmentListController {
 
-    constructor($uibModal, FileSaver, Blob){
-        "ngInject";
+    static $inject = ['$uibModal', 'FileSaver', 'Blob'];
 
+    constructor($uibModal, FileSaver, Blob){
+        
         this.$uibModal = $uibModal;
         this.FileSaver = FileSaver;
         this.Blob = Blob;

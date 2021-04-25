@@ -5,9 +5,10 @@ import {GroupsService} from "./groups.service";
 
 export class EditionsService extends CollectionService {
 
-    constructor($http, dateFilter) {
-        "ngInject";
+    static $inject = ['$http', 'dateFilter'];
 
+    constructor($http, dateFilter) {
+        
         super($http, "editions", arguments[2]);
 
         this.dateFilter = dateFilter;
