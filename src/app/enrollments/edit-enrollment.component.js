@@ -3,12 +3,14 @@ import enrollmentFormTemplate from './enrollment-form.template.html';
 
 class EditEnrollmentController {
 
-    static $inject = ['$scope'];
+    static $inject = ['$scope', 'institutions'];
 
-    constructor($scope){
+    constructor($scope, institutions){
         
         this.modeEdit = true;
         this.$scope = $scope;
+
+        $scope.institutions = institutions;
     }
 
     submit(enrollment){
