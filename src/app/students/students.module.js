@@ -6,7 +6,7 @@ import AngularRouteModule from 'angular-route';
 import 'angular1-async-filter';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 
-import sharedModule from '../shared/shared.module';
+import sharedModule from '../shared/shared.module.ajs';
 
 import * as students from './students.component';
 import * as editStudent from './edit-student.component';

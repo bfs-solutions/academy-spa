@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-sm-12" *ngIf="institutionsService.loading">
+        <fa-icon icon="spinner" [spin]="true"></fa-icon> Cargando...
+    </div>
+    <div class="col-sm-12" ng-show="!institutions.loading">
+        <h1><fa-icon icon="university"></fa-icon> Centros Educativos</h1>
+        <form class="form-inline">
+            <div class="form-group">
+                <a class="btn btn-primary" href="#!/institutions/_new">
+                    <fa-icon icon="plus" aria-hidden="true"></fa-icon>
+                    <!--Nuevo Centro Educativo-->
+                </a>
+            </div>
+        </form>
+        &nbsp;
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Provincia</th>
+                    <th>Cant&oacute;n</th>
+                    <th>Parroquia</th>
+                    <th>Tipo</th>
+                    <th style="text-align: right">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let institution of institutionsService | async">
+                    <td>{{institution.name}}</td>
+                    <td>{{institution.province}}</td>
+                    <td>{{institution.canton}}</td>
+                    <td>{{institution.parish}}</td>
+                    <td>{{institution.type}}</td>
+                    <td align="right">
+                        <a class="btn btn-warning" href="#!/institutions/{{institution.id}}/_edit">
+                            <fa-icon icon="edit"></fa-icon>
+                        </a>
+                        &nbsp;
+                        <a (click)="openDeleteModal(institution)" class="btn btn-danger">
+                            <fa-icon icon="trash"></fa-icon>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

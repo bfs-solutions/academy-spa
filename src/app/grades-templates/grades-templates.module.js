@@ -5,7 +5,7 @@ import AngularRouteModule from 'angular-route';
 import 'angular1-async-filter';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import * as subjectHalfTemplateHost from './subject-half-template-host.component';
 import * as subjectHalfTemplate from './subject-half-template.component';
 

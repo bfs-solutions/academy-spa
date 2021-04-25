@@ -6,7 +6,7 @@ import 'angular1-async-filter';
 import "angular-wizard";
 import AngularFileSaverModule from "angular-file-saver"
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import enrollmentsComponent from "./enrollments.component";
 import enrollmentListComponent from "./enrollment-list.component";
 import groupEnrollmentsComponent from "./group-enrollments.component";

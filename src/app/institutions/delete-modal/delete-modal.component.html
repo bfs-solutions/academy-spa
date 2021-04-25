@@ -1,0 +1,37 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h2>Atenci&oacute;n</h2>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <p *ngIf="!blocked">
+            Est&aacute; a punto de eliminar el registro de Centro Educativo
+            <b>{{institution.name}}</b>. ¿Est&aacute; seguro que
+            es eso
+            lo que desea hacer?
+        </p>
+        <p *ngIf="blocked">
+            No es posible eliminar el registro de Centro Educativo
+            <b>{{institution.name}}</b> dado que existen registros
+            de
+            matr&iacute;cula de estudiantes asociados al mismo.
+        </p>
+        <div class="row" *ngIf="error">
+            <div class="col-md-12">
+                <div class="alert alert-danger">{{error}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" (click)="proceed()"
+                [disabled]="deleting || blocked">
+            <fa-icon *ngIf="!deleting" icon="trash"></fa-icon>
+            <fa-icon *ngIf="deleting" icon="spinner" [spin]="true"></fa-icon>
+            Eliminar
+        </button>
+        <button class="btn btn-default" type="button"
+                (click)="activeModal.dismiss()"
+                [disabled]="deleting">
+            Cancelar
+        </button>
+    </div>
+</div>

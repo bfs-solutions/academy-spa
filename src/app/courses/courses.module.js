@@ -5,7 +5,7 @@ import AngularRouteModule from 'angular-route';
 import 'angular1-async-filter';
 import 'angular-bootstrap-show-errors';
 
-import sharedModule from "../shared/shared.module";
+import sharedModule from "../shared/shared.module.ajs";
 import fixturesModule from "../fixtures/fixtures.module.ajs";
 
 import coursesComponent from "./courses.component";
