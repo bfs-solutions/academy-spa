@@ -11,6 +11,6 @@ import { SubjectStructure } from './subject-structure';
 export class SubjectStructuresService extends CollectionService<SubjectStructureResource, SubjectStructure> {
 
   constructor(http: HttpClient) {
-    super(http, 'subject-structures', 'fixtures/subject-structures.json');
+    super(http, 'subject-structures', '/fixtures/subject-structures.json');
   }
 }

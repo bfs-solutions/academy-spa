@@ -14,7 +14,10 @@ export class PartialsService extends CollectionService {
     mapResource(resource) {
 
         resource.components = new CollectionService(this.$http,
-            "components", resource._links['partial-has-components'].href);
+            "components", (new URL(
+                resource._links['partial-has-components'].href,
+                this.path
+            )).toString());
 
         return resource;
     }

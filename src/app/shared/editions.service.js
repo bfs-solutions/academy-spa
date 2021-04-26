@@ -1,15 +1,21 @@
 "use strict";
 
-import {CollectionService} from "./collection.service";
-import {GroupsService} from "./groups.service";
+import { environment } from "src/environments/environment";
+import { CollectionService } from "./collection.service";
+import { GroupsService } from "./groups.service";
 
 export class EditionsService extends CollectionService {
 
     static $inject = ['$http', 'dateFilter'];
 
     constructor($http, dateFilter) {
-        
-        super($http, "editions", arguments[2]);
+
+        const path = arguments[2] || (new URL(
+            '/editions',
+            environment.academyApi
+        )).toString();
+
+        super($http, "editions", path);
 
         this.dateFilter = dateFilter;
     }
@@ -22,7 +28,10 @@ export class EditionsService extends CollectionService {
         resource.label = `${dateStart}-${dateEnd}`;
 
         resource.groups = new GroupsService(this.$http,
-            resource._links['edition-has-groups'].href);
+            (new URL(
+                resource._links['edition-has-groups'].href,
+                this.path
+            )).toString());
 
         return resource;
     }

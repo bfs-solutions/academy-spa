@@ -12,7 +12,7 @@ import { CantonsService } from './cantons.service';
 export class ProvincesService extends CollectionService<ProvinceResource, Province> {
 
   constructor(http: HttpClient) {
-    super(http, 'provinces', 'fixtures/provinces.json');
+    super(http, 'provinces', '/fixtures/provinces.json');
   }
 
   mapResource(resource: ProvinceResource): Province {
@@ -20,7 +20,10 @@ export class ProvincesService extends CollectionService<ProvinceResource, Provin
     const province: Province = { ...(resource as any) };
 
     province.cantons = new CantonsService(this.http,
-        resource._links['province-has-cantons'].href);
+        (new URL(
+          resource._links['province-has-cantons'].href, 
+          this.path
+        )).toString());
 
     return province;
 }

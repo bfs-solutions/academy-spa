@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { environment } from '../../environments/environment';
 import { CollectionService } from '../core/collection.service';
 import { InstitutionResource } from './hal/institution.resource';
 import { Institution } from './institution';
@@ -11,7 +12,10 @@ import { Institution } from './institution';
 export class InstitutionsService extends CollectionService<InstitutionResource, Institution> {
 
   constructor(http: HttpClient) { 
-    super(http, 'institutions');
+    super(http, 'institutions', (new URL(
+      '/institutions', 
+      environment.academyApi
+    )).toString());
   }
 
   mapResource(resource: InstitutionResource): Institution {
@@ -20,8 +24,11 @@ export class InstitutionsService extends CollectionService<InstitutionResource, 
 
     institution.enrollments = new CollectionService(this.http,
         'enrollments',
-        resource._links['institution-has-enrollments'].href);
+        (new URL(
+          resource._links['institution-has-enrollments'].href,
+          this.path
+        )).toString());
 
     return institution;
-}
+  }
 }

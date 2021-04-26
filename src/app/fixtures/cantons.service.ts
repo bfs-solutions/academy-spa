@@ -16,7 +16,10 @@ export class CantonsService extends CollectionService<CantonResource, Canton> {
     const canton: Canton = {...(resource as any) };
 
     canton.parishes = new CollectionService(this.http,
-        'parishes', resource._links['canton-has-parishes'].href);
+        'parishes', (new URL(
+          resource._links['canton-has-parishes'].href,
+          this.path
+        )).toString());
 
     return canton;
 }

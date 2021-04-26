@@ -1,8 +1,9 @@
 "use strict";
 
-import {CollectionService} from "./collection.service";
-import {HalvesService} from "./halves.service";
-import {TeachingsService} from "./teachings.service";
+import { environment } from "../../environments/environment";
+import { CollectionService } from "./collection.service";
+import { HalvesService } from "./halves.service";
+import { TeachingsService } from "./teachings.service";
 
 import * as subjectGradesCalculator
     from "./subject-grades-calculator";
@@ -12,17 +13,28 @@ export class SubjectsService extends CollectionService {
     static $inject = ['$http'];
 
     constructor($http) {
-        
-        super($http, "subjects", arguments[1]);
+
+        const path = arguments[1] || (new URL(
+            '/subjects',
+            environment.academyApi
+        )).toString();
+
+        super($http, "subjects", path);
     }
 
     mapResource(resource) {
 
         resource.halves = new HalvesService(this.$http,
-            resource._links['subject-has-halves'].href);
+            (new URL(
+                resource._links['subject-has-halves'].href,
+                this.path
+            )).toString());
 
         resource.teachings = new TeachingsService(this.$http,
-            resource._links['subject-has-teachings'].href);
+            (new URL(
+                resource._links['subject-has-teachings'].href,
+                this.path
+            )).toString());
 
         // add the subject grades calculator
         resource.gradesCalculator =
