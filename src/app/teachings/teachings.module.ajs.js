@@ -2,25 +2,24 @@
 
 import angular from "angular";
 import AngularRouteModule from 'angular-route';
-import 'angular1-async-filter';
-import AngularUIBootstrapModule from 'ui-bootstrap4';
+import { downgradeComponent } from "@angular/upgrade/static";
 
 import sharedModule from "../shared/shared.module.ajs";
-import groupTeachingsComponent from "./group-teachings.component";
-import groupNewTeachingComponent from "./group-new-teaching.component";
-import * as deleteTeaching from './delete-teaching.component';
+import { GroupTeachingsComponent } from "./group-teachings/group-teachings.component";
+import { GroupNewTeachingComponent } from './group-new-teaching/group-new-teaching.component';
 
 export default angular.module("smart-academy-teachings", [
     AngularRouteModule, 
-    'asyncFilter', 
-    AngularUIBootstrapModule,
     
     sharedModule.name
 ])
 
-    .component("saGroupTeachings", groupTeachingsComponent)
-    .component("saGroupNewTeaching", groupNewTeachingComponent)
-    .component('saDeleteTeaching', deleteTeaching.DeleteTeachingComponent)
+    .directive("saGroupTeachings", downgradeComponent({
+        component: GroupTeachingsComponent
+    }))
+    .directive("saGroupNewTeaching", downgradeComponent({
+        component: GroupNewTeachingComponent
+    }))
 
     .config(['$routeProvider', function ($routeProvider) {
         

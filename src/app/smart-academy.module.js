@@ -18,7 +18,7 @@ import enrollmentsModule from "./enrollments/enrollments.module";
 import reportsModule from "./reports/reports.module";
 import gradesModule from "./grades/grades.module";
 import editionsModule from "./editions/editions.module";
-import teachingsModule from "./teachings/teachings.module";
+import teachingsModule from "./teachings/teachings.module.ajs";
 import enrollmentReportsModule from "./enrollment-reports/enrollment-reports.module";
 import partialReports from "./partial-reports/partial-reports.module";
 import halfReports from "./half-reports/half-reports.module";

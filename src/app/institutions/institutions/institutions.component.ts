@@ -25,9 +25,9 @@ export class InstitutionsComponent implements OnInit {
      * @param {Object} institution The institution instance to delete.
      * @return The modal instance.
      */
-   openDeleteModal(institution: Institution) {
+  openDeleteModal(institution: Institution) {
     const ref = this.modal.open(DeleteModalComponent);
     ref.componentInstance.institution = institution;
-}
+  }
 
 }

@@ -1,6 +1,10 @@
 import { ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, of } from 'rxjs';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
 
 import { InstitutionsService } from '../../shared/institutions.service';
 import { DeleteModalComponent } from './delete-modal.component';
@@ -21,6 +25,7 @@ describe('institutions/DeleteModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ FontAwesomeModule ],
       declarations: [ DeleteModalComponent ],
       providers: [ 
         NgbActiveModal,
@@ -28,6 +33,8 @@ describe('institutions/DeleteModalComponent', () => {
       ]
     })
     .compileComponents();
+
+    TestBed.inject(FaIconLibrary).addIconPacks(fas);
   });
 
   beforeEach(() => {

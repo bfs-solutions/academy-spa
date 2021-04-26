@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="row"  *ngIf="course && edition && group">
+        <div class="col-sm-8 vcenter">
+            <h1>{{course.label}}</h1>
+            <h2>Período Lectivo {{edition.date_start | date}} - {{edition.date_end |
+            date}}</h2>
+            <h3>Paralelo {{group.label}}</h3>
+            <h4>Establecer Profesor para Asignatura</h4>
+        </div>
+        <form *ngIf="subjects && users" 
+              name="newGroupTeachingForm" 
+              class="form-horizontal" 
+              [formGroup]="formGroup"
+              (ngSubmit)="submit()">
+            <div class="row" *ngIf="error">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">{{error}}</div>
+                </div>
+            </div>
+            <div class="form-group" show-errors>
+                <label for="subjectSelect">Asignatura</label>
+                <select class="form-control" id="subjectSelect"
+                        formControlName="subject" name="subject">
+                    <option *ngFor="let subject of subjects" [value]="subject.id">{{subject.label}}</option>
+                </select>
+            </div>
+            <div class="form-group" show-errors>
+                <label for="userSelect">Profesor</label>
+                <select class="form-control" id="userSelect"
+                        formControlName="user" name="user">
+                    <option *ngFor="let user of users" [value]="user.login">{{user.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" 
+                            class="btn btn-primary"
+                            [disabled]="!formGroup.valid">
+                        <span *ngIf="!saving">
+                            <fa-icon icon="plus" aria-hidden="true"></fa-icon>&nbsp;&nbsp;
+                            Establecer Profesor para Asignatura
+                        </span>
+                        <span *ngIf="saving">
+                            <fa-icon icon="spinner" [spin]="true"></fa-icon>
+                            &nbsp;&nbsp;
+                            Estableciendo Profesor para Asignatura
+                        </span>
+                    </button>
+                    <a href="/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/teachings"
+                       class="btn btn-default">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

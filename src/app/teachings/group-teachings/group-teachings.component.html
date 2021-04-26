@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="row">
+    <div class="row" *ngIf="course && edition && group">
         <div class="col-sm-8 vcenter">
             <h1>{{course.label}}</h1>
             <h2>Período Lectivo {{edition.date_start | date}} -
@@ -12,16 +12,16 @@
             <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/teachings/_new"
                class="btn btn-primary"
                style="float: right">
-                <i class="fa fa-plus" aria-hidden="true"></i>
+               <fa-icon icon="plus" aria-hidden="true"></fa-icon>
             </a>
             <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups"
                class="btn btn-default"
                style="float: right">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+               <fa-icon icon="arrow-left" aria-hidden="true"></fa-icon>
             </a>
         </div>
     </div>
-    <table class="table">
+    <table class="table" *ngIf="group">
         <thead>
         <tr>
             <th colspan="2">Asignatura</th>
@@ -32,7 +32,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="teaching in group.teachings | async:this  track by $index">
+        <tr *ngFor="let teaching of teachings; index as $index">
             <td>{{$index+1}}</td>
             <td>{{teaching.subjectObj.label}}</td>
             <td>{{teaching.subjectObj.qualitative ? 'Cualitativa' :
@@ -41,7 +41,7 @@
             <td>{{teaching.userObj.name}}</td>
             <td>
                 <a
-                        ng-href="#!/grades{{teaching.subjectObj.qualitative ? '-qualitative' : ''}}/{{group.id}}/{{teaching.subjectObj.id}}"
+                        href="#!/grades{{teaching.subjectObj.qualitative ? '-qualitative' : ''}}/{{group.id}}/{{teaching.subjectObj.id}}"
                    class="btn btn-link"
                    style="float: right">
                     <!--<i class="fa fa-arrow-left" aria-hidden="true"></i>-->
@@ -50,8 +50,8 @@
             </td>
             <td>
                 <button class="btn btn-danger"
-                        ng-click="$ctrl.openDeleteModal(teaching)">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                        (click)="openDeleteModal(teaching)">
+                    <fa-icon icon="trash" aria-hidden="true"></fa-icon>
                 </button>
             </td>
         </tr>

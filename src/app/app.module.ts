@@ -7,7 +7,14 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
 import { SmartAcademyModule } from './smart-academy.module';
+import { 
+  locationServiceProvider,
+  routeParamsServiceProvider,
+  coursesServiceProvider, 
+  usersServiceProvider 
+} from './ajs-upgraded-providers';
 import { InstitutionsModule } from './institutions/institutions.module';
+import { TeachingsModule } from './teachings/teachings.module';
 
 @NgModule({
   imports: [
@@ -17,8 +24,15 @@ import { InstitutionsModule } from './institutions/institutions.module';
 
     NgbModule,
 
-    InstitutionsModule
+    InstitutionsModule,
+    TeachingsModule
   ],
+  providers: [
+    locationServiceProvider,
+    routeParamsServiceProvider,
+    coursesServiceProvider,
+    usersServiceProvider
+  ]
 })
 export class AppModule {
 

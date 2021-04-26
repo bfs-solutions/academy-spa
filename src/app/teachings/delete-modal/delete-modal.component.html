@@ -5,17 +5,16 @@
     <div class="modal-body" id="modal-body">
         <p>
             Est&aacute; a punto de eliminar la relaci&oacute;n Profesor & Asignatura
-            entre <b>{{$ctrl.resolve.teaching.userObj.name}}</b> y
-            <b>{{$ctrl.resolve.teaching.subjectObj.label}}</b>. ¿Est&aacute; seguro que
+            entre <b>{{teaching.userObj.name}}</b> y
+            <b>{{teaching.subjectObj.label}}</b>. ¿Est&aacute; seguro que
             es eso lo que desea hacer?
         </p>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-danger" type="button" ng-click="$ctrl.proceed()">
+        <button class="btn btn-danger" type="button" (click)="proceed()">
             Eliminar
         </button>
-        <button class="btn btn-default" type="button"
-                ng-click="$ctrl.dismiss({$value: 'cancel'})">Cancelar
+        <button class="btn btn-default" type="button" (click)="activeModal.dismiss()">Cancelar
         </button>
     </div>
 </div>
