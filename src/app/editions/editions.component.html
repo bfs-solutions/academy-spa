@@ -6,12 +6,12 @@
         </div><!--
         -->
         <div class="col-sm-4 vcenter">
-            <a href="#!/courses/{{course.id}}/editions/_new"
+            <a href="/courses/{{course.id}}/editions/_new"
                class="btn btn-primary"
                style="float: right">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </a>
-            <a href="#!/courses" class="btn btn-default"
+            <a href="/courses" class="btn btn-default"
                style="float: right">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
@@ -29,7 +29,7 @@
         <tr ng-repeat="edition in course.editions | async:this">
             <td>{{edition.date_start | date}} - {{edition.date_end | date}}</td>
             <td>
-                <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups"
+                <a href="/courses/{{course.id}}/editions/{{edition.id}}/groups"
                    class="btn btn-link">
                     Paralelos
                 </a>

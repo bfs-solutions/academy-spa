@@ -2,7 +2,7 @@
     <h1><i class="fa fa-magic"></i> Notas</h1>
     <div class="row">
         <a class="btn btn-link"
-           ng-href="#!/grade-update">
+           ng-href="/grade-update">
             Modificar Nota
         </a>
     </div>
@@ -21,7 +21,7 @@
         <tr ng-repeat="subject in course.subjects | async:this">
             <td>{{subject.label}}</td>
             <td>
-                <a href="#!/grades{{subject.qualitative ? '-qualitative' : ''}}/{{group.id}}/{{subject.id}}">Notas</a>
+                <a href="/grades{{subject.qualitative ? '-qualitative' : ''}}/{{group.id}}/{{subject.id}}">Notas</a>
             </td>
         </tr>
         </tbody>

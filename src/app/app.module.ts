@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule } from '@angular/upgrade/static';
+import { LocationUpgradeModule } from '@angular/common/upgrade';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -20,6 +21,7 @@ import { TeachingsModule } from './teachings/teachings.module';
   imports: [
     BrowserModule,
     UpgradeModule,
+    LocationUpgradeModule.config(),
     HttpClientModule,
 
     NgbModule,

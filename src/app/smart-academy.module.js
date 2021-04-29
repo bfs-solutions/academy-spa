@@ -6,6 +6,8 @@ import angular from "angular";
 import AngularRouteModule from 'angular-route';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 import 'angular1-async-filter';
+import { $locationShim } from '@angular/common/upgrade';
+import { downgradeInjectable } from '@angular/upgrade/static';
 
 import { AppComponent } from './app.component';
 import dashboardComponent from "./dashboard.component";
@@ -60,6 +62,8 @@ export const SmartAcademyModule = angular.module("smart-academy", [
 
     seReports.name
 ])
+    .factory('$location', downgradeInjectable($locationShim))
+
     .component(AppComponent.name, AppComponent)
     .component("saDashboard", dashboardComponent)
 
@@ -73,12 +77,4 @@ export const SmartAcademyModule = angular.module("smart-academy", [
             .otherwise({
                 redirectTo: "/dashboard"
             });
-
-        /* Explicit definition of the hash prefix.
-
-         Previous to AngularJS version 1.6 a different hash prefix was used.
-         By explicitly set the hash prefix potential mismatch between url at
-         anchor links and router paths are avoided.
-         */
-        $locationProvider.hashPrefix('!');
     }]);

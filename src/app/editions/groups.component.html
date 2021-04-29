@@ -13,7 +13,7 @@
                style="float: right">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </a>
-            <a href="#!/courses/{{course.id}}/editions"
+            <a href="/courses/{{course.id}}/editions"
                class="btn btn-default"
                style="float: right">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -32,11 +32,11 @@
         <tr ng-repeat="group in edition.groups | async:this">
             <td>{{group.label}}</td>
             <td>
-                <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/enrollments"
+                <a href="/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/enrollments"
                    class="btn btn-link">
                     Matr&iacute;culas
                 </a>
-                <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/teachings"
+                <a href="/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/teachings"
                    class="btn btn-link">
                     Profesores & Asignaturas
                 </a>

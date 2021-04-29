@@ -11,6 +11,6 @@ import { SecurityRule } from './security-rule';
 export class SecurityRulesService extends CollectionService<SecurityRuleResource, SecurityRule> {
 
   constructor(http: HttpClient) {
-    super(http, 'securityRules', './fixtures/security-rules.json');
+    super(http, 'securityRules', '/fixtures/security-rules.json');
   }
 }

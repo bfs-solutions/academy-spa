@@ -9,12 +9,12 @@
         </div><!--
         -->
         <div class="col-sm-4 vcenter">
-            <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/teachings/_new"
+            <a href="/courses/{{course.id}}/editions/{{edition.id}}/groups/{{group.id}}/teachings/_new"
                class="btn btn-primary"
                style="float: right">
                <fa-icon icon="plus" aria-hidden="true"></fa-icon>
             </a>
-            <a href="#!/courses/{{course.id}}/editions/{{edition.id}}/groups"
+            <a href="/courses/{{course.id}}/editions/{{edition.id}}/groups"
                class="btn btn-default"
                style="float: right">
                <fa-icon icon="arrow-left" aria-hidden="true"></fa-icon>
@@ -41,7 +41,7 @@
             <td>{{teaching.userObj.name}}</td>
             <td>
                 <a
-                        href="#!/grades{{teaching.subjectObj.qualitative ? '-qualitative' : ''}}/{{group.id}}/{{teaching.subjectObj.id}}"
+                        href="/grades{{teaching.subjectObj.qualitative ? '-qualitative' : ''}}/{{group.id}}/{{teaching.subjectObj.id}}"
                    class="btn btn-link"
                    style="float: right">
                     <!--<i class="fa fa-arrow-left" aria-hidden="true"></i>-->
