@@ -4,9 +4,10 @@ import {CollectionService} from "./collection.service";
 
 export class PartialsService extends CollectionService {
 
-    constructor($http) {
-        "ngInject";
+    static $inject = ['$http'];
 
+    constructor($http) {
+        
         super($http, "partials", arguments[1]);
     }
 

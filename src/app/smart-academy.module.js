@@ -7,7 +7,6 @@ import AngularRouteModule from 'angular-route';
 import AngularUIBootstrapModule from 'ui-bootstrap4';
 import 'angular1-async-filter';
 
-import { AppComponent } from './app.component';
 import dashboardComponent from "./dashboard.component";
 
 import usersModule from "./users/users.module";
@@ -60,19 +59,21 @@ export const SmartAcademyModule = angular.module("smart-academy", [
 
     seReports.name
 ])
-    .component(AppComponent.name, AppComponent)
     .component("saDashboard", dashboardComponent)
 
-    .config(function ($routeProvider, $locationProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        
         $routeProvider
             .when('/dashboard', {
                 template: '<sa-dashboard></sa-dashboard>'
             })
 
-            .otherwise({
+            .when('/', {
                 redirectTo: "/dashboard"
+            })
+
+            .otherwise({
+                template: ""
             });
 
         /* Explicit definition of the hash prefix.
@@ -82,4 +83,4 @@ export const SmartAcademyModule = angular.module("smart-academy", [
          anchor links and router paths are avoided.
          */
         $locationProvider.hashPrefix('!');
-    });
+    }]);

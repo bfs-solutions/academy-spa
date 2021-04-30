@@ -39,9 +39,8 @@ export default angular.module('app.institutions', [
     .component('appInstitutionsEditInstitution',
         editInstitution.EditInstitutionComponent)
 
-    .config(function ($routeProvider) {
-        'ngInject';
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/institutions', {
                 template: '<app-institutions></app-institutions>'
@@ -54,4 +53,4 @@ export default angular.module('app.institutions', [
             .when('/institutions/:institution/_edit', {
                 template: `<app-institutions-edit-institution></app-institutions-edit-institution>`
             });
-    });
+    }]);

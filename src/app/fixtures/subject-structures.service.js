@@ -9,9 +9,9 @@ import * as cantonsService from "./cantons.service";
  */
 export class SubjectStructures extends collectionService.CollectionService {
 
-    constructor($http) {
-        'ngInject';
+    static $inject = ['$http'];
 
+    constructor($http) {
         super($http, 'subject-structures', 'fixtures/subject-structures.json');
     }
 }

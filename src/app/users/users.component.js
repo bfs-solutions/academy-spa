@@ -9,9 +9,9 @@ import usersTemplate from './users.component.html';
  */
 class UsersController {
 
-  constructor($scope, $uibModal, users, authentication){
-    'ngInject';
+  static $inject = ['$scope', '$uibModal', 'users', 'authentication'];
 
+  constructor($scope, $uibModal, users, authentication){
     $scope.users = users;
     $scope.currentUsersPage = 1;
     $scope.usersPerPage = 10;

@@ -31,9 +31,8 @@ export default angular.module('app.students', [
 
   .component('appStudentsEditStudent', editStudent.EditStudentComponent)
 
-  .config(function($routeProvider) {
-    'ngInject';
-
+  .config(['$routeProvider', function($routeProvider) {
+    
     $routeProvider
       .when('/students', {
         template: '<app-students></app-students>'
@@ -42,4 +41,4 @@ export default angular.module('app.students', [
       .when('/students/:student/_edit', {
         template: `<app-students-edit-student></app-students-edit-student>`
       });
-  });
+  }]);

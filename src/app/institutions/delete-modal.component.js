@@ -8,9 +8,9 @@ import deleteModalTemplate from "./delete-modal.component.html";
  */
 class DeleteModalController {
 
-    constructor($scope, institutions) {
-        'ngInject';
+    static $inject = ['$scope', 'institutions'];
 
+    constructor($scope, institutions) {
         this.deleting = false;
         this.blocked = true;
         this.$scope = $scope;

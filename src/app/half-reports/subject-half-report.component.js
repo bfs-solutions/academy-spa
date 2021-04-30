@@ -4,9 +4,9 @@ import subjectHalfReportTemplate from "./subject-half-report.component.html";
 
 class SubjectHalfReportController {
 
-    constructor($scope, gradesCalculator) {
-        'ngInject';
+    static $inject = ['$scope', 'gradesCalculator'];
 
+    constructor($scope, gradesCalculator) {
         this.loading = true;
 
         this.$scope = $scope;

@@ -21,9 +21,8 @@ export default angular.module("smart-academy-grades", [
     .component("saGradesQualitative", gradesQualitative.GradesQualitativeComponent)
     .component("saGradesSelect", gradesSelectComponent)
 
-    .config(function ($routeProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/grades', {
                 template: '<sa-grades-select></sa-grades-select>'
@@ -36,4 +35,4 @@ export default angular.module("smart-academy-grades", [
             .when('/grades-qualitative/:group/:subject', {
                 template: '<sa-grades-qualitative></sa-grades-qualitative>'
             });
-    });
+    }]);

@@ -22,9 +22,8 @@ export default angular.module("smart-academy-teachings", [
     .component("saGroupNewTeaching", groupNewTeachingComponent)
     .component('saDeleteTeaching', deleteTeaching.DeleteTeachingComponent)
 
-    .config(function ($routeProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
 
             .when('/courses/:course/editions/:edition/groups/:group/teachings', {
@@ -34,4 +33,4 @@ export default angular.module("smart-academy-teachings", [
             .when('/courses/:course/editions/:edition/groups/:group/teachings/_new', {
                 template: '<sa-group-new-teaching></sa-group-new-teaching>'
             });
-    });
+    }]);

@@ -4,9 +4,10 @@ import gradesComponentTemplate from "./grades.component.html";
 
 class GradesComponentController {
 
-    constructor($scope, $routeParams, courses, editions, groups, subjects) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', 'courses', 'editions', 'groups', 'subjects'];
 
+    constructor($scope, $routeParams, courses, editions, groups, subjects) {
+        
         $scope.editNote = false;
         $scope.saving = false;
 

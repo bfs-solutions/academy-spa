@@ -5,9 +5,9 @@ import groupHalfReportHostTemplate from "./group-half-report-host.component.html
 
 class GroupHalfReportHostController {
 
-    constructor($scope, users) {
-        'ngInject';
+    static $scope = ['$scope', 'users'];
 
+    constructor($scope, users) {
         this.$scope = $scope;
 
         $scope.halves = new rx.BehaviorSubject();

@@ -4,9 +4,10 @@ import groupEnrollmentsComponentTemplate from "./group-enrollments.component.htm
 
 class GroupEnrollmentsComponentController {
 
-    constructor($scope, $routeParams, courses, editions, groups) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', 'courses'];
 
+    constructor($scope, $routeParams, courses) {
+        
         let courseId = parseInt($routeParams.course),
             editionId = parseInt($routeParams.edition),
             groupId = parseInt($routeParams.group);

@@ -22,9 +22,8 @@ export default angular.module("smart-academy-enrollment-reports", [
 
     .component("saControlDeAsistencia", controlDeAsistencia)
 
-    .config(function ($routeProvider) {
-        "ngInject";
-
+    .config(['$routeProvider', function ($routeProvider) {
+        
         $routeProvider
             .when('/courses/:course/editions/:edition/groups/:group/enrollment-report', {
                 template: '<sa-nomina-de-matriculados></sa-nomina-de-matriculados>'
@@ -37,4 +36,4 @@ export default angular.module("smart-academy-enrollment-reports", [
             .when('/courses/:course/editions/:edition/groups/:group/control-de-asistencia', {
                 template: '<sa-control-de-asistencia></sa-control-de-asistencia>'
             });
-    });
+    }]);

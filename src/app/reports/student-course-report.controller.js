@@ -2,9 +2,10 @@
 
 export class StudentCourseReportController {
 
-    constructor($scope) {
-        'ngInject';
+    static $inject = ['$scope'];
 
+    constructor($scope) {
+        
         this.loading = true;
 
         this.$scope = $scope;

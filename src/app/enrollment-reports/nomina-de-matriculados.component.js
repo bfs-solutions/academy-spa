@@ -4,9 +4,10 @@ import nominaDeMatriculadosComponentTemplate from "./nomina-de-matriculados.comp
 
 class NominaDeMatriculadosComponentController {
 
-    constructor($scope, $routeParams, courses) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', 'courses'];
 
+    constructor($scope, $routeParams, courses) {
+        
         let courseId = parseInt($routeParams.course),
             editionId = parseInt($routeParams.edition),
             groupId = parseInt($routeParams.group);

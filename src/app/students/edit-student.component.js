@@ -5,9 +5,9 @@ import studentFormTemplate from './student-form.template.html';
 
 class EditStudentController {
 
-  constructor($scope, $location, $routeParams, students){
-    'ngInject';
+  static $inject = ['$scope', '$location', '$routeParams', 'students'];
 
+  constructor($scope, $location, $routeParams, students){
     this.modeEdit = true;
     this.$scope = $scope;
     this.$location = $location;

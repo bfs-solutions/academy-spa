@@ -4,9 +4,10 @@ import newSubjectComponentTemplate from "./new-subject.component.html";
 
 class NewSubjectComponentController {
 
-    constructor($scope, $routeParams, $location, courses, subjectStructures) {
-        "ngInject";
+    static $inject = ['$scope', '$routeParams', '$location', 'courses', 'subjectStructures'];
 
+    constructor($scope, $routeParams, $location, courses, subjectStructures) {
+        
         let courseId = parseInt($routeParams.course);
 
         $scope.saving = false;

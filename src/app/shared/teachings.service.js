@@ -6,9 +6,9 @@ import {UsersService} from "./users.service";
 
 export class TeachingsService extends CollectionService {
 
-    constructor($http) {
-        "ngInject";
+    static $inject = ['$http'];
 
+    constructor($http) {
         super($http, "teachings", arguments[1]);
     }
 

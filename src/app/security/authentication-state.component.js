@@ -8,9 +8,9 @@ import authenticationStateTemplate from "./authentication-state.component.html";
  */
 class AuthenticationStateController {
 
-    constructor($scope, $location, authentication) {
-        'ngInject';
+    static $inject = ['$scope', 'authentication'];
 
+    constructor($scope, authentication) {
         $scope.authentication = authentication;
     }
 }

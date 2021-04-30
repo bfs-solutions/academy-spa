@@ -40,9 +40,8 @@ export default angular.module('app.users', [
   .component('appUsersNewUser', newUser.NewUserComponent)
   .component('appUsersEditUser', editUser.EditUserComponent)
 
-  .config(function($routeProvider) {
-    'ngInject';
-
+  .config(['$routeProvider', function($routeProvider) {
+    
     $routeProvider
       .when('/users', {
         template: '<app-users></app-users>'
@@ -55,4 +54,4 @@ export default angular.module('app.users', [
       .when('/users/:user/_edit', {
         template: '<app-users-edit-user></app-users-edit-user>'
       });
-  });
+  }]);

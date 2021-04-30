@@ -5,9 +5,9 @@ import seReportTemplate from "./se-report.component.html";
 
 class SeReportController {
 
-    constructor($scope) {
-        'ngInject';
+    static $inject = ['$scope'];
 
+    constructor($scope) {
         this.loading = true;
 
         this.$scope = $scope;

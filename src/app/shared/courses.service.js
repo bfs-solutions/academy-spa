@@ -6,9 +6,10 @@ import {SubjectsService} from "./subjects.service";
 
 export class CoursesService extends CollectionService {
 
-    constructor($http, dateFilter) {
-        "ngInject";
+    static $inject = ['$http', 'dateFilter'];
 
+    constructor($http, dateFilter) {
+        
         super($http, "courses");
 
         this.dateFilter = dateFilter;

@@ -8,9 +8,9 @@ import institutionsTemplate from "./institutions.component.html";
  */
 class InstitutionsController {
 
-    constructor($scope, $uibModal, institutions) {
-        'ngInject';
+    static $inject = ['$scope', '$uibModal', 'institutions'];
 
+    constructor($scope, $uibModal, institutions) {
         // initialize scope
         $scope.institutions = institutions;
         $scope.currentInstitutionsPage = 1;

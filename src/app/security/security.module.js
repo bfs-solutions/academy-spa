@@ -49,7 +49,7 @@ export default angular.module('app.security', [
     .component('appSecurityNotAllowed', notAllowed.NotAllowedComponent)
 
     // configure routing to components provided by this module
-    .config(function ($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
         'ngInject';
 
         $routeProvider
@@ -62,12 +62,11 @@ export default angular.module('app.security', [
             .when('/security/not-allowed', {
                 template: '<app-security-not-allowed></app-security-not-allowed>'
             });
-    })
+    }])
 
     // apply security policies
-    .run(function ($rootScope, $location, $route, authentication, authorization) {
-        'ngInject';
-
+    .run(['$rootScope', '$location', '$route', 'authentication', 'authorization', function ($rootScope, $location, $route, authentication, authorization) {
+        
         $rootScope.$on('$routeChangeStart', function (e, next) {
 
             let currentPath = $location.path();
@@ -78,7 +77,7 @@ export default angular.module('app.security', [
             }
 
             // do nothing for routes inside the security module.
-            if (currentPath.startsWith('/security')) {
+            if (currentPath.startsWith('/security') || currentPath === '' || currentPath === '/') {
                 return;
             }
 
@@ -96,4 +95,4 @@ export default angular.module('app.security', [
 
             return undefined;
         });
-    });
+    }]);
