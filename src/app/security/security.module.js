@@ -77,7 +77,7 @@ export default angular.module('app.security', [
             }
 
             // do nothing for routes inside the security module.
-            if (currentPath.startsWith('/security')) {
+            if (currentPath.startsWith('/security') || currentPath === '' || currentPath === '/') {
                 return;
             }
 

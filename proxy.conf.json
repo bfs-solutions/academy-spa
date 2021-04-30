@@ -1,0 +1,54 @@
+{
+    "/users": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/institutions": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/courses": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/editions": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/groups": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/students": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/subjects": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/halfs": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/partials": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/components": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/enrollments": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/grades": {
+        "target": "http://localhost:3000",
+        "secure": false
+      },
+      "/teachings": {
+        "target": "http://localhost:3000",
+        "secure": false
+      }
+}

@@ -68,8 +68,12 @@ export const SmartAcademyModule = angular.module("smart-academy", [
                 template: '<sa-dashboard></sa-dashboard>'
             })
 
-            .otherwise({
+            .when('/', {
                 redirectTo: "/dashboard"
+            })
+
+            .otherwise({
+                template: ""
             });
 
         /* Explicit definition of the hash prefix.
